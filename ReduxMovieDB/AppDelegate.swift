@@ -18,7 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         store.dispatch(
             AppStateAction.addMovies([
-                Movie(name: "Movie Test 1")
+                Movie(name: "Movie Test 1"),
+                Movie(name: "Movie Test 2")
             ])
         )
 
