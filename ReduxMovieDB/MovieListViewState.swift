@@ -1,5 +1,5 @@
 //
-//  MoviesViewState.swift
+//  MovieListViewState.swift
 //  ReduxMovieDB
 //
 //  Created by Matheus Cardoso on 2/11/18.
@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MoviesViewState {
+struct MovieListViewState {
     let movies: [Movie]
     let selectedMovieIndex: Int?
 

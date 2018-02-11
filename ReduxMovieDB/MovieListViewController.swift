@@ -1,5 +1,5 @@
 //
-//  MoviesViewController.swift
+//  MovieListViewController.swift
 //  ReduxMovieDB
 //
 //  Created by Matheus Cardoso on 2/11/18.
@@ -10,7 +10,7 @@ import ReSwift
 import RxCocoa
 import RxSwift
 
-class MoviesViewController: UIViewController {
+class MovieListViewController: UIViewController {
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var moviesTableView: UITableView! {
@@ -26,17 +26,17 @@ class MoviesViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         store.subscribe(self, transform: {
-            $0.select(MoviesViewState.init)
+            $0.select(MovieListViewState.init)
         })
     }
 }
 
 // MARK: StoreSubscriber
 
-extension MoviesViewController: StoreSubscriber {
-    typealias StoreSubscriberStateType = MoviesViewState
+extension MovieListViewController: StoreSubscriber {
+    typealias StoreSubscriberStateType = MovieListViewState
 
-    func newState(state: MoviesViewState) {
+    func newState(state: MovieListViewState) {
         moviesTableView.reloadData()
 
         if let row = state.selectedMovieIndex {
@@ -52,7 +52,7 @@ extension MoviesViewController: StoreSubscriber {
 
 // MARK: UITableViewDataSource
 
-extension MoviesViewController: UITableViewDataSource {
+extension MovieListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }

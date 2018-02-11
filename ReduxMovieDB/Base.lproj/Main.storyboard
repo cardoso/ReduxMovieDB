@@ -14,7 +14,7 @@
         <scene sceneID="enY-fE-ZQ9">
             <objects>
                 <viewController id="fGt-J3-2uX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Wqg-Gm-dmd">
+                    <view key="view" contentMode="scaleToFill" id="Wqg-Gm-dmd" customClass="MovieDetailViewController">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -44,7 +44,7 @@
         <!--Movies-->
         <scene sceneID="ucL-oN-5ra">
             <objects>
-                <viewController id="ZNc-iT-Hqz" customClass="MoviesViewController" customModule="ReduxMovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="ZNc-iT-Hqz" customClass="MovieListViewController" customModule="ReduxMovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Rtp-nf-Djq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

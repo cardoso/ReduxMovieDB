@@ -16,6 +16,17 @@ enum AppStateAction: Action {
 struct AppState: StateType {
     var movies: [Movie] = []
     var selectedMovieIndex: Int?
+
+    var selectedMovie: Movie? {
+        guard
+            let selectedMovieIndex = selectedMovieIndex,
+            selectedMovieIndex < movies.count
+        else {
+            return nil
+        }
+
+        return movies[selectedMovieIndex]
+    }
 }
 
 func appReducer(action: Action, state: AppState?) -> AppState {
