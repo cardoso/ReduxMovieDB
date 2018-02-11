@@ -7,8 +7,6 @@
 //
 
 import UIKit
-import RxSwift
-import RxCocoa
 
 class MoviesViewController: UIViewController {
     @IBOutlet weak var moviesTableView: UITableView!
@@ -24,14 +22,18 @@ class MoviesViewController: UIViewController {
 
 extension MoviesViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        return 0
+        return 1
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 0
+        return store.state.movies.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
+
+        cell.textLabel?.text = store.state.movies[indexPath.row].name
+
+        return cell
     }
 }
