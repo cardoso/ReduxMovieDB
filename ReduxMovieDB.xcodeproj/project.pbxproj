@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2BB56F98FD90D772FD4F4C63 /* Pods_ReduxMovieDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE35D096699EA77E6EA5F571 /* Pods_ReduxMovieDB.framework */; };
 		80673C8D2030C3DA0091B48F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673C8C2030C3DA0091B48F /* AppDelegate.swift */; };
-		80673C8F2030C3DA0091B48F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673C8E2030C3DA0091B48F /* ViewController.swift */; };
+		80673C8F2030C3DA0091B48F /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673C8E2030C3DA0091B48F /* SplitViewController.swift */; };
 		80673C922030C3DA0091B48F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80673C902030C3DA0091B48F /* Main.storyboard */; };
 		80673C942030C3DA0091B48F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80673C932030C3DA0091B48F /* Assets.xcassets */; };
 		80673C972030C3DA0091B48F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80673C952030C3DA0091B48F /* LaunchScreen.storyboard */; };
@@ -33,7 +33,7 @@
 		30F9E0D8CDC279D30EA5ACC7 /* Pods-ReduxMovieDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDBTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDBTests/Pods-ReduxMovieDBTests.debug.xcconfig"; sourceTree = "<group>"; };
 		80673C892030C3DA0091B48F /* ReduxMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReduxMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80673C8C2030C3DA0091B48F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		80673C8E2030C3DA0091B48F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		80673C8E2030C3DA0091B48F /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
 		80673C912030C3DA0091B48F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		80673C932030C3DA0091B48F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		80673C962030C3DA0091B48F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,7 +92,7 @@
 			isa = PBXGroup;
 			children = (
 				80673C8C2030C3DA0091B48F /* AppDelegate.swift */,
-				80673C8E2030C3DA0091B48F /* ViewController.swift */,
+				80673C8E2030C3DA0091B48F /* SplitViewController.swift */,
 				80673CAC2030CF890091B48F /* MovieListViewController.swift */,
 				80673C902030C3DA0091B48F /* Main.storyboard */,
 				80673C932030C3DA0091B48F /* Assets.xcassets */,
@@ -347,7 +347,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80673CAD2030CF890091B48F /* MovieListViewController.swift in Sources */,
-				80673C8F2030C3DA0091B48F /* ViewController.swift in Sources */,
+				80673C8F2030C3DA0091B48F /* SplitViewController.swift in Sources */,
 				80673C8D2030C3DA0091B48F /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
