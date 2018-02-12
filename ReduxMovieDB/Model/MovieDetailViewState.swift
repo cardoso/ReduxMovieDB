@@ -19,9 +19,12 @@ struct MovieDetailViewState {
 
         date = movie?.releaseDate ?? ""
         title = movie?.title ?? ""
-        genres = movie?.genreIds.reduce("") {
-            $0.isEmpty ? "\($1)" : "\($0), \($1)"
-        } ?? ""
         overview = movie?.overview ?? ""
+
+        genres = movie?.genreIds.reduce("") { total, id in
+            let genreName = state.genres.first { $0.id == id }?.name ?? "\(id)"
+            guard let total = total else { return genreName}
+            return total.isEmpty ? "\(genreName)" : "\(total), \(genreName)"
+        } ?? ""
     }
 }

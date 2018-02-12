@@ -8,11 +8,7 @@
 
 import Foundation
 
-protocol TMDBFetcher {
-    func fetchUpcomingMovies(page: Int, completion: @escaping (TMDBListResult<Movie>?) -> Void) -> Void
-}
-
-struct TMDBListResult<T: Codable>: Codable {
+struct TMDBPagedResult<T: Codable>: Codable {
     let results: [T]
     let page: Int
     let totalPages: Int
@@ -24,31 +20,46 @@ struct TMDBListResult<T: Codable>: Codable {
         case totalPages = "total_pages"
         case totalResults = "total_results"
     }
+}
 
-    init?(data: Data) {
-        guard let obj = try? JSONDecoder().decode(type(of: self), from: data) else {
-            return nil
-        }
-
-        self = obj
-    }
+protocol TMDBFetcher {
+    func fetchMovieGenres(completion: @escaping (GenreList?) -> Void) -> Void
+    func fetchUpcomingMovies(page: Int, completion: @escaping (TMDBPagedResult<Movie>?) -> Void) -> Void
 }
 
 class TMDB: TMDBFetcher {
     let apiKey = "1f54bd990f1cdfb230adb312546d765d"
     let baseUrl = "https://api.themoviedb.org/3"
 
-    func fetchUpcomingMovies(page: Int, completion: @escaping (TMDBListResult<Movie>?) -> Void) -> Void {
-        guard let url = URL(string: "\(baseUrl)/movie/upcoming?api_key=\(apiKey)&page=\(page)") else {
+    func fetchUpcomingMovies(page: Int, completion: @escaping (TMDBPagedResult<Movie>?) -> Void) -> Void {
+        fetch(
+            url: "\(baseUrl)/movie/upcoming?api_key=\(apiKey)&page=\(page)",
+            completion: completion
+        )
+
+    }
+
+    func fetchMovieGenres(completion: @escaping (GenreList?) -> Void) {
+        fetch(
+            url: "\(baseUrl)/genre/movie/list?api_key=\(apiKey)",
+            completion: completion
+        )
+    }
+
+    func fetch<T: Codable>(url: String, completion: @escaping (T?) -> Void) {
+        guard let url = URL(string: url) else {
             return completion(nil)
         }
 
         URLSession.shared.dataTask(with: url) { data, _, _ in
-            guard let data = data else {
+            guard
+                let data = data,
+                let obj = try? JSONDecoder().decode(T.self, from: data)
+            else {
                 return completion(nil)
             }
 
-            completion(TMDBListResult<Movie>(data: data))
+            completion(obj)
         }.resume()
     }
 }
