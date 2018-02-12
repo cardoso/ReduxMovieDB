@@ -51,6 +51,21 @@ class MovieDetailViewController: UITableViewController {
         updatePosterView()
     }
 
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        let defaultHeight = super.tableView(tableView, heightForRowAt: indexPath)
+
+        if indexPath.section == 1 && indexPath.row == 2 {
+            return overviewLabel.sizeThatFits(
+                CGSize(
+                    width: overviewLabel.frame.size.width,
+                    height: .greatestFiniteMagnitude
+                )
+            ).height + defaultHeight
+        }
+
+        return defaultHeight
+    }
+
     func setupPosterView() {
         posterView = tableView.tableHeaderView
         tableView.tableHeaderView = nil
@@ -80,11 +95,15 @@ extension MovieDetailViewController: StoreSubscriber {
     typealias StoreSubscriberStateType = MovieDetailViewState
 
     func newState(state: MovieDetailViewState) {
+        tableView.beginUpdates()
+
         title = state.title
         titleLabel.text = state.title
         releaseDateLabel.text = state.date
         genreLabel.text = state.genres
         overviewLabel.text = state.overview
+
+        tableView.endUpdates()
 
         guard let movie = state.movie else { return }
         posterImageView.setPosterForMovie(movie)
