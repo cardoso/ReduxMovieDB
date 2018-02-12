@@ -11,11 +11,14 @@ import ReSwift
 enum AppStateAction: Action {
     case addMovies([Movie])
     case selectMovieIndex(Int)
+    case showMovieDetail
+    case hideMovieDetail
 }
 
 struct AppState: StateType {
     var movies: [Movie] = []
     var selectedMovieIndex: Int?
+    var showMovieDetail: Bool = false
 
     var selectedMovie: Movie? {
         guard
@@ -40,7 +43,12 @@ func appReducer(action: Action, state: AppState?) -> AppState {
     case .addMovies(let movies):
         state.movies.append(contentsOf: movies)
     case .selectMovieIndex(let index):
+        guard index < state.movies.count else { break }
         state.selectedMovieIndex = index
+    case .showMovieDetail:
+        state.showMovieDetail = true
+    case .hideMovieDetail:
+        state.showMovieDetail = false
     }
 
     return state

@@ -18,9 +18,10 @@ class MovieListViewController: UIViewController {
             newValue?.rx.itemSelected
                 .map { $0.row }
                 .filter { $0 < store.state.movies.count }
-                .map(AppStateAction.selectMovieIndex)
-                .bind(onNext: store.dispatch)
-                .disposed(by: disposeBag)
+                .bind(onNext: {
+                    store.dispatch(AppStateAction.selectMovieIndex($0))
+                    store.dispatch(AppStateAction.showMovieDetail)
+                }).disposed(by: disposeBag)
         }
     }
 
@@ -28,6 +29,10 @@ class MovieListViewController: UIViewController {
         store.subscribe(self, transform: {
             $0.select(MovieListViewState.init)
         })
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        store.unsubscribe(self)
     }
 }
 
@@ -38,7 +43,6 @@ extension MovieListViewController: StoreSubscriber {
 
     func newState(state: MovieListViewState) {
         moviesTableView.reloadData()
-
         if let row = state.selectedMovieIndex {
             let indexPath = IndexPath(row: row, section: 0)
             self.moviesTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none )

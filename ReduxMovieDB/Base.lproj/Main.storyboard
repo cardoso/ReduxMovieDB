@@ -10,21 +10,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="enY-fE-ZQ9">
-            <objects>
-                <viewController id="fGt-J3-2uX" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="Wqg-Gm-dmd" customClass="MovieDetailViewController">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <viewLayoutGuide key="safeArea" id="X3p-Rr-IHa"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="Dt1-uK-rHs" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="650" y="300"/>
-        </scene>
         <!--Navigation Controller-->
         <scene sceneID="mxf-Bg-BXC">
             <objects>
@@ -88,6 +73,7 @@
                     <connections>
                         <outlet property="moviesTableView" destination="T9p-xD-xhB" id="sXr-4W-ryV"/>
                         <outlet property="searchDisplayController" destination="XRh-up-0fa" id="XJQ-T5-j8d"/>
+                        <segue destination="uXz-1h-md8" kind="showDetail" identifier="showDetail" id="lRy-w0-UwQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRd-aj-5L6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -101,20 +87,57 @@
                     </connections>
                 </searchDisplayController>
             </objects>
-            <point key="canvasLocation" x="1630" y="-362"/>
+            <point key="canvasLocation" x="1629" y="-364"/>
         </scene>
         <!--Split View Controller-->
         <scene sceneID="c1y-DN-iP3">
             <objects>
-                <splitViewController id="y8f-Tw-W0j" customClass="SplitViewController" customModule="ReduxMovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                <splitViewController presentsWithGesture="NO" id="y8f-Tw-W0j" customClass="SplitViewController" customModule="ReduxMovieDB" customModuleProvider="target" sceneMemberID="viewController">
                     <connections>
                         <segue destination="KoS-2N-W1s" kind="relationship" relationship="masterViewController" id="6AL-rG-Hl3"/>
-                        <segue destination="fGt-J3-2uX" kind="relationship" relationship="detailViewController" id="AwC-HT-Wq0"/>
+                        <segue destination="uXz-1h-md8" kind="relationship" relationship="detailViewController" id="AwC-HT-Wq0"/>
                     </connections>
                 </splitViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="o1W-NA-Jyf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-302" y="-33"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="Jxx-Pa-fyp">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="uXz-1h-md8" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="4BG-RG-uhm">
+                        <rect key="frame" x="0.0" y="20" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="ZC7-z4-AYC" kind="relationship" relationship="rootViewController" id="dk4-VI-bko"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bXg-3b-7no" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="649" y="394"/>
+        </scene>
+        <!--Movie Detail View Controller-->
+        <scene sceneID="qzK-4Q-KcB">
+            <objects>
+                <viewController id="ZC7-z4-AYC" customClass="MovieDetailViewController" customModule="ReduxMovieDB" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="vF6-ZG-AYb">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <viewLayoutGuide key="safeArea" id="eDB-oH-vgL"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="pE3-OC-sh2"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cRl-aX-yZG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1629" y="394"/>
+        </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="lRy-w0-UwQ"/>
+    </inferredMetricsTieBreakers>
 </document>

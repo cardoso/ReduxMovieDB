@@ -15,8 +15,18 @@ import RxSwift
 class MovieDetailViewController: UIViewController {
     let disposeBag = DisposeBag()
 
-    override func viewWillAppear(_ animated: Bool) {
+    override func viewDidLoad() {
+        
+    }
 
+    override func viewWillAppear(_ animated: Bool) {
+        store.subscribe(self, transform: {
+            $0.select(MovieDetailViewState.init)
+        })
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        store.unsubscribe(self)
     }
 }
 
