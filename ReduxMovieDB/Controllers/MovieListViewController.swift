@@ -14,8 +14,10 @@ class MovieListViewController: UIViewController {
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var moviesTableView: UITableView! {
-        willSet {
-            newValue?.rx.itemSelected
+        didSet {
+            moviesTableView?.separatorColor = .clear
+
+            moviesTableView?.rx.itemSelected
                 .map { $0.row }
                 .filter { $0 < store.state.movies.count }
                 .bind(onNext: {
@@ -58,6 +60,22 @@ extension MovieListViewController: StoreSubscriber {
 
 // MARK: UITableViewDataSource
 
+class MovieListTableViewCell: UITableViewCell {
+    @IBOutlet weak var icon: UIImageView!
+    @IBOutlet weak var title: UILabel!
+    @IBOutlet weak var subtitle: UILabel!
+
+    var movie: Movie? {
+        willSet {
+            guard let movie = newValue else { return }
+
+            icon.setPosterForMovie(movie)
+            title.text = movie.title
+            subtitle.text = movie.releaseDate.description
+        }
+    }
+}
+
 extension MovieListViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
@@ -68,12 +86,14 @@ extension MovieListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
-        let movie = store.state.movies[indexPath.row]
-        cell.textLabel?.text = movie.title
-        cell.detailTextLabel?.text = movie.releaseDate.description
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "MovieListTableViewCell") as? MovieListTableViewCell else {
+            return UITableViewCell()
+        }
+
+        cell.movie = store.state.movies[indexPath.row]
         cell.accessoryType = .disclosureIndicator
-        cell.imageView?.setPosterForMovie(movie)
+        cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+
         return cell
     }
 }
