@@ -73,6 +73,7 @@ extension MovieListViewController: UITableViewDataSource {
         cell.textLabel?.text = movie.title
         cell.detailTextLabel?.text = movie.releaseDate.description
         cell.accessoryType = .disclosureIndicator
+        cell.imageView?.setPosterForMovie(movie)
         return cell
     }
 }

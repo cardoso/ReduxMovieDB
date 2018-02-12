@@ -44,10 +44,8 @@ extension SplitViewController: StoreSubscriber {
     typealias StoreSubscriberStateType = AppState
 
     func newState(state: AppState) {
-        if state.showMovieDetail {
-            if movieDetailViewController == nil {
-                movieListViewController?.performSegue(withIdentifier: "showDetail", sender: self)
-            }
+        if state.showMovieDetail && movieDetailViewController == nil {
+            movieListViewController?.performSegue(withIdentifier: "showDetail", sender: self)
         }
     }
 }

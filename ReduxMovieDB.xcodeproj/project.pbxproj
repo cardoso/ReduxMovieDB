@@ -21,6 +21,7 @@
 		80673CB52030F5430091B48F /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CB42030F5430091B48F /* MovieDetailViewController.swift */; };
 		80673CB72030F5FC0091B48F /* MovieDetailViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CB62030F5FC0091B48F /* MovieDetailViewState.swift */; };
 		80673CB9203125300091B48F /* TMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CB8203125300091B48F /* TMDB.swift */; };
+		80673CBE20313EA20091B48F /* UIImageView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CBD20313EA20091B48F /* UIImageView+Extensions.swift */; };
 		8F78D29FD15515E0A0DB290B /* Pods_ReduxMovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -54,6 +55,7 @@
 		80673CB42030F5430091B48F /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
 		80673CB62030F5FC0091B48F /* MovieDetailViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewState.swift; sourceTree = "<group>"; };
 		80673CB8203125300091B48F /* TMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDB.swift; sourceTree = "<group>"; };
+		80673CBD20313EA20091B48F /* UIImageView+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+Extensions.swift"; sourceTree = "<group>"; };
 		95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F0F62F1051E868DD2A7A1C /* Pods-ReduxMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDBTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDBTests/Pods-ReduxMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB8B1F69E8325CD6968C206D /* Pods-ReduxMovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDB/Pods-ReduxMovieDB.debug.xcconfig"; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 			children = (
 				80673C8C2030C3DA0091B48F /* AppDelegate.swift */,
 				80673CB8203125300091B48F /* TMDB.swift */,
+				80673CBC20313E8E0091B48F /* Extensions */,
 				80673CBA2031253F0091B48F /* Model */,
 				80673CBB203125620091B48F /* Controllers */,
 				80673C902030C3DA0091B48F /* Main.storyboard */,
@@ -143,6 +146,14 @@
 				80673CB42030F5430091B48F /* MovieDetailViewController.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		80673CBC20313E8E0091B48F /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				80673CBD20313EA20091B48F /* UIImageView+Extensions.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		8D98CBDEDF94752D402B757F /* Frameworks */ = {
@@ -280,12 +291,14 @@
 				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxSwift/RxSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -387,6 +400,7 @@
 				80673CB9203125300091B48F /* TMDB.swift in Sources */,
 				80673CB72030F5FC0091B48F /* MovieDetailViewState.swift in Sources */,
 				80673CB52030F5430091B48F /* MovieDetailViewController.swift in Sources */,
+				80673CBE20313EA20091B48F /* UIImageView+Extensions.swift in Sources */,
 				80673CAF2030D83B0091B48F /* AppState.swift in Sources */,
 				80673CB12030D8630091B48F /* Movie.swift in Sources */,
 			);
