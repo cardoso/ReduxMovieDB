@@ -12,8 +12,13 @@ import ReSwift
 
 class SplitViewController: UISplitViewController {
     var movieListViewController: MovieListViewController? {
-        let navigationController = viewControllers[0] as? UINavigationController
+        let navigationController = viewControllers.first as? UINavigationController
         return navigationController?.topViewController as? MovieListViewController
+    }
+
+    var movieDetailViewController: MovieDetailViewController? {
+        let navigationController = viewControllers.last as? UINavigationController
+        return navigationController?.topViewController as? MovieDetailViewController
     }
 
     override func viewDidLoad() {
@@ -40,7 +45,9 @@ extension SplitViewController: StoreSubscriber {
 
     func newState(state: AppState) {
         if state.showMovieDetail {
-            movieListViewController?.performSegue(withIdentifier: "showDetail", sender: self)
+            if movieDetailViewController == nil {
+                movieListViewController?.performSegue(withIdentifier: "showDetail", sender: self)
+            }
         }
     }
 }

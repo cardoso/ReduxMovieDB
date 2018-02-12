@@ -68,8 +68,11 @@ extension MovieListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-        cell.textLabel?.text = store.state.movies[indexPath.row].name
+        let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
+        let movie = store.state.movies[indexPath.row]
+        cell.textLabel?.text = movie.name
+        cell.detailTextLabel?.text = movie.releaseDate.description
+        cell.accessoryType = .disclosureIndicator
         return cell
     }
 }

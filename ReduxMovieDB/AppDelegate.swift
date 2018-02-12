@@ -18,8 +18,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         store.dispatch(
             AppStateAction.addMovies([
-                Movie(name: "Movie Test 1"),
-                Movie(name: "Movie Test 2")
+                Movie(name: "Movie Test 1", releaseDate: DateFormatter().date(from: "2017") ?? Date()),
+                Movie(name: "Movie Test 2", releaseDate: DateFormatter().date(from: "2018") ?? Date())
             ])
         )
 
