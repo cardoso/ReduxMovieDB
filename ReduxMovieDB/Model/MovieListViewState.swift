@@ -6,8 +6,6 @@
 //  Copyright © 2018 Matheus Cardoso. All rights reserved.
 //
 
-import Foundation
-
 struct MovieListViewState {
     let movies: [Movie]
     let selectedMovieIndex: Int?

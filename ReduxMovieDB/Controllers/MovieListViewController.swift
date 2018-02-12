@@ -47,10 +47,10 @@ extension MovieListViewController: StoreSubscriber {
         moviesTableView.reloadData()
         if let row = state.selectedMovieIndex {
             let indexPath = IndexPath(row: row, section: 0)
-            self.moviesTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none )
+            moviesTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none )
         } else if let selectedRows = moviesTableView.indexPathsForSelectedRows {
             selectedRows.forEach {
-                self.moviesTableView.deselectRow(at: $0, animated: true)
+                moviesTableView.deselectRow(at: $0, animated: true)
             }
         }
     }
@@ -70,7 +70,7 @@ extension MovieListViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .subtitle, reuseIdentifier: nil)
         let movie = store.state.movies[indexPath.row]
-        cell.textLabel?.text = movie.name
+        cell.textLabel?.text = movie.title
         cell.detailTextLabel?.text = movie.releaseDate.description
         cell.accessoryType = .disclosureIndicator
         return cell

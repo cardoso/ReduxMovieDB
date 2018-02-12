@@ -16,12 +16,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        store.dispatch(
-            AppStateAction.addMovies([
-                Movie(name: "Movie Test 1", releaseDate: DateFormatter().date(from: "2017") ?? Date()),
-                Movie(name: "Movie Test 2", releaseDate: DateFormatter().date(from: "2018") ?? Date())
-            ])
-        )
+        TMDB().fetchUpcomingMovies(page: 1, completion: { result in
+            guard let movies = result?.results else { return }
+
+            DispatchQueue.main.async {
+                store.dispatch(AppStateAction.addMovies(movies))
+            }
+        })
 
         return true
     }

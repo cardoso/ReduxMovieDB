@@ -11,10 +11,10 @@ struct MovieDetailViewState {
 
     init(_ state: AppState) {
         guard let selectedMovie = state.selectedMovie else {
-            title = "Invalid Movie"
+            title = "Select a movie"
             return
         }
 
-        title = selectedMovie.name
+        title = selectedMovie.title
     }
 }
