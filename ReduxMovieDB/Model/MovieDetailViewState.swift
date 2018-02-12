@@ -7,14 +7,21 @@
 //
 
 struct MovieDetailViewState {
+    let movie: Movie?
+
     let title: String
+    let date: String
+    let genres: String
+    let overview: String
 
     init(_ state: AppState) {
-        guard let selectedMovie = state.selectedMovie else {
-            title = "Select a movie"
-            return
-        }
+        movie = state.selectedMovie
 
-        title = selectedMovie.title
+        date = movie?.releaseDate ?? ""
+        title = movie?.title ?? ""
+        genres = movie?.genreIds.reduce("") {
+            $0.isEmpty ? "\($1)" : "\($0), \($1)"
+        } ?? ""
+        overview = movie?.overview ?? ""
     }
 }

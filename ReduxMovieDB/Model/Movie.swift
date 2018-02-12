@@ -12,10 +12,14 @@ struct Movie: Codable {
     let title: String
     let releaseDate: String
     let posterPath: String
+    let genreIds: [Int]
+    let overview: String
 
     private enum CodingKeys: String, CodingKey {
         case title
         case releaseDate = "release_date"
         case posterPath = "poster_path"
+        case genreIds = "genre_ids"
+        case overview
     }
 }
