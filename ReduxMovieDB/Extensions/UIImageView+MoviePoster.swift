@@ -1,5 +1,5 @@
 //
-//  UIImageView+Extensions.swift
+//  UIImageView+MoviePoster.swift
 //  ReduxMovieDB
 //
 //  Created by Matheus Cardoso on 2/12/18.

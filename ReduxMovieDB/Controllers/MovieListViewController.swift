@@ -15,9 +15,10 @@ class MovieListViewController: UIViewController {
 
     @IBOutlet weak var moviesTableView: UITableView! {
         didSet {
-            moviesTableView?.separatorColor = .clear
+            moviesTableView.backgroundView = UIView()
+            moviesTableView.backgroundView?.backgroundColor = moviesTableView.backgroundColor
 
-            moviesTableView?.rx.itemSelected
+            moviesTableView.rx.itemSelected
                 .map { $0.row }
                 .filter { $0 < store.state.movies.count }
                 .bind(onNext: {
@@ -65,9 +66,15 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        accessoryType = selected ? .none : .disclosureIndicator
+    }
+
     var movie: Movie? {
-        willSet {
-            guard let movie = newValue else { return }
+        didSet {
+            guard let movie = movie else { return }
 
             icon.setPosterForMovie(movie)
             title.text = movie.title
@@ -93,6 +100,7 @@ extension MovieListViewController: UITableViewDataSource {
         cell.movie = store.state.movies[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
+        cell.selectionStyle = .none
 
         return cell
     }
