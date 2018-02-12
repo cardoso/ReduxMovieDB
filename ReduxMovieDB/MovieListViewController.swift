@@ -26,12 +26,14 @@ class MovieListViewController: UIViewController {
     }
 
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         store.subscribe(self, transform: {
             $0.select(MovieListViewState.init)
         })
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         store.unsubscribe(self)
     }
 }
@@ -67,9 +69,7 @@ extension MovieListViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: nil)
-
         cell.textLabel?.text = store.state.movies[indexPath.row].name
-
         return cell
     }
 }

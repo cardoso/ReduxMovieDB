@@ -15,20 +15,23 @@ import RxSwift
 class MovieDetailViewController: UIViewController {
     let disposeBag = DisposeBag()
 
-    override func viewDidLoad() {
-        
-    }
-
     override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
         store.subscribe(self, transform: {
             $0.select(MovieDetailViewState.init)
         })
     }
 
     override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
         store.unsubscribe(self)
+
+        store.dispatch(AppStateAction.deselectMovie)
+        store.dispatch(AppStateAction.hideMovieDetail)
     }
 }
+
+// MARK: StoreSubscriber
 
 extension MovieDetailViewController: StoreSubscriber {
     typealias StoreSubscriberStateType = MovieDetailViewState

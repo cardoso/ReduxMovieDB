@@ -11,6 +11,7 @@ import ReSwift
 enum AppStateAction: Action {
     case addMovies([Movie])
     case selectMovieIndex(Int)
+    case deselectMovie
     case showMovieDetail
     case hideMovieDetail
 }
@@ -45,6 +46,8 @@ func appReducer(action: Action, state: AppState?) -> AppState {
     case .selectMovieIndex(let index):
         guard index < state.movies.count else { break }
         state.selectedMovieIndex = index
+    case .deselectMovie:
+        state.selectedMovieIndex = nil
     case .showMovieDetail:
         state.showMovieDetail = true
     case .hideMovieDetail:
