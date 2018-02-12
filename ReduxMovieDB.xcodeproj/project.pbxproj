@@ -15,7 +15,7 @@
 		80673C972030C3DA0091B48F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80673C952030C3DA0091B48F /* LaunchScreen.storyboard */; };
 		80673CA22030C3DA0091B48F /* ReduxMovieDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CA12030C3DA0091B48F /* ReduxMovieDBTests.swift */; };
 		80673CAD2030CF890091B48F /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CAC2030CF890091B48F /* MovieListViewController.swift */; };
-		80673CAF2030D83B0091B48F /* AppState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CAE2030D83B0091B48F /* AppState.swift */; };
+		80673CAF2030D83B0091B48F /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CAE2030D83B0091B48F /* MainState.swift */; };
 		80673CB12030D8630091B48F /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CB02030D8630091B48F /* Movie.swift */; };
 		80673CB32030E6090091B48F /* MovieListViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CB22030E6080091B48F /* MovieListViewState.swift */; };
 		80673CB52030F5430091B48F /* MovieDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CB42030F5430091B48F /* MovieDetailViewController.swift */; };
@@ -23,6 +23,8 @@
 		80673CB9203125300091B48F /* TMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CB8203125300091B48F /* TMDB.swift */; };
 		80673CBE20313EA20091B48F /* UIImageView+MoviePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CBD20313EA20091B48F /* UIImageView+MoviePoster.swift */; };
 		80673CC620322A6C0091B48F /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC520322A6C0091B48F /* Genre.swift */; };
+		80673CC8203238FC0091B48F /* TMDBActionCreators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC7203238FC0091B48F /* TMDBActionCreators.swift */; };
+		80673CCA20323AA70091B48F /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC920323AA70091B48F /* Pages.swift */; };
 		8F78D29FD15515E0A0DB290B /* Pods_ReduxMovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -50,7 +52,7 @@
 		80673CA12030C3DA0091B48F /* ReduxMovieDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxMovieDBTests.swift; sourceTree = "<group>"; };
 		80673CA32030C3DA0091B48F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80673CAC2030CF890091B48F /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
-		80673CAE2030D83B0091B48F /* AppState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppState.swift; sourceTree = "<group>"; };
+		80673CAE2030D83B0091B48F /* MainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainState.swift; sourceTree = "<group>"; };
 		80673CB02030D8630091B48F /* Movie.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movie.swift; sourceTree = "<group>"; };
 		80673CB22030E6080091B48F /* MovieListViewState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewState.swift; sourceTree = "<group>"; };
 		80673CB42030F5430091B48F /* MovieDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +60,8 @@
 		80673CB8203125300091B48F /* TMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDB.swift; sourceTree = "<group>"; };
 		80673CBD20313EA20091B48F /* UIImageView+MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+MoviePoster.swift"; sourceTree = "<group>"; };
 		80673CC520322A6C0091B48F /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
+		80673CC7203238FC0091B48F /* TMDBActionCreators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBActionCreators.swift; sourceTree = "<group>"; };
+		80673CC920323AA70091B48F /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F0F62F1051E868DD2A7A1C /* Pods-ReduxMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDBTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDBTests/Pods-ReduxMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB8B1F69E8325CD6968C206D /* Pods-ReduxMovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDB/Pods-ReduxMovieDB.debug.xcconfig"; sourceTree = "<group>"; };
@@ -109,6 +113,7 @@
 			children = (
 				80673C8C2030C3DA0091B48F /* AppDelegate.swift */,
 				80673CB8203125300091B48F /* TMDB.swift */,
+				80673CC7203238FC0091B48F /* TMDBActionCreators.swift */,
 				80673CBC20313E8E0091B48F /* Extensions */,
 				80673CBA2031253F0091B48F /* Model */,
 				80673CBB203125620091B48F /* Controllers */,
@@ -132,11 +137,12 @@
 		80673CBA2031253F0091B48F /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				80673CC920323AA70091B48F /* Pages.swift */,
 				80673CB02030D8630091B48F /* Movie.swift */,
 				80673CC520322A6C0091B48F /* Genre.swift */,
 				80673CB22030E6080091B48F /* MovieListViewState.swift */,
 				80673CB62030F5FC0091B48F /* MovieDetailViewState.swift */,
-				80673CAE2030D83B0091B48F /* AppState.swift */,
+				80673CAE2030D83B0091B48F /* MainState.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -405,8 +411,10 @@
 				80673CB72030F5FC0091B48F /* MovieDetailViewState.swift in Sources */,
 				80673CB52030F5430091B48F /* MovieDetailViewController.swift in Sources */,
 				80673CBE20313EA20091B48F /* UIImageView+MoviePoster.swift in Sources */,
-				80673CAF2030D83B0091B48F /* AppState.swift in Sources */,
+				80673CAF2030D83B0091B48F /* MainState.swift in Sources */,
 				80673CB12030D8630091B48F /* Movie.swift in Sources */,
+				80673CCA20323AA70091B48F /* Pages.swift in Sources */,
+				80673CC8203238FC0091B48F /* TMDBActionCreators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

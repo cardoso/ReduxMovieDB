@@ -20,24 +20,30 @@ class MovieListViewController: UIViewController {
 
             moviesTableView.rx.itemSelected
                 .map { $0.row }
-                .filter { $0 < store.state.movies.count }
+                .filter { $0 < mainStore.state.movies.count }
                 .bind(onNext: {
-                    store.dispatch(AppStateAction.selectMovieIndex($0))
-                    store.dispatch(AppStateAction.showMovieDetail)
+                    mainStore.dispatch(MainStateAction.selectMovieIndex($0))
+                    mainStore.dispatch(MainStateAction.showMovieDetail)
+                }).disposed(by: disposeBag)
+
+            moviesTableView.rx.willDisplayCell
+                .filter { $1.row == mainStore.state.movies.count - 1 }
+                .bind(onNext: { _ in
+                    mainStore.dispatch(fetchNextUpcomingMoviesPage)
                 }).disposed(by: disposeBag)
         }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        store.subscribe(self, transform: {
+        mainStore.subscribe(self, transform: {
             $0.select(MovieListViewState.init)
         })
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        store.unsubscribe(self)
+        mainStore.unsubscribe(self)
     }
 }
 
@@ -78,7 +84,7 @@ class MovieListTableViewCell: UITableViewCell {
 
             icon.setPosterForMovie(movie)
             title.text = movie.title
-            subtitle.text = movie.releaseDate.description
+            subtitle.text = movie.releaseDate?.description ?? ""
         }
     }
 }
@@ -89,7 +95,7 @@ extension MovieListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return store.state.movies.count
+        return mainStore.state.movies.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -97,7 +103,7 @@ extension MovieListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
-        cell.movie = store.state.movies[indexPath.row]
+        cell.movie = mainStore.state.movies[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         cell.selectionStyle = .none

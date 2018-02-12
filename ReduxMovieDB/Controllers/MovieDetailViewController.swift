@@ -34,16 +34,16 @@ class MovieDetailViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        store.subscribe(self, transform: {
+        mainStore.subscribe(self, transform: {
             $0.select(MovieDetailViewState.init)
         })
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        store.unsubscribe(self)
-        store.dispatch(AppStateAction.deselectMovie)
-        store.dispatch(AppStateAction.hideMovieDetail)
+        mainStore.unsubscribe(self)
+        mainStore.dispatch(MainStateAction.deselectMovie)
+        mainStore.dispatch(MainStateAction.hideMovieDetail)
     }
 
     override func viewWillLayoutSubviews() {

@@ -16,23 +16,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
 
-        let tmdb = TMDB()
-
-        tmdb.fetchMovieGenres { genres in
-            guard let genres = genres?.genres else { return }
-
-            DispatchQueue.main.async {
-                store.dispatch(AppStateAction.addGenres(genres))
-            }
-        }
-
-        tmdb.fetchUpcomingMovies(page: 1) { result in
-            guard let movies = result?.results else { return }
-
-            DispatchQueue.main.async {
-                store.dispatch(AppStateAction.addMovies(movies))
-            }
-        }
+        mainStore.dispatch(fetchMovieGenres)
+        mainStore.dispatch(fetchNextUpcomingMoviesPage)
 
         UIApplication.shared.statusBarStyle = .lightContent
 

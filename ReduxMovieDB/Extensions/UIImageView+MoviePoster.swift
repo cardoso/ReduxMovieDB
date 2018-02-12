@@ -60,14 +60,20 @@ extension UIImageView {
     }
 
     func setPosterForMovie(_ movie: Movie) {
+        let placeholder = UIImage(named: "poster_placeholder")
+
+        guard let posterPath = movie.posterPath else {
+            image = placeholder
+            return
+        }
+
         startLoading()
 
         sd_setImage(
-            with: URL(string: "\(imageBaseUrl)\(movie.posterPath)"),
-            placeholderImage: UIImage(named: "poster_placeholder"),
+            with: URL(string: "\(imageBaseUrl)\(posterPath)"),
+            placeholderImage: placeholder,
             options: [.progressiveDownload, .scaleDownLargeImages]
         ) { [weak self] _, _, _, _ in
-            self?.superview?.superview?.setNeedsLayout()
             self?.stopLoading()
         }
     }

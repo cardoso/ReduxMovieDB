@@ -33,21 +33,21 @@ class SplitViewController: UISplitViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        store.subscribe(self)
+        mainStore.subscribe(self)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        store.unsubscribe(self)
+        mainStore.unsubscribe(self)
     }
 }
 
 // MARK: StoreSubscriber
 
 extension SplitViewController: StoreSubscriber {
-    typealias StoreSubscriberStateType = AppState
+    typealias StoreSubscriberStateType = MainState
 
-    func newState(state: AppState) {
+    func newState(state: MainState) {
         if state.showMovieDetail && movieDetailViewController == nil {
             movieListViewController?.performSegue(withIdentifier: "showDetail", sender: self)
         }

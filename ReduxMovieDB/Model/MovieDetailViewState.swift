@@ -14,14 +14,14 @@ struct MovieDetailViewState {
     let genres: String
     let overview: String
 
-    init(_ state: AppState) {
+    init(_ state: MainState) {
         movie = state.selectedMovie
 
         date = movie?.releaseDate ?? ""
         title = movie?.title ?? ""
         overview = movie?.overview ?? ""
 
-        genres = movie?.genreIds.reduce("") { total, id in
+        genres = movie?.genreIds?.reduce("") { total, id in
             let genreName = state.genres.first { $0.id == id }?.name ?? "\(id)"
             guard let total = total else { return genreName}
             return total.isEmpty ? "\(genreName)" : "\(total), \(genreName)"

@@ -10,7 +10,7 @@ struct MovieListViewState {
     let movies: [Movie]
     let selectedMovieIndex: Int?
 
-    init(_ state: AppState) {
+    init(_ state: MainState) {
         movies = state.movies
         selectedMovieIndex = state.selectedMovieIndex
     }

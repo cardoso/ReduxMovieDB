@@ -1,5 +1,5 @@
 //
-//  AppState.swift
+//  MainState.swift
 //  ReduxMovieDB
 //
 //  Created by Matheus Cardoso on 2/11/18.
@@ -8,20 +8,28 @@
 
 import ReSwift
 
-enum AppStateAction: Action {
+enum MainStateAction: Action {
     case addGenres([Genre])
-    case addMovies([Movie])
+
+    case fetchNextUpcomingMoviesPage(totalPages: Int, movies: [Movie])
+
     case selectMovieIndex(Int)
     case deselectMovie
+
     case showMovieDetail
     case hideMovieDetail
 }
 
-struct AppState: StateType {
+struct MainState: StateType {
     var genres: [Genre] = []
-    var movies: [Movie] = []
+    var moviePages: Pages<Movie> = Pages<Movie>()
+
     var selectedMovieIndex: Int?
     var showMovieDetail: Bool = false
+
+    var movies: [Movie] {
+        return moviePages.values
+    }
 
     var selectedMovie: Movie? {
         guard
@@ -35,23 +43,28 @@ struct AppState: StateType {
     }
 }
 
-func appReducer(action: Action, state: AppState?) -> AppState {
-    var state = state ?? AppState()
+func appReducer(action: Action, state: MainState?) -> MainState {
+    var state = state ?? MainState()
 
-    guard let action = action as? AppStateAction else {
+    guard let action = action as? MainStateAction else {
         return state
     }
 
     switch action {
     case .addGenres(let genres):
         state.genres.append(contentsOf: genres)
-    case .addMovies(let movies):
-        state.movies.append(contentsOf: movies)
+
+    case .fetchNextUpcomingMoviesPage(let totalPages, let movies):
+        // TMDB API is returning duplicates...
+        let values = movies.filter({ movie in !state.movies.contains(where: { $0.id == movie.id }) })
+        state.moviePages.addPage(totalPages: totalPages, values: values)
+
     case .selectMovieIndex(let index):
         guard index < state.movies.count else { break }
         state.selectedMovieIndex = index
     case .deselectMovie:
         state.selectedMovieIndex = nil
+
     case .showMovieDetail:
         state.showMovieDetail = true
     case .hideMovieDetail:
@@ -61,8 +74,8 @@ func appReducer(action: Action, state: AppState?) -> AppState {
     return state
 }
 
-let store = Store(
+let mainStore = Store(
     reducer: appReducer,
-    state: AppState(),
+    state: MainState(),
     middleware: []
 )
