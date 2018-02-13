@@ -15,7 +15,12 @@ struct MovieDetailViewState {
     let overview: String
 
     init(_ state: MainState) {
-        movie = state.selectedMovie
+        switch state.movieDetail {
+        case .show(let movie):
+            self.movie = movie
+        case .hide:
+            self.movie = nil
+        }
 
         date = movie?.releaseDate ?? ""
         title = movie?.title ?? ""

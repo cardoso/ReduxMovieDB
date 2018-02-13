@@ -49,7 +49,7 @@
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    <textInputTraits key="textInputTraits"/>
+                                    <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
                                     <connections>
                                         <outlet property="delegate" destination="ZNc-iT-Hqz" id="48W-fB-SLc"/>
                                     </connections>
@@ -109,7 +109,7 @@
                                 </connections>
                             </tableView>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1764705882352941" green="0.1773587465" blue="0.15801239010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="Nmf-CA-XHz" firstAttribute="bottom" secondItem="T9p-xD-xhB" secondAttribute="bottom" id="8mf-hB-9Nz"/>
                             <constraint firstItem="T9p-xD-xhB" firstAttribute="top" secondItem="Nmf-CA-XHz" secondAttribute="top" id="8ny-rV-ACT"/>

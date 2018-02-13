@@ -23,7 +23,7 @@
 		80673CB9203125300091B48F /* TMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CB8203125300091B48F /* TMDB.swift */; };
 		80673CBE20313EA20091B48F /* UIImageView+MoviePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CBD20313EA20091B48F /* UIImageView+MoviePoster.swift */; };
 		80673CC620322A6C0091B48F /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC520322A6C0091B48F /* Genre.swift */; };
-		80673CC8203238FC0091B48F /* TMDBActionCreators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC7203238FC0091B48F /* TMDBActionCreators.swift */; };
+		80673CC8203238FC0091B48F /* ActionCreators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC7203238FC0091B48F /* ActionCreators.swift */; };
 		80673CCA20323AA70091B48F /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC920323AA70091B48F /* Pages.swift */; };
 		8F78D29FD15515E0A0DB290B /* Pods_ReduxMovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */; };
 /* End PBXBuildFile section */
@@ -60,7 +60,7 @@
 		80673CB8203125300091B48F /* TMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDB.swift; sourceTree = "<group>"; };
 		80673CBD20313EA20091B48F /* UIImageView+MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+MoviePoster.swift"; sourceTree = "<group>"; };
 		80673CC520322A6C0091B48F /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
-		80673CC7203238FC0091B48F /* TMDBActionCreators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDBActionCreators.swift; sourceTree = "<group>"; };
+		80673CC7203238FC0091B48F /* ActionCreators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCreators.swift; sourceTree = "<group>"; };
 		80673CC920323AA70091B48F /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F0F62F1051E868DD2A7A1C /* Pods-ReduxMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDBTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDBTests/Pods-ReduxMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -113,7 +113,7 @@
 			children = (
 				80673C8C2030C3DA0091B48F /* AppDelegate.swift */,
 				80673CB8203125300091B48F /* TMDB.swift */,
-				80673CC7203238FC0091B48F /* TMDBActionCreators.swift */,
+				80673CC7203238FC0091B48F /* ActionCreators.swift */,
 				80673CBC20313E8E0091B48F /* Extensions */,
 				80673CBA2031253F0091B48F /* Model */,
 				80673CBB203125620091B48F /* Controllers */,
@@ -414,7 +414,7 @@
 				80673CAF2030D83B0091B48F /* MainState.swift in Sources */,
 				80673CB12030D8630091B48F /* Movie.swift in Sources */,
 				80673CCA20323AA70091B48F /* Pages.swift in Sources */,
-				80673CC8203238FC0091B48F /* TMDBActionCreators.swift in Sources */,
+				80673CC8203238FC0091B48F /* ActionCreators.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

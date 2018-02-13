@@ -42,7 +42,6 @@ class MovieDetailViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         mainStore.unsubscribe(self)
-        mainStore.dispatch(MainStateAction.deselectMovie)
         mainStore.dispatch(MainStateAction.hideMovieDetail)
     }
 
@@ -105,7 +104,10 @@ extension MovieDetailViewController: StoreSubscriber {
 
         tableView.endUpdates()
 
-        guard let movie = state.movie else { return }
-        posterImageView.setPosterForMovie(movie)
+        if let movie = state.movie {
+            posterImageView.setPosterForMovie(movie)
+        } else {
+            posterImageView.image = nil
+        }
     }
 }

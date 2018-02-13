@@ -21,35 +21,49 @@ class MovieListViewController: UIViewController {
             moviesTableView.backgroundView?.backgroundColor = moviesTableView.backgroundColor
 
             moviesTableView.rx.itemSelected
-                .map { $0.row }
-                .filter { $0 < mainStore.state.movies.count }
-                .bind(onNext: {
-                    mainStore.dispatch(MainStateAction.selectMovieIndex($0))
-                    mainStore.dispatch(MainStateAction.showMovieDetail)
-                }).disposed(by: disposeBag)
+                .map { self.movies[$0.row] }
+                .map(MainStateAction.showMovieDetail)
+                .bind(onNext: mainStore.dispatch)
+                .disposed(by: disposeBag)
 
             moviesTableView.rx.willDisplayCell
                 .filter { $1.row == mainStore.state.movies.count - 1 }
-                .bind(onNext: { _ in
-                    if mainStore.state.searchQuery.isEmpty {
-                        mainStore.dispatch(fetchNextUpcomingMoviesPage)
-                    } else {
-                        mainStore.dispatch(searchMovie)
-                    }
-                }).disposed(by: disposeBag)
+                .map { _ in fetchMoviesPage }
+                .bind(onNext: mainStore.dispatch)
+                .disposed(by: disposeBag)
         }
     }
 
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
-            searchBar.rx.text.orEmpty
+            searchBar.rx.textDidBeginEditing
+                .filter { self.searchBar.text?.isEmpty ?? false }
                 .bind(onNext: {
-                    mainStore.dispatch(MainStateAction.setSearchQuery($0))
-                    if mainStore.state.searchQuery.isEmpty {
-                        mainStore.dispatch(fetchNextUpcomingMoviesPage)
-                    } else {
-                        mainStore.dispatch(searchMovie)
-                    }
+                    mainStore.dispatch(MainStateAction.readySearch)
+                    mainStore.dispatch(fetchMoviesPage)
+                })
+                .disposed(by: disposeBag)
+
+            searchBar.rx.text.orEmpty
+                .filter { !$0.isEmpty }
+                .bind(onNext: {
+                    mainStore.dispatch(MainStateAction.search($0))
+                    mainStore.dispatch(fetchMoviesPage)
+                })
+                .disposed(by: disposeBag)
+
+            searchBar.rx.text.orEmpty
+                .filter { $0.isEmpty }
+                .bind(onNext: { _ in
+                    mainStore.dispatch(MainStateAction.readySearch)
+                    mainStore.dispatch(fetchMoviesPage)
+                })
+                .disposed(by: disposeBag)
+
+            searchBar.rx.cancelButtonClicked
+                .bind(onNext: {
+                    mainStore.dispatch(MainStateAction.cancelSearch)
+                    mainStore.dispatch(fetchMoviesPage)
                 }).disposed(by: disposeBag)
         }
     }
@@ -59,11 +73,48 @@ class MovieListViewController: UIViewController {
         mainStore.subscribe(self, transform: {
             $0.select(MovieListViewState.init)
         })
+
+        let center = NotificationCenter.default
+        center.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
+        center.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: .UIKeyboardWillHide, object: nil)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         mainStore.unsubscribe(self)
+
+        NotificationCenter.default.removeObserver(self)
+    }
+
+    @objc func keyboardWillShow(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let rect = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue,
+            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
+        else {
+            return
+        }
+
+        let convertedRect = view.convert(rect, from: nil)
+
+        UIView.animate(withDuration: animationDuration.doubleValue) {
+            self.additionalSafeAreaInsets.bottom = convertedRect.size.height - self.view.safeAreaInsets.bottom
+            self.view.layoutIfNeeded()
+        }
+    }
+
+    @objc func keyboardWillHide(_ notification: Notification) {
+        guard
+            let userInfo = notification.userInfo,
+            let animationDuration = userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber
+        else {
+            return
+        }
+
+        UIView.animate(withDuration: animationDuration.doubleValue) {
+            self.additionalSafeAreaInsets.bottom = 0
+            self.view.layoutIfNeeded()
+        }
     }
 }
 
@@ -76,13 +127,13 @@ extension MovieListViewController: StoreSubscriber {
         movies = state.movies
         moviesTableView.reloadData()
 
-        if let row = state.selectedMovieIndex {
-            let indexPath = IndexPath(row: row, section: 0)
-            moviesTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none )
-        } else if let selectedRows = moviesTableView.indexPathsForSelectedRows {
-            selectedRows.forEach {
-                moviesTableView.deselectRow(at: $0, animated: true)
-            }
+        searchBar.text = state.searchBarText
+        searchBar.showsCancelButton = state.searchBarShowsCancel
+
+        if searchBar.isFirstResponder && !state.searchBarFirstResponder {
+            searchBar.resignFirstResponder()
+        } else if !searchBar.isFirstResponder && state.searchBarFirstResponder {
+            searchBar.becomeFirstResponder()
         }
     }
 }

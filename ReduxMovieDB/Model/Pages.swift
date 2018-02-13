@@ -18,8 +18,8 @@ struct Pages<T> {
     }
 
     mutating func addPage(totalPages: Int, values: [T]) {
-        guard currentPage < totalPages else { return }
         self.totalPages = totalPages
+        guard currentPage < totalPages else { return }
         self.currentPage += 1
         self.values.append(contentsOf: values)
     }

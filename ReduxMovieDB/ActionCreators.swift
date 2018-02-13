@@ -1,5 +1,5 @@
 //
-//  TMDBActionCreators.swift
+//  ActionCreators.swift
 //  ReduxMovieDB
 //
 //  Created by Matheus Cardoso on 2/12/18.
@@ -23,7 +23,7 @@ func fetchMovieGenres(state: MainState, store: Store<MainState>) -> Action? {
 }
 
 
-func fetchNextUpcomingMoviesPage(state: MainState, store: Store<MainState>) -> Action? {
+fileprivate func fetchNextUpcomingMoviesPage(state: MainState, store: Store<MainState>) -> Action? {
     guard !state.moviePages.isComplete else { return nil }
 
     TMDB().fetchUpcomingMovies(page: mainStore.state.moviePages.currentPage + 1) { result in
@@ -42,14 +42,18 @@ func fetchNextUpcomingMoviesPage(state: MainState, store: Store<MainState>) -> A
     return nil
 }
 
-func searchMovie(state: MainState, store: Store<MainState>) -> Action? {
-    guard !state.moviePages.isComplete && !mainStore.state.searchQuery.isEmpty else {
+fileprivate func fetchSearchMoviesPage(state: MainState, store: Store<MainState>) -> Action? {
+    guard
+        !state.moviePages.isComplete,
+        case let .searching(query) = state.search,
+        !query.isEmpty
+    else {
         return nil
     }
 
     let page = mainStore.state.moviePages.currentPage + 1
 
-    TMDB().searchMovies(query: mainStore.state.searchQuery, page: page) { result in
+    TMDB().searchMovies(query: query, page: page) { result in
         guard let result = result else { return }
 
         DispatchQueue.main.async {
@@ -63,4 +67,12 @@ func searchMovie(state: MainState, store: Store<MainState>) -> Action? {
     }
 
     return nil
+}
+
+func fetchMoviesPage(state: MainState, store: Store<MainState>) -> Action? {
+    if case .searching = mainStore.state.search {
+        return fetchSearchMoviesPage(state: state, store: store)
+    } else {
+        return fetchNextUpcomingMoviesPage(state: state, store: store)
+    }
 }

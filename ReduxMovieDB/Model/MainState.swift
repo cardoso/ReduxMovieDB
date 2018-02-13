@@ -13,37 +13,35 @@ enum MainStateAction: Action {
 
     case fetchNextMoviesPage(totalPages: Int, movies: [Movie])
 
-    case selectMovieIndex(Int)
-    case deselectMovie
-
-    case showMovieDetail
+    case showMovieDetail(Movie)
     case hideMovieDetail
 
-    case setSearchQuery(String)
+    case readySearch
+    case search(String)
+    case cancelSearch
+}
+
+enum SearchState {
+    case canceled
+    case ready
+    case searching(String)
+}
+
+enum MovieDetailState {
+    case hide
+    case show(Movie)
 }
 
 struct MainState: StateType {
     var genres: [Genre] = []
     var moviePages: Pages<Movie> = Pages<Movie>()
 
-    var selectedMovieIndex: Int?
-    var showMovieDetail: Bool = false
+    var movieDetail: MovieDetailState = .hide
 
-    var searchQuery: String = ""
+    var search: SearchState = .canceled
 
     var movies: [Movie] {
         return moviePages.values
-    }
-
-    var selectedMovie: Movie? {
-        guard
-            let selectedMovieIndex = selectedMovieIndex,
-            selectedMovieIndex < movies.count
-        else {
-            return nil
-        }
-        
-        return movies[selectedMovieIndex]
     }
 }
 
@@ -52,6 +50,7 @@ func appReducer(action: Action, state: MainState?) -> MainState {
 
     guard let action = action as? MainStateAction else {
         return state
+
     }
 
     switch action {
@@ -63,21 +62,20 @@ func appReducer(action: Action, state: MainState?) -> MainState {
         let values = movies.filter({ movie in !state.movies.contains(where: { $0.id == movie.id }) })
         state.moviePages.addPage(totalPages: totalPages, values: values)
 
-    case .selectMovieIndex(let index):
-        guard index < state.movies.count else { break }
-        state.selectedMovieIndex = index
-    case .deselectMovie:
-        state.selectedMovieIndex = nil
-
-    case .showMovieDetail:
-        state.showMovieDetail = true
+    case .showMovieDetail(let movie):
+        state.movieDetail = .show(movie)
     case .hideMovieDetail:
-        state.showMovieDetail = false
+        state.movieDetail = .hide
 
-    case .setSearchQuery(let query):
-        state.selectedMovieIndex = nil
+    case .cancelSearch:
         state.moviePages = Pages<Movie>()
-        state.searchQuery = query
+        state.search = .canceled
+    case .readySearch:
+        state.moviePages = Pages<Movie>()
+        state.search = .ready
+    case .search(let query):
+        state.moviePages = Pages<Movie>()
+        state.search = .searching(query)
     }
 
     return state
