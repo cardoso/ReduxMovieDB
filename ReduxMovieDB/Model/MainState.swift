@@ -14,6 +14,7 @@ enum MainStateAction: Action {
     case fetchNextMoviesPage(totalPages: Int, movies: [Movie])
 
     case showMovieDetail(Movie)
+    case willHideMovieDetail(Movie)
     case hideMovieDetail
 
     case readySearch
@@ -28,6 +29,7 @@ enum SearchState {
 }
 
 enum MovieDetailState {
+    case willHide(Movie)
     case hide
     case show(Movie)
 }
@@ -61,10 +63,13 @@ func appReducer(action: Action, state: MainState?) -> MainState {
         let values = movies.filter({ movie in !state.movies.contains(where: { $0.id == movie.id }) })
         state.moviePages.addPage(totalPages: totalPages, values: values)
 
-    case .showMovieDetail(let movie):
-        state.movieDetail = .show(movie)
+
+    case .willHideMovieDetail(let movie):
+        state.movieDetail = .willHide(movie)
     case .hideMovieDetail:
         state.movieDetail = .hide
+    case .showMovieDetail(let movie):
+        state.movieDetail = .show(movie)
 
     case .cancelSearch:
         state.moviePages = Pages<Movie>()

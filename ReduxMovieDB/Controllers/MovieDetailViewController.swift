@@ -42,6 +42,14 @@ class MovieDetailViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         mainStore.unsubscribe(self)
+
+        if case let .show(movie) = mainStore.state.movieDetail {
+            mainStore.dispatch(MainStateAction.willHideMovieDetail(movie))
+        }
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
         mainStore.dispatch(MainStateAction.hideMovieDetail)
     }
 
