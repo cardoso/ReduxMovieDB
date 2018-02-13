@@ -50,7 +50,6 @@ func appReducer(action: Action, state: MainState?) -> MainState {
 
     guard let action = action as? MainStateAction else {
         return state
-
     }
 
     switch action {
