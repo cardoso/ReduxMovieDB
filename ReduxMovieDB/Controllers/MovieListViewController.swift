@@ -64,7 +64,8 @@ class MovieListViewController: UIViewController {
                 .bind(onNext: {
                     mainStore.dispatch(MainStateAction.cancelSearch)
                     mainStore.dispatch(fetchMoviesPage)
-                }).disposed(by: disposeBag)
+                })
+                .disposed(by: disposeBag)
         }
     }
     
@@ -130,10 +131,10 @@ extension MovieListViewController: StoreSubscriber {
         searchBar.text = state.searchBarText
         searchBar.showsCancelButton = state.searchBarShowsCancel
 
-        if searchBar.isFirstResponder && !state.searchBarFirstResponder {
-            searchBar.resignFirstResponder()
-        } else if !searchBar.isFirstResponder && state.searchBarFirstResponder {
-            searchBar.becomeFirstResponder()
+        switch (searchBar.isFirstResponder, state.searchBarFirstResponder) {
+        case (true, false): searchBar.resignFirstResponder()
+        case (false, true): searchBar.becomeFirstResponder()
+        default: break
         }
     }
 }
