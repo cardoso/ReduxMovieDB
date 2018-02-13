@@ -11,6 +11,8 @@ import RxCocoa
 import RxSwift
 
 class MovieListViewController: UIViewController {
+    var movies: [Movie] = []
+
     let disposeBag = DisposeBag()
 
     @IBOutlet weak var moviesTableView: UITableView! {
@@ -34,6 +36,16 @@ class MovieListViewController: UIViewController {
         }
     }
 
+    @IBOutlet weak var searchBar: UISearchBar! {
+        didSet {
+            searchBar.rx.text.orEmpty
+                .bind(onNext: {
+                    mainStore.dispatch(MainStateAction.setSearchQuery($0))
+                    mainStore.dispatch(searchMovie)
+                }).disposed(by: disposeBag)
+        }
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         mainStore.subscribe(self, transform: {
@@ -53,7 +65,9 @@ extension MovieListViewController: StoreSubscriber {
     typealias StoreSubscriberStateType = MovieListViewState
 
     func newState(state: MovieListViewState) {
+        movies = state.movies
         moviesTableView.reloadData()
+
         if let row = state.selectedMovieIndex {
             let indexPath = IndexPath(row: row, section: 0)
             moviesTableView.selectRow(at: indexPath, animated: true, scrollPosition: .none )
@@ -95,7 +109,7 @@ extension MovieListViewController: UITableViewDataSource {
     }
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return mainStore.state.movies.count
+        return movies.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -103,11 +117,15 @@ extension MovieListViewController: UITableViewDataSource {
             return UITableViewCell()
         }
 
-        cell.movie = mainStore.state.movies[indexPath.row]
+        cell.movie = movies[indexPath.row]
         cell.accessoryType = .disclosureIndicator
         cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         cell.selectionStyle = .none
 
         return cell
     }
+}
+
+extension MovieListViewController: UISearchBarDelegate {
+    
 }

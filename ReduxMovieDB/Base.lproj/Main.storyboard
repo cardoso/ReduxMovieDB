@@ -44,7 +44,7 @@
                                 <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="separatorColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                                 <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" translucent="NO" id="s2C-Qn-OmZ">
+                                <searchBar key="tableHeaderView" contentMode="redraw" barStyle="black" searchBarStyle="prominent" translucent="NO" id="s2C-Qn-OmZ">
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
                                     <color key="backgroundColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
@@ -85,6 +85,7 @@
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <color key="backgroundColor" red="0.17712351679999999" green="0.1773587465" blue="0.15801239010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstItem="0EM-Q0-mqw" firstAttribute="height" secondItem="gyH-Wm-ZJt" secondAttribute="height" id="8um-2R-P4E"/>
                                             <constraint firstItem="0EM-Q0-mqw" firstAttribute="centerX" secondItem="gyH-Wm-ZJt" secondAttribute="centerX" id="Dmf-J9-fUP"/>
@@ -120,20 +121,11 @@
                     <navigationItem key="navigationItem" title="Movies" id="DtV-Zi-nxq"/>
                     <connections>
                         <outlet property="moviesTableView" destination="T9p-xD-xhB" id="sXr-4W-ryV"/>
-                        <outlet property="searchDisplayController" destination="XRh-up-0fa" id="XJQ-T5-j8d"/>
+                        <outlet property="searchBar" destination="s2C-Qn-OmZ" id="vyE-N6-7uk"/>
                         <segue destination="uXz-1h-md8" kind="showDetail" identifier="showDetail" id="lRy-w0-UwQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dRd-aj-5L6" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <searchDisplayController id="XRh-up-0fa">
-                    <connections>
-                        <outlet property="delegate" destination="ZNc-iT-Hqz" id="Ahl-ai-9ic"/>
-                        <outlet property="searchBar" destination="s2C-Qn-OmZ" id="63J-De-xxd"/>
-                        <outlet property="searchContentsController" destination="ZNc-iT-Hqz" id="iPs-nI-iIq"/>
-                        <outlet property="searchResultsDataSource" destination="ZNc-iT-Hqz" id="3i0-u3-FQu"/>
-                        <outlet property="searchResultsDelegate" destination="ZNc-iT-Hqz" id="Bz1-IJ-ZB9"/>
-                    </connections>
-                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="1383" y="-368"/>
         </scene>
@@ -178,12 +170,12 @@
                         <color key="backgroundColor" red="0.1234850362" green="0.1236676499" blue="0.108277373" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <color key="separatorColor" red="0.078431372550000003" green="0.078431372550000003" blue="0.078431372550000003" alpha="1" colorSpace="calibratedRGB"/>
                         <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                        <view key="tableHeaderView" contentMode="scaleToFill" misplaced="YES" id="hEO-bK-WB0">
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="hEO-bK-WB0">
                             <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <subviews>
                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="poster_placeholder" translatesAutoresizingMaskIntoConstraints="NO" id="SZz-kM-MD8">
-                                    <rect key="frame" x="0.0" y="0.0" width="414" height="0.0"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
                                     <color key="backgroundColor" red="0.17712351679999999" green="0.1773587465" blue="0.15801239010000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </imageView>
                             </subviews>

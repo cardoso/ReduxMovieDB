@@ -25,6 +25,7 @@ struct TMDBPagedResult<T: Codable>: Codable {
 protocol TMDBFetcher {
     func fetchMovieGenres(completion: @escaping (GenreList?) -> Void)
     func fetchUpcomingMovies(page: Int, completion: @escaping (TMDBPagedResult<Movie>?) -> Void)
+    func searchMovies(query: String, page: Int, completion: @escaping (TMDBPagedResult<Movie>?) -> Void)
 }
 
 class TMDB: TMDBFetcher {
@@ -41,6 +42,17 @@ class TMDB: TMDBFetcher {
     func fetchMovieGenres(completion: @escaping (GenreList?) -> Void) {
         fetch(
             url: "\(baseUrl)/genre/movie/list?api_key=\(apiKey)",
+            completion: completion
+        )
+    }
+
+    func searchMovies(query: String, page: Int, completion: @escaping (TMDBPagedResult<Movie>?) -> Void) {
+        guard let query = query.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) else {
+            return
+        }
+
+        fetch(
+            url: "\(baseUrl)/search/movie?api_key=\(apiKey)&language=en-US&query=\(query)&page=\(page)",
             completion: completion
         )
     }

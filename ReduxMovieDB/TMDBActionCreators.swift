@@ -24,16 +24,37 @@ func fetchMovieGenres(state: MainState, store: Store<MainState>) -> Action? {
 
 
 func fetchNextUpcomingMoviesPage(state: MainState, store: Store<MainState>) -> Action? {
-    if state.moviePages.isComplete { return nil }
+    guard !state.moviePages.isComplete else { return nil }
 
     TMDB().fetchUpcomingMovies(page: mainStore.state.moviePages.currentPage + 1) { result in
         guard let result = result else { return }
 
-        print(result)
-
         DispatchQueue.main.async {
             mainStore.dispatch(
                 MainStateAction.fetchNextUpcomingMoviesPage(
+                    totalPages: result.totalPages,
+                    movies: result.results
+                )
+            )
+        }
+    }
+
+    return nil
+}
+
+func searchMovie(state: MainState, store: Store<MainState>) -> Action? {
+    guard !state.searchedMoviePages.isComplete && !mainStore.state.searchQuery.isEmpty else {
+        return nil
+    }
+
+    let page = mainStore.state.searchedMoviePages.currentPage + 1
+
+    TMDB().searchMovies(query: mainStore.state.searchQuery, page: page) { result in
+        guard let result = result else { return }
+
+        DispatchQueue.main.async {
+            mainStore.dispatch(
+                MainStateAction.fetchNextSearchedMoviesPage(
                     totalPages: result.totalPages,
                     movies: result.results
                 )

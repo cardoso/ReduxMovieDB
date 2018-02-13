@@ -12,23 +12,33 @@ enum MainStateAction: Action {
     case addGenres([Genre])
 
     case fetchNextUpcomingMoviesPage(totalPages: Int, movies: [Movie])
+    case fetchNextSearchedMoviesPage(totalPages: Int, movies: [Movie])
 
     case selectMovieIndex(Int)
     case deselectMovie
 
     case showMovieDetail
     case hideMovieDetail
+
+    case setSearchQuery(String)
 }
 
 struct MainState: StateType {
     var genres: [Genre] = []
     var moviePages: Pages<Movie> = Pages<Movie>()
+    var searchedMoviePages: Pages<Movie> = Pages<Movie>()
 
     var selectedMovieIndex: Int?
     var showMovieDetail: Bool = false
 
+    var searchQuery: String = ""
+
     var movies: [Movie] {
         return moviePages.values
+    }
+
+    var searchedMovies: [Movie] {
+        return searchedMoviePages.values
     }
 
     var selectedMovie: Movie? {
@@ -59,6 +69,9 @@ func appReducer(action: Action, state: MainState?) -> MainState {
         let values = movies.filter({ movie in !state.movies.contains(where: { $0.id == movie.id }) })
         state.moviePages.addPage(totalPages: totalPages, values: values)
 
+    case .fetchNextSearchedMoviesPage(let totalPages, let movies):
+        state.searchedMoviePages.addPage(totalPages: totalPages, values: movies)
+
     case .selectMovieIndex(let index):
         guard index < state.movies.count else { break }
         state.selectedMovieIndex = index
@@ -69,6 +82,10 @@ func appReducer(action: Action, state: MainState?) -> MainState {
         state.showMovieDetail = true
     case .hideMovieDetail:
         state.showMovieDetail = false
+
+    case .setSearchQuery(let query):
+        state.searchedMoviePages = Pages<Movie>()
+        state.searchQuery = query
     }
 
     return state
