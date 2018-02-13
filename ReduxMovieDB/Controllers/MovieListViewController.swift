@@ -31,7 +31,11 @@ class MovieListViewController: UIViewController {
             moviesTableView.rx.willDisplayCell
                 .filter { $1.row == mainStore.state.movies.count - 1 }
                 .bind(onNext: { _ in
-                    mainStore.dispatch(fetchNextUpcomingMoviesPage)
+                    if mainStore.state.searchQuery.isEmpty {
+                        mainStore.dispatch(fetchNextUpcomingMoviesPage)
+                    } else {
+                        mainStore.dispatch(searchMovie)
+                    }
                 }).disposed(by: disposeBag)
         }
     }
@@ -41,7 +45,11 @@ class MovieListViewController: UIViewController {
             searchBar.rx.text.orEmpty
                 .bind(onNext: {
                     mainStore.dispatch(MainStateAction.setSearchQuery($0))
-                    mainStore.dispatch(searchMovie)
+                    if mainStore.state.searchQuery.isEmpty {
+                        mainStore.dispatch(fetchNextUpcomingMoviesPage)
+                    } else {
+                        mainStore.dispatch(searchMovie)
+                    }
                 }).disposed(by: disposeBag)
         }
     }

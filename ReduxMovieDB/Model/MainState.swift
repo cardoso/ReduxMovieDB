@@ -11,8 +11,7 @@ import ReSwift
 enum MainStateAction: Action {
     case addGenres([Genre])
 
-    case fetchNextUpcomingMoviesPage(totalPages: Int, movies: [Movie])
-    case fetchNextSearchedMoviesPage(totalPages: Int, movies: [Movie])
+    case fetchNextMoviesPage(totalPages: Int, movies: [Movie])
 
     case selectMovieIndex(Int)
     case deselectMovie
@@ -26,7 +25,6 @@ enum MainStateAction: Action {
 struct MainState: StateType {
     var genres: [Genre] = []
     var moviePages: Pages<Movie> = Pages<Movie>()
-    var searchedMoviePages: Pages<Movie> = Pages<Movie>()
 
     var selectedMovieIndex: Int?
     var showMovieDetail: Bool = false
@@ -37,10 +35,6 @@ struct MainState: StateType {
         return moviePages.values
     }
 
-    var searchedMovies: [Movie] {
-        return searchedMoviePages.values
-    }
-
     var selectedMovie: Movie? {
         guard
             let selectedMovieIndex = selectedMovieIndex,
@@ -48,7 +42,7 @@ struct MainState: StateType {
         else {
             return nil
         }
-
+        
         return movies[selectedMovieIndex]
     }
 }
@@ -64,13 +58,10 @@ func appReducer(action: Action, state: MainState?) -> MainState {
     case .addGenres(let genres):
         state.genres.append(contentsOf: genres)
 
-    case .fetchNextUpcomingMoviesPage(let totalPages, let movies):
+    case .fetchNextMoviesPage(let totalPages, let movies):
         // TMDB API is returning duplicates...
         let values = movies.filter({ movie in !state.movies.contains(where: { $0.id == movie.id }) })
         state.moviePages.addPage(totalPages: totalPages, values: values)
-
-    case .fetchNextSearchedMoviesPage(let totalPages, let movies):
-        state.searchedMoviePages.addPage(totalPages: totalPages, values: movies)
 
     case .selectMovieIndex(let index):
         guard index < state.movies.count else { break }
@@ -84,7 +75,8 @@ func appReducer(action: Action, state: MainState?) -> MainState {
         state.showMovieDetail = false
 
     case .setSearchQuery(let query):
-        state.searchedMoviePages = Pages<Movie>()
+        state.selectedMovieIndex = nil
+        state.moviePages = Pages<Movie>()
         state.searchQuery = query
     }
 

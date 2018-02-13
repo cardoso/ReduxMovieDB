@@ -31,7 +31,7 @@ func fetchNextUpcomingMoviesPage(state: MainState, store: Store<MainState>) -> A
 
         DispatchQueue.main.async {
             mainStore.dispatch(
-                MainStateAction.fetchNextUpcomingMoviesPage(
+                MainStateAction.fetchNextMoviesPage(
                     totalPages: result.totalPages,
                     movies: result.results
                 )
@@ -43,18 +43,18 @@ func fetchNextUpcomingMoviesPage(state: MainState, store: Store<MainState>) -> A
 }
 
 func searchMovie(state: MainState, store: Store<MainState>) -> Action? {
-    guard !state.searchedMoviePages.isComplete && !mainStore.state.searchQuery.isEmpty else {
+    guard !state.moviePages.isComplete && !mainStore.state.searchQuery.isEmpty else {
         return nil
     }
 
-    let page = mainStore.state.searchedMoviePages.currentPage + 1
+    let page = mainStore.state.moviePages.currentPage + 1
 
     TMDB().searchMovies(query: mainStore.state.searchQuery, page: page) { result in
         guard let result = result else { return }
 
         DispatchQueue.main.async {
             mainStore.dispatch(
-                MainStateAction.fetchNextSearchedMoviesPage(
+                MainStateAction.fetchNextMoviesPage(
                     totalPages: result.totalPages,
                     movies: result.results
                 )

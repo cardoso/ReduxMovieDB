@@ -11,7 +11,7 @@ struct MovieListViewState {
     let selectedMovieIndex: Int?
 
     init(_ state: MainState) {
-        movies = state.searchQuery.isEmpty ? state.movies : state.searchedMovies
+        movies = state.movies
         selectedMovieIndex = state.selectedMovieIndex
     }
 }
