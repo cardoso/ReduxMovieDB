@@ -47,7 +47,7 @@ struct MainState: StateType {
     }
 }
 
-func appReducer(action: Action, state: MainState?) -> MainState {
+func mainReducer(action: Action, state: MainState?) -> MainState {
     var state = state ?? MainState()
 
     guard let action = action as? MainStateAction else {
@@ -86,7 +86,7 @@ func appReducer(action: Action, state: MainState?) -> MainState {
 }
 
 let mainStore = Store(
-    reducer: appReducer,
+    reducer: mainReducer,
     state: MainState(),
     middleware: []
 )

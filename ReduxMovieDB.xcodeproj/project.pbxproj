@@ -13,7 +13,7 @@
 		80673C922030C3DA0091B48F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80673C902030C3DA0091B48F /* Main.storyboard */; };
 		80673C942030C3DA0091B48F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 80673C932030C3DA0091B48F /* Assets.xcassets */; };
 		80673C972030C3DA0091B48F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80673C952030C3DA0091B48F /* LaunchScreen.storyboard */; };
-		80673CA22030C3DA0091B48F /* ReduxMovieDBTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CA12030C3DA0091B48F /* ReduxMovieDBTests.swift */; };
+		80673CA22030C3DA0091B48F /* MainStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CA12030C3DA0091B48F /* MainStateTests.swift */; };
 		80673CAD2030CF890091B48F /* MovieListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CAC2030CF890091B48F /* MovieListViewController.swift */; };
 		80673CAF2030D83B0091B48F /* MainState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CAE2030D83B0091B48F /* MainState.swift */; };
 		80673CB12030D8630091B48F /* Movie.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CB02030D8630091B48F /* Movie.swift */; };
@@ -49,7 +49,7 @@
 		80673C962030C3DA0091B48F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		80673C982030C3DA0091B48F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80673C9D2030C3DA0091B48F /* ReduxMovieDBTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReduxMovieDBTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		80673CA12030C3DA0091B48F /* ReduxMovieDBTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxMovieDBTests.swift; sourceTree = "<group>"; };
+		80673CA12030C3DA0091B48F /* MainStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStateTests.swift; sourceTree = "<group>"; };
 		80673CA32030C3DA0091B48F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		80673CAC2030CF890091B48F /* MovieListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewController.swift; sourceTree = "<group>"; };
 		80673CAE2030D83B0091B48F /* MainState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainState.swift; sourceTree = "<group>"; };
@@ -128,7 +128,7 @@
 		80673CA02030C3DA0091B48F /* ReduxMovieDBTests */ = {
 			isa = PBXGroup;
 			children = (
-				80673CA12030C3DA0091B48F /* ReduxMovieDBTests.swift */,
+				80673CA12030C3DA0091B48F /* MainStateTests.swift */,
 				80673CA32030C3DA0091B48F /* Info.plist */,
 			);
 			path = ReduxMovieDBTests;
@@ -422,7 +422,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80673CA22030C3DA0091B48F /* ReduxMovieDBTests.swift in Sources */,
+				80673CA22030C3DA0091B48F /* MainStateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
