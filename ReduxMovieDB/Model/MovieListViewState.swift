@@ -13,7 +13,7 @@ struct MovieListViewState {
     let searchBarFirstResponder: Bool
 
     init(_ state: MainState) {
-        movies = state.movies
+        movies = state.moviePages.values
 
         switch state.search {
         case .canceled:

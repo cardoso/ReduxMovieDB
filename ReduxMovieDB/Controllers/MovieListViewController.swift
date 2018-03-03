@@ -27,7 +27,7 @@ class MovieListViewController: UIViewController {
                 .disposed(by: disposeBag)
 
             moviesTableView.rx.willDisplayCell
-                .filter { $1.row == mainStore.state.movies.count - 1 }
+                .filter { $1.row == mainStore.state.moviePages.values.count - 1 }
                 .map { _ in fetchMoviesPage }
                 .bind(onNext: mainStore.dispatch)
                 .disposed(by: disposeBag)

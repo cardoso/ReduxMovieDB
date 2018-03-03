@@ -17,10 +17,9 @@ struct Pages<T> {
         return currentPage >= totalPages
     }
 
-    mutating func addPage(totalPages: Int, values: [T]) {
-        self.totalPages = totalPages
-        guard currentPage < totalPages else { return }
-        self.currentPage += 1
-        self.values.append(contentsOf: values)
+    func addingPage(totalPages: Int, values: [T]) -> Pages<T> {
+        let currentPage = self.currentPage < totalPages ? self.currentPage + 1 : self.currentPage
+        let values = self.currentPage < totalPages ? self.values + values : self.values
+        return Pages<T>.init(values: values, currentPage: currentPage, totalPages: totalPages)
     }
 }
