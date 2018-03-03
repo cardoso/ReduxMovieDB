@@ -1,5 +1,10 @@
 # ReduxMovieDB
 
+## Screenshots
+|iPhone (1)|iPhone (2)|iPad|
+|----------|----------|----|
+|![](screenshots/screen_iphone_1.png)|![](screenshots/screen_iphone_2.png)|![](screenshots/screen_ipad_1.png)|
+
 ## Third-party libraries
 1. [ReSwift](https://github.com/ReSwift/ReSwift)
 
