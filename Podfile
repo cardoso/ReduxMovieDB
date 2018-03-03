@@ -11,6 +11,8 @@ target 'ReduxMovieDB' do
   pod 'RxCocoa', '~> 4.0'
   pod 'SDWebImage', '~> 4.0'
 
+  pod 'Sourcery'
+
   target 'ReduxMovieDBTests' do
     inherit! :search_paths
     # Pods for testing
