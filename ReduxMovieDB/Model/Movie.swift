@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Movie: Codable {
+struct Movie: Codable, Spreadable {
     let id: Int?
     let title: String?
     let releaseDate: String?

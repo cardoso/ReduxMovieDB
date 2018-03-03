@@ -34,21 +34,24 @@ enum MovieDetailState {
     case show(Movie)
 }
 
-struct MainState: StateType {
-    var genres: [Genre] = []
-    var moviePages: Pages<Movie> = Pages<Movie>()
+struct MainState: StateType, Spreadable {
+    let genres: [Genre]
+    let moviePages: Pages<Movie>
+    let movieDetail: MovieDetailState
+    let search: SearchState
 
-    var movieDetail: MovieDetailState = .hide
-
-    var search: SearchState = .canceled
-
-    var movies: [Movie] {
-        return moviePages.values
+    static var emptyState: MainState {
+        return MainState(
+            genres: [],
+            moviePages: Pages<Movie>(),
+            movieDetail: .hide,
+            search: .canceled
+        )
     }
 }
 
 func mainReducer(action: Action, state: MainState?) -> MainState {
-    var state = state ?? MainState()
+    let state = state ?? .emptyState
 
     guard let action = action as? MainStateAction else {
         return state
@@ -56,37 +59,65 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
 
     switch action {
     case .addGenres(let genres):
-        state.genres.append(contentsOf: genres)
+        return MainState(
+            ...state,
+            genres: state.genres + genres
+        )
 
     case .fetchNextMoviesPage(let totalPages, let movies):
-        // TMDB API is returning duplicates...
-        let values = movies.filter({ movie in !state.movies.contains(where: { $0.id == movie.id }) })
-        state.moviePages.addPage(totalPages: totalPages, values: values)
+        let values = movies.filter { movie in
+            !state.moviePages.values.contains {
+                $0.id == movie.id
+            }
+        }
+
+        let pages = state.moviePages.addingPage(totalPages: totalPages, values: values)
+
+        return MainState(
+            ...state,
+            moviePages: pages
+        )
 
 
     case .willHideMovieDetail(let movie):
-        state.movieDetail = .willHide(movie)
+        return MainState(
+            ...state,
+            movieDetail: .willHide(movie)
+        )
     case .hideMovieDetail:
-        state.movieDetail = .hide
+        return MainState(
+            ...state,
+            movieDetail: .hide
+        )
     case .showMovieDetail(let movie):
-        state.movieDetail = .show(movie)
+        return MainState(
+            ...state,
+            movieDetail: .show(movie)
+        )
 
     case .cancelSearch:
-        state.moviePages = Pages<Movie>()
-        state.search = .canceled
+        return MainState(
+            ...state,
+            moviePages: Pages<Movie>(),
+            search: .canceled
+        )
     case .readySearch:
-        state.moviePages = Pages<Movie>()
-        state.search = .ready
+        return MainState(
+            ...state,
+            moviePages: Pages<Movie>(),
+            search: .ready
+        )
     case .search(let query):
-        state.moviePages = Pages<Movie>()
-        state.search = .searching(query)
+        return MainState(
+            ...state,
+            moviePages: Pages<Movie>(),
+            search: .searching(query)
+        )
     }
-
-    return state
 }
 
 let mainStore = Store(
     reducer: mainReducer,
-    state: MainState(),
+    state: .emptyState,
     middleware: []
 )

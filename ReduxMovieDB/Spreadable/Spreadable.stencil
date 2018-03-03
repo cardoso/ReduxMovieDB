@@ -1,0 +1,16 @@
+{% for type in types.implementing.Spreadable %}
+extension {{type.name}} {
+    init(
+        _ spread: Spread<{{type.name}}>,
+        {% for variable in type.storedVariables %}
+        {{variable.name}}: {{variable.typeName}}? = nil{% if not forloop.last %},{% endif %}
+        {% endfor %}
+    ) {
+        self = {{type.name}}(
+            {% for variable in type.storedVariables %}
+            {{variable.name}}: {{variable.name}} ?? spread.object.{{variable.name}}{% if not forloop.last %},{% endif %}
+            {% endfor %}
+        )
+    }
+}
+{% endfor %}
