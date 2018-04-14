@@ -13,6 +13,13 @@ DEPENDENCIES:
   - RxSwift (~> 4.0)
   - SDWebImage (~> 4.0)
 
+SPEC REPOS:
+  https://github.com/CocoaPods/Specs.git:
+    - ReSwift
+    - RxCocoa
+    - RxSwift
+    - SDWebImage
+
 SPEC CHECKSUMS:
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
   RxCocoa: fd0862fd2df95fa55562ad28ffd2522c25eb4a85
@@ -21,4 +28,4 @@ SPEC CHECKSUMS:
 
 PODFILE CHECKSUM: f0d99cb13cba19c7e405c906fd50895df3350a42
 
-COCOAPODS: 1.4.0
+COCOAPODS: 1.5.0
