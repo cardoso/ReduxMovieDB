@@ -11,7 +11,7 @@ import SDWebImage
 
 extension UIImageView {
     fileprivate var activityIndicator: UIActivityIndicatorView {
-        if let activityIndicator = subviews.flatMap({ $0 as? UIActivityIndicatorView }).first {
+        if let activityIndicator = subviews.compactMap({ $0 as? UIActivityIndicatorView }).first {
             return activityIndicator
         }
 
