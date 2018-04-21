@@ -5,10 +5,16 @@ target 'ReduxMovieDB' do
   # Comment the next line if you're not using Swift and don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for ReduxMovieDB
+  # Redux pods
   pod 'ReSwift', '~> 4.0' 
+
+
+  # Reactive pods
   pod 'RxSwift', '~> 4.0'
   pod 'RxCocoa', '~> 4.0'
+  pod 'RxKeyboard'
+
+  # Networking pods
   pod 'SDWebImage', '~> 4.0'
 
   target 'ReduxMovieDBTests' do
