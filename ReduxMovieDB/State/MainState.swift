@@ -8,20 +8,6 @@
 
 import ReSwift
 
-enum MainStateAction: Action {
-    case addGenres([Genre])
-
-    case fetchNextMoviesPage(totalPages: Int, movies: [Movie])
-
-    case showMovieDetail(Movie)
-    case willHideMovieDetail(Movie)
-    case hideMovieDetail
-
-    case readySearch
-    case search(String)
-    case cancelSearch
-}
-
 enum SearchState {
     case canceled
     case ready
