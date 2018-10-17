@@ -15,7 +15,7 @@ target 'ReduxMovieDB' do
   pod 'RxKeyboard'
 
   # Networking pods
-  pod 'SDWebImage', '~> 4.0'
+  pod 'Nuke', '~> 7.4'
 
   target 'ReduxMovieDBTests' do
     inherit! :search_paths
