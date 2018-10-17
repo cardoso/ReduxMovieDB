@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import SDWebImage
+import Nuke
 
 extension UIImageView {
     fileprivate var activityIndicator: UIActivityIndicatorView {
@@ -62,18 +62,24 @@ extension UIImageView {
     func setPosterForMovie(_ movie: Movie) {
         let placeholder = UIImage(named: "poster_placeholder")
 
-        guard let posterPath = movie.posterPath else {
-            image = placeholder
-            return
+        guard let posterPath = movie.posterPath,
+            let imageURL = URL(string: "\(imageBaseUrl)\(posterPath)") else {
+                image = placeholder
+                return
         }
 
         startLoading()
 
-        sd_setImage(
-            with: URL(string: "\(imageBaseUrl)\(posterPath)"),
-            placeholderImage: placeholder,
-            options: [.progressiveDownload, .scaleDownLargeImages]
-        ) { [weak self] _, _, _, _ in
+        let options = ImageLoadingOptions(
+            placeholder: placeholder,
+            transition: .fadeIn(duration: 0.33)
+        )
+
+        Nuke.loadImage(
+            with: imageURL,
+            options: options,
+            into: self
+        ) { [weak self] (_, _) in
             self?.stopLoading()
         }
     }

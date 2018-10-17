@@ -11,7 +11,7 @@
 |1|[ReSwift](https://github.com/ReSwift/ReSwift)|Redux-like implementation of the unidirectional data flow architecture.|
 |2|[RxSwift](https://github.com/ReactiveX/RxSwift)|For composing asynchronous and event-based Apps using observable sequences.|
 |3|[RxKeyboard](https://github.com/RxSwiftCommunity/RxKeyboard)|Provides a reactive way of observing keyboard frame changes.|
-|4|[SDWebImage](https://github.com/rs/SDWebImage)|Provides an async image downloader with cache support.|
+|4|[Nuke](https://github.com/kean/Nuke)|Provides an async image downloader with cache support.|
 
 ## Build instructions
 

@@ -1,4 +1,5 @@
 PODS:
+  - Nuke (7.4.2)
   - ReSwift (4.0.1)
   - RxCocoa (4.3.1):
     - RxSwift (~> 4.0)
@@ -6,32 +7,29 @@ PODS:
     - RxCocoa (>= 4.3.1)
     - RxSwift (>= 4.3.1)
   - RxSwift (4.3.1)
-  - SDWebImage (4.4.2):
-    - SDWebImage/Core (= 4.4.2)
-  - SDWebImage/Core (4.4.2)
 
 DEPENDENCIES:
+  - Nuke (~> 7.4)
   - ReSwift (~> 4.0)
   - RxCocoa (~> 4.0)
   - RxKeyboard
   - RxSwift (~> 4.0)
-  - SDWebImage (~> 4.0)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
+    - Nuke
     - ReSwift
     - RxCocoa
     - RxKeyboard
     - RxSwift
-    - SDWebImage
 
 SPEC CHECKSUMS:
+  Nuke: aee5c42001369902798f7b844611b8ae930ce333
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
   RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
   RxKeyboard: 4f782303f499f41577b41c96c6a9a5d7acd51a47
   RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
-  SDWebImage: 624d6e296c69b244bcede364c72ae0430ac14681
 
-PODFILE CHECKSUM: d1cbeae9556ba8e42adfe585468d634913d55a74
+PODFILE CHECKSUM: b173f879619610fee9903759ac97d73eff4f241e
 
 COCOAPODS: 1.5.3
