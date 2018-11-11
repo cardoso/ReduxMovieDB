@@ -12,6 +12,7 @@
 |2|[RxSwift](https://github.com/ReactiveX/RxSwift)|For composing asynchronous and event-based Apps using observable sequences.|
 |3|[RxKeyboard](https://github.com/RxSwiftCommunity/RxKeyboard)|Provides a reactive way of observing keyboard frame changes.|
 |4|[Nuke](https://github.com/kean/Nuke)|Provides an async image downloader with cache support.|
+|5|[DifferenceKit](https://github.com/ra1028/DifferenceKit)|A fast and flexible O(n) difference algorithm framework for Swift collection.|
 
 ## Build instructions
 
