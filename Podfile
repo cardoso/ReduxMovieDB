@@ -8,7 +8,6 @@ target 'ReduxMovieDB' do
   # Redux pods
   pod 'ReSwift', '~> 4.0' 
 
-
   # Reactive pods
   pod 'RxSwift', '~> 4.0'
   pod 'RxCocoa', '~> 4.0'
@@ -16,6 +15,10 @@ target 'ReduxMovieDB' do
 
   # Networking pods
   pod 'Nuke', '~> 7.4'
+
+  # Diffing pods
+  pod 'DifferenceKit'
+  pod 'DifferenceKit/UIKitExtension'
 
   target 'ReduxMovieDBTests' do
     inherit! :search_paths

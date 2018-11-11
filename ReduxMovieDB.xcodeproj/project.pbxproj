@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		2BB56F98FD90D772FD4F4C63 /* Pods_ReduxMovieDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE35D096699EA77E6EA5F571 /* Pods_ReduxMovieDB.framework */; };
+		800E401F217FA5E300C2A3BD /* Movie+Differentiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800E401E217FA5E300C2A3BD /* Movie+Differentiable.swift */; };
+		805B438C2198971A004A7C28 /* UITableView+DiffUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B438B21989719004A7C28 /* UITableView+DiffUpdate.swift */; };
 		80673C8D2030C3DA0091B48F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673C8C2030C3DA0091B48F /* AppDelegate.swift */; };
 		80673C8F2030C3DA0091B48F /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673C8E2030C3DA0091B48F /* SplitViewController.swift */; };
 		80673C922030C3DA0091B48F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 80673C902030C3DA0091B48F /* Main.storyboard */; };
@@ -42,6 +44,8 @@
 /* Begin PBXFileReference section */
 		13E98F29840EB3FF1CDF29CA /* Pods-ReduxMovieDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDB/Pods-ReduxMovieDB.release.xcconfig"; sourceTree = "<group>"; };
 		30F9E0D8CDC279D30EA5ACC7 /* Pods-ReduxMovieDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDBTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDBTests/Pods-ReduxMovieDBTests.debug.xcconfig"; sourceTree = "<group>"; };
+		800E401E217FA5E300C2A3BD /* Movie+Differentiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+Differentiable.swift"; sourceTree = "<group>"; };
+		805B438B21989719004A7C28 /* UITableView+DiffUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DiffUpdate.swift"; sourceTree = "<group>"; };
 		80673C892030C3DA0091B48F /* ReduxMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReduxMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80673C8C2030C3DA0091B48F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		80673C8E2030C3DA0091B48F /* SplitViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplitViewController.swift; sourceTree = "<group>"; };
@@ -144,6 +148,7 @@
 			children = (
 				80673CC920323AA70091B48F /* Pages.swift */,
 				80673CB02030D8630091B48F /* Movie.swift */,
+				800E401E217FA5E300C2A3BD /* Movie+Differentiable.swift */,
 				80673CC520322A6C0091B48F /* Genre.swift */,
 			);
 			path = Model;
@@ -163,6 +168,7 @@
 			isa = PBXGroup;
 			children = (
 				80673CBD20313EA20091B48F /* UIImageView+MoviePoster.swift */,
+				805B438B21989719004A7C28 /* UITableView+DiffUpdate.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -331,6 +337,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-ReduxMovieDB/Pods-ReduxMovieDB-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/DifferenceKit/DifferenceKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
@@ -339,6 +346,7 @@
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DifferenceKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
@@ -396,6 +404,7 @@
 				8076FB13208B6BFF00513FAC /* MainStateAction.swift in Sources */,
 				80673CAD2030CF890091B48F /* MovieListViewController.swift in Sources */,
 				80673C8F2030C3DA0091B48F /* SplitViewController.swift in Sources */,
+				800E401F217FA5E300C2A3BD /* Movie+Differentiable.swift in Sources */,
 				80673C8D2030C3DA0091B48F /* AppDelegate.swift in Sources */,
 				80673CC620322A6C0091B48F /* Genre.swift in Sources */,
 				80673CB32030E6090091B48F /* MovieListViewState.swift in Sources */,
@@ -407,6 +416,7 @@
 				80673CB12030D8630091B48F /* Movie.swift in Sources */,
 				80673CCA20323AA70091B48F /* Pages.swift in Sources */,
 				80673CC8203238FC0091B48F /* ActionCreators.swift in Sources */,
+				805B438C2198971A004A7C28 /* UITableView+DiffUpdate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

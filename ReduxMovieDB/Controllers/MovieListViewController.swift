@@ -10,7 +10,6 @@ import ReSwift
 
 import RxCocoa
 import RxSwift
-
 import RxKeyboard
 
 class MovieListViewController: UIViewController {
@@ -100,8 +99,9 @@ extension MovieListViewController: StoreSubscriber {
     typealias StoreSubscriberStateType = MovieListViewState
 
     func newState(state: MovieListViewState) {
-        movies = state.movies
-        moviesTableView.reloadData()
+        moviesTableView.diffUpdate(source: movies, target: state.movies) {
+            self.movies = $0
+        }
 
         searchBar.text = state.searchBarText
         searchBar.showsCancelButton = state.searchBarShowsCancel
