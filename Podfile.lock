@@ -1,18 +1,20 @@
 PODS:
-  - DifferenceKit (0.7.2):
-    - DifferenceKit/Core (= 0.7.2)
-    - DifferenceKit/UIKitExtension (= 0.7.2)
-  - DifferenceKit/Core (0.7.2)
-  - DifferenceKit/UIKitExtension (0.7.2):
+  - DifferenceKit (0.8.0):
+    - DifferenceKit/Core (= 0.8.0)
+    - DifferenceKit/UIKitExtension (= 0.8.0)
+  - DifferenceKit/Core (0.8.0)
+  - DifferenceKit/UIKitExtension (0.8.0):
     - DifferenceKit/Core
-  - Nuke (7.4.2)
+  - Nuke (7.5.1)
   - ReSwift (4.0.1)
-  - RxCocoa (4.3.1):
+  - RxAtomic (4.4.0)
+  - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
   - RxKeyboard (0.9.0):
     - RxCocoa (>= 4.3.1)
     - RxSwift (>= 4.3.1)
-  - RxSwift (4.3.1)
+  - RxSwift (4.4.0):
+    - RxAtomic (~> 4.4)
 
 DEPENDENCIES:
   - DifferenceKit
@@ -28,17 +30,19 @@ SPEC REPOS:
     - DifferenceKit
     - Nuke
     - ReSwift
+    - RxAtomic
     - RxCocoa
     - RxKeyboard
     - RxSwift
 
 SPEC CHECKSUMS:
-  DifferenceKit: 5179eaf0e76a1b9fbaeb93f4c1a82510be63ca65
-  Nuke: aee5c42001369902798f7b844611b8ae930ce333
+  DifferenceKit: edcc9da33f545a49a70eefcf1a5327162cb72eb8
+  Nuke: 3814db501e55f17951451839c726ffd91641e9a5
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
-  RxCocoa: 78763c7b07d02455598d9fc3c1ad091a28b73635
+  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
+  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxKeyboard: 4f782303f499f41577b41c96c6a9a5d7acd51a47
-  RxSwift: fe0fd770a43acdb7d0a53da411c9b892e69bb6e4
+  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
 PODFILE CHECKSUM: 6e0b4aeaaacd19ef3e59f2d340d7816112bad367
 
