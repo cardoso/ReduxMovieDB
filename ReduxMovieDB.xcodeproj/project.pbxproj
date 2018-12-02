@@ -25,7 +25,7 @@
 		80673CB9203125300091B48F /* TMDB.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CB8203125300091B48F /* TMDB.swift */; };
 		80673CBE20313EA20091B48F /* UIImageView+MoviePoster.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CBD20313EA20091B48F /* UIImageView+MoviePoster.swift */; };
 		80673CC620322A6C0091B48F /* Genre.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC520322A6C0091B48F /* Genre.swift */; };
-		80673CC8203238FC0091B48F /* ActionCreators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC7203238FC0091B48F /* ActionCreators.swift */; };
+		80673CC8203238FC0091B48F /* Thunks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC7203238FC0091B48F /* Thunks.swift */; };
 		80673CCA20323AA70091B48F /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC920323AA70091B48F /* Pages.swift */; };
 		8076FB13208B6BFF00513FAC /* MainStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076FB12208B6BFF00513FAC /* MainStateAction.swift */; };
 		8F78D29FD15515E0A0DB290B /* Pods_ReduxMovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */; };
@@ -65,7 +65,7 @@
 		80673CB8203125300091B48F /* TMDB.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TMDB.swift; sourceTree = "<group>"; };
 		80673CBD20313EA20091B48F /* UIImageView+MoviePoster.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIImageView+MoviePoster.swift"; sourceTree = "<group>"; };
 		80673CC520322A6C0091B48F /* Genre.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Genre.swift; sourceTree = "<group>"; };
-		80673CC7203238FC0091B48F /* ActionCreators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionCreators.swift; sourceTree = "<group>"; };
+		80673CC7203238FC0091B48F /* Thunks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thunks.swift; sourceTree = "<group>"; };
 		80673CC920323AA70091B48F /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		8076FB12208B6BFF00513FAC /* MainStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStateAction.swift; sourceTree = "<group>"; };
 		95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,7 +124,7 @@
 				8076FB0F208B6B7000513FAC /* ViewState */,
 				80673CBB203125620091B48F /* Controllers */,
 				80673CBC20313E8E0091B48F /* Extensions */,
-				80673CC7203238FC0091B48F /* ActionCreators.swift */,
+				80673CC7203238FC0091B48F /* Thunks.swift */,
 				80673C8C2030C3DA0091B48F /* AppDelegate.swift */,
 				80673C902030C3DA0091B48F /* Main.storyboard */,
 				80673C932030C3DA0091B48F /* Assets.xcassets */,
@@ -340,6 +340,7 @@
 				"${BUILT_PRODUCTS_DIR}/DifferenceKit/DifferenceKit.framework",
 				"${BUILT_PRODUCTS_DIR}/Nuke/Nuke.framework",
 				"${BUILT_PRODUCTS_DIR}/ReSwift/ReSwift.framework",
+				"${BUILT_PRODUCTS_DIR}/ReSwift-Thunk/ReSwiftThunk.framework",
 				"${BUILT_PRODUCTS_DIR}/RxAtomic/RxAtomic.framework",
 				"${BUILT_PRODUCTS_DIR}/RxCocoa/RxCocoa.framework",
 				"${BUILT_PRODUCTS_DIR}/RxKeyboard/RxKeyboard.framework",
@@ -350,6 +351,7 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DifferenceKit.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Nuke.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwift.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ReSwiftThunk.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxAtomic.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxCocoa.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RxKeyboard.framework",
@@ -417,7 +419,7 @@
 				80673CAF2030D83B0091B48F /* MainState.swift in Sources */,
 				80673CB12030D8630091B48F /* Movie.swift in Sources */,
 				80673CCA20323AA70091B48F /* Pages.swift in Sources */,
-				80673CC8203238FC0091B48F /* ActionCreators.swift in Sources */,
+				80673CC8203238FC0091B48F /* Thunks.swift in Sources */,
 				805B438C2198971A004A7C28 /* UITableView+DiffUpdate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

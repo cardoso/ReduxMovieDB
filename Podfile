@@ -6,7 +6,8 @@ target 'ReduxMovieDB' do
   use_frameworks!
 
   # Redux pods
-  pod 'ReSwift', '~> 4.0' 
+  pod 'ReSwift', '~> 4.0'
+  pod 'ReSwift-Thunk', :git => 'https://github.com/ReSwift/ReSwift-Thunk'
 
   # Reactive pods
   pod 'RxSwift', '~> 4.0'
