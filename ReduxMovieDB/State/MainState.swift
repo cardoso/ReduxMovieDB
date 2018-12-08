@@ -7,6 +7,7 @@
 //
 
 import ReSwift
+import ReSwiftThunk
 
 enum SearchState {
     case canceled
@@ -71,8 +72,10 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
     return state
 }
 
+let thunksMiddleware: Middleware<MainState> = createThunksMiddleware()
+
 let mainStore = Store(
     reducer: mainReducer,
     state: MainState(),
-    middleware: []
+    middleware: [thunksMiddleware]
 )

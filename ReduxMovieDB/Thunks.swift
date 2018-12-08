@@ -1,36 +1,41 @@
 //
-//  ActionCreators.swift
+//  Thunks.swift
 //  ReduxMovieDB
 //
-//  Created by Matheus Cardoso on 2/12/18.
+//  Created by Matheus Cardoso on 12/2/18.
 //  Copyright © 2018 Matheus Cardoso. All rights reserved.
 //
 
 import ReSwift
+import ReSwiftThunk
 
-func fetchMovieGenres(state: MainState, store: Store<MainState>) -> Action? {
+let fetchMovieGenres = Thunk<MainState> { dispatch, getState in
     TMDB().fetchMovieGenres { result in
         guard let result = result else { return }
 
         DispatchQueue.main.async {
-            mainStore.dispatch(
+            dispatch(
                 MainStateAction.addGenres(result.genres)
             )
         }
     }
-
-    return nil
 }
 
+fileprivate let fetchNextUpcomingMoviesPage = Thunk<MainState> { dispatch, getState in
+    guard
+        let state = getState(),
+        !state.moviePages.isComplete
+    else {
+        return
+    }
 
-fileprivate func fetchNextUpcomingMoviesPage(state: MainState, store: Store<MainState>) -> Action? {
-    guard !state.moviePages.isComplete else { return nil }
+    let page = state.moviePages.currentPage + 1
 
-    TMDB().fetchUpcomingMovies(page: mainStore.state.moviePages.currentPage + 1) { result in
+    TMDB().fetchUpcomingMovies(page: page) { result in
         guard let result = result else { return }
 
         DispatchQueue.main.async {
-            mainStore.dispatch(
+            dispatch(
                 MainStateAction.fetchNextMoviesPage(
                     totalPages: result.totalPages,
                     movies: result.results
@@ -38,26 +43,25 @@ fileprivate func fetchNextUpcomingMoviesPage(state: MainState, store: Store<Main
             )
         }
     }
-
-    return nil
 }
 
-fileprivate func fetchSearchMoviesPage(state: MainState, store: Store<MainState>) -> Action? {
+fileprivate let fetchSearchMoviesPage = Thunk<MainState> { dispatch, getState in
     guard
+        let state = getState(),
         !state.moviePages.isComplete,
         case let .searching(query) = state.search,
         !query.isEmpty
     else {
-        return nil
+        return
     }
 
-    let page = mainStore.state.moviePages.currentPage + 1
+    let page = state.moviePages.currentPage + 1
 
     TMDB().searchMovies(query: query, page: page) { result in
         guard let result = result else { return }
 
         DispatchQueue.main.async {
-            mainStore.dispatch(
+            dispatch(
                 MainStateAction.fetchNextMoviesPage(
                     totalPages: result.totalPages,
                     movies: result.results
@@ -65,14 +69,14 @@ fileprivate func fetchSearchMoviesPage(state: MainState, store: Store<MainState>
             )
         }
     }
-
-    return nil
 }
 
-func fetchMoviesPage(state: MainState, store: Store<MainState>) -> Action? {
-    if case .searching = mainStore.state.search {
-        return fetchSearchMoviesPage(state: state, store: store)
+let fetchMoviesPage = Thunk<MainState> { dispatch, getState in
+    guard let state = getState() else { return }
+
+    if case .searching = state.search {
+        dispatch(fetchSearchMoviesPage)
     } else {
-        return fetchNextUpcomingMoviesPage(state: state, store: store)
+        dispatch(fetchNextUpcomingMoviesPage)
     }
 }

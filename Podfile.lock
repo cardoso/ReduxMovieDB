@@ -7,6 +7,8 @@ PODS:
     - DifferenceKit/Core
   - Nuke (7.5.1)
   - ReSwift (4.0.1)
+  - ReSwift-Thunk (1.0.0-pre):
+    - ReSwift (~> 4.0)
   - RxAtomic (4.4.0)
   - RxCocoa (4.4.0):
     - RxSwift (~> 4.0)
@@ -21,6 +23,7 @@ DEPENDENCIES:
   - DifferenceKit/UIKitExtension
   - Nuke (~> 7.4)
   - ReSwift (~> 4.0)
+  - ReSwift-Thunk (from `https://github.com/ReSwift/ReSwift-Thunk`)
   - RxCocoa (~> 4.0)
   - RxKeyboard
   - RxSwift (~> 4.0)
@@ -35,15 +38,25 @@ SPEC REPOS:
     - RxKeyboard
     - RxSwift
 
+EXTERNAL SOURCES:
+  ReSwift-Thunk:
+    :git: https://github.com/ReSwift/ReSwift-Thunk
+
+CHECKOUT OPTIONS:
+  ReSwift-Thunk:
+    :commit: 8ce2e2b21ae42c4f00c9d336ee9d9255d3f7c07b
+    :git: https://github.com/ReSwift/ReSwift-Thunk
+
 SPEC CHECKSUMS:
   DifferenceKit: edcc9da33f545a49a70eefcf1a5327162cb72eb8
   Nuke: 3814db501e55f17951451839c726ffd91641e9a5
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
+  ReSwift-Thunk: 9cb46272ee427b222110b18e1c3019ebe60dcb98
   RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
   RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
   RxKeyboard: 4f782303f499f41577b41c96c6a9a5d7acd51a47
   RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
 
-PODFILE CHECKSUM: 6e0b4aeaaacd19ef3e59f2d340d7816112bad367
+PODFILE CHECKSUM: a01e748e72525c5ec615e9c00b04e7cb5bf3160f
 
 COCOAPODS: 1.5.3
