@@ -21,11 +21,6 @@ or alternatively using `brew cask install fastlane`
 fastlane ios test
 ```
 
-### ios install_pods
-```
-fastlane ios install_pods
-```
-
 
 ----
 
