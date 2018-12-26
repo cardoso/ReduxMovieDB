@@ -1,0 +1,6 @@
+framework module Pods_ReduxMovieDB {
+  umbrella header "Pods-ReduxMovieDB-umbrella.h"
+
+  export *
+  module * { export * }
+}

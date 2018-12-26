@@ -1,0 +1,6 @@
+framework module RxKeyboard {
+  umbrella header "RxKeyboard-umbrella.h"
+
+  export *
+  module * { export * }
+}

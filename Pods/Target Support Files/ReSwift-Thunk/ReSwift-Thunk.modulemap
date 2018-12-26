@@ -1,0 +1,6 @@
+framework module ReSwiftThunk {
+  umbrella header "ReSwift-Thunk-umbrella.h"
+
+  export *
+  module * { export * }
+}

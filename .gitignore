@@ -1,14 +1,6 @@
 
 # Created by https://www.gitignore.io/api/macos,swift,xcode,cocoapods,objective-c
 
-### CocoaPods ###
-## CocoaPods GitIgnore Template
-
-# CocoaPods - Only use to conserve bandwidth / Save time on Pushing
-#           - Also handy if you have a large number of dependant pods
-#           - AS PER https://guides.cocoapods.org/using/using-cocoapods.html NEVER IGNORE THE LOCK FILE
-Pods/
-
 ### macOS ###
 *.DS_Store
 .AppleDouble
@@ -67,9 +59,6 @@ xcuserdata/
 *.ipa
 *.dSYM.zip
 *.dSYM
-
-# CocoaPods - Refactored to standalone file
-
 
 # Carthage - Refactored to standalone file
 
