@@ -8,19 +8,19 @@
 
 import ReSwift
 
-enum SearchState {
+enum SearchState: Equatable {
     case canceled
     case ready
     case searching(String)
 }
 
-enum MovieDetailState {
+enum MovieDetailState: Equatable {
     case willHide(Movie)
     case hide
     case show(Movie)
 }
 
-struct MainState: StateType {
+struct MainState: StateType, Equatable {
     var genres: [Genre] = []
     var moviePages: Pages<Movie> = Pages<Movie>()
 

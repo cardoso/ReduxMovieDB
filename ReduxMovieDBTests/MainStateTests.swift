@@ -11,6 +11,8 @@ import ReSwift
 import XCTest
 @testable import ReduxMovieDB
 
+struct EmptyAction: Action { }
+
 class ReduxMovieDBTests: XCTestCase {
 
     func lint(_ action: MainStateAction) -> () -> Void {
@@ -32,6 +34,11 @@ class ReduxMovieDBTests: XCTestCase {
             state: MainState(),
             middleware: []
         )
+    }
+
+    func testInitialState() {
+        let state = mainReducer(action: EmptyAction(), state: nil)
+        XCTAssertEqual(state, MainState())
     }
     
     func testAddGenres() {

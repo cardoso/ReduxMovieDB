@@ -44,6 +44,7 @@ Temporary Items
 ## Build generated
 build/
 DerivedData/
+ReduxMovieDB.xcworkspace/xcshareddata/
 
 ## Various settings
 *.pbxuser

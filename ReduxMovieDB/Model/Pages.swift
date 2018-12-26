@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Pages<T> {
+struct Pages<T: Equatable>: Equatable {
     var values: [T] = []
     var currentPage: Int = 0
     var totalPages: Int = 1
