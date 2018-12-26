@@ -23,11 +23,4 @@ platform :ios do
       scheme: "ReduxMovieDB"
     )
   end
-
-  lane :install_dependencies do
-    cocoapods(
-      clean: true,
-      podfile: "./Podfile"
-    )
-  end
 end
