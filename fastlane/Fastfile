@@ -16,12 +16,18 @@
 default_platform(:ios)
 
 platform :ios do
-  desc "Description of what the lane does"
   lane :test do
     run_tests(
-              workspace: "ReduxMovieDB.xcworkspace",
-              devices: ["iPhone 5s", "iPad Air"],
-              scheme: "ReduxMovieDB"
+      workspace: "ReduxMovieDB.xcworkspace",
+      devices: ["iPhone 5s"],
+      scheme: "ReduxMovieDB"
+    )
+  end
+
+  lane :install_dependencies do
+    cocoapods(
+      clean: true,
+      podfile: "./Podfile"
     )
   end
 end

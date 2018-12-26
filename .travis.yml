@@ -1,0 +1,8 @@
+language: swift
+osx_image: xcode10.1
+
+xcode_project: ReduxMovieDB.xcworkspace
+xcode_scheme: ReduxMovieDBTests
+script:
+    - fastlane install_dependencies
+    - fastlane test
