@@ -21,7 +21,16 @@ platform :ios do
     run_tests(
       workspace: "ReduxMovieDB.xcworkspace",
       devices: ["iPhone 5s"],
-      scheme: "ReduxMovieDB"
+      scheme: "ReduxMovieDB",
+      code_coverage: true
+    )
+  end
+
+  lane :cov do
+    xcov(
+      workspace: "ReduxMovieDB.xcworkspace",
+      scheme: "ReduxMovieDB",
+      output_directory: "xcov_output"
     )
   end
 end
