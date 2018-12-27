@@ -28,12 +28,6 @@
 		80673CC8203238FC0091B48F /* Thunks.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC7203238FC0091B48F /* Thunks.swift */; };
 		80673CCA20323AA70091B48F /* Pages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673CC920323AA70091B48F /* Pages.swift */; };
 		8076FB13208B6BFF00513FAC /* MainStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076FB12208B6BFF00513FAC /* MainStateAction.swift */; };
-		80BFF61521D430B900D99771 /* report.html in Resources */ = {isa = PBXBuildFile; fileRef = 80BFF60F21D430B900D99771 /* report.html */; };
-		80BFF61621D430B900D99771 /* report.junit in Resources */ = {isa = PBXBuildFile; fileRef = 80BFF61021D430B900D99771 /* report.junit */; };
-		80BFF61721D430B900D99771 /* Appfile in Resources */ = {isa = PBXBuildFile; fileRef = 80BFF61121D430B900D99771 /* Appfile */; };
-		80BFF61821D430B900D99771 /* Fastfile in Resources */ = {isa = PBXBuildFile; fileRef = 80BFF61221D430B900D99771 /* Fastfile */; };
-		80BFF61921D430B900D99771 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 80BFF61321D430B900D99771 /* README.md */; };
-		80BFF61A21D430B900D99771 /* report.xml in Resources */ = {isa = PBXBuildFile; fileRef = 80BFF61421D430B900D99771 /* report.xml */; };
 		8F78D29FD15515E0A0DB290B /* Pods_ReduxMovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -74,12 +68,6 @@
 		80673CC7203238FC0091B48F /* Thunks.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Thunks.swift; sourceTree = "<group>"; };
 		80673CC920323AA70091B48F /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		8076FB12208B6BFF00513FAC /* MainStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStateAction.swift; sourceTree = "<group>"; };
-		80BFF60F21D430B900D99771 /* report.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = report.html; sourceTree = "<group>"; };
-		80BFF61021D430B900D99771 /* report.junit */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = report.junit; sourceTree = "<group>"; };
-		80BFF61121D430B900D99771 /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Appfile; sourceTree = "<group>"; };
-		80BFF61221D430B900D99771 /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Fastfile; sourceTree = "<group>"; };
-		80BFF61321D430B900D99771 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
-		80BFF61421D430B900D99771 /* report.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = report.xml; sourceTree = "<group>"; };
 		95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F0F62F1051E868DD2A7A1C /* Pods-ReduxMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDBTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDBTests/Pods-ReduxMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB8B1F69E8325CD6968C206D /* Pods-ReduxMovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDB/Pods-ReduxMovieDB.debug.xcconfig"; sourceTree = "<group>"; };
@@ -129,7 +117,6 @@
 		80673C8B2030C3DA0091B48F /* ReduxMovieDB */ = {
 			isa = PBXGroup;
 			children = (
-				80BFF60D21D430B900D99771 /* fastlane */,
 				8076FB14208B6CBF00513FAC /* API */,
 				80673CBA2031253F0091B48F /* Model */,
 				8076FB11208B6BE200513FAC /* Actions */,
@@ -217,27 +204,6 @@
 				80673CB8203125300091B48F /* TMDB.swift */,
 			);
 			path = API;
-			sourceTree = "<group>";
-		};
-		80BFF60D21D430B900D99771 /* fastlane */ = {
-			isa = PBXGroup;
-			children = (
-				80BFF60E21D430B900D99771 /* test_output */,
-				80BFF61121D430B900D99771 /* Appfile */,
-				80BFF61221D430B900D99771 /* Fastfile */,
-				80BFF61321D430B900D99771 /* README.md */,
-				80BFF61421D430B900D99771 /* report.xml */,
-			);
-			path = fastlane;
-			sourceTree = SOURCE_ROOT;
-		};
-		80BFF60E21D430B900D99771 /* test_output */ = {
-			isa = PBXGroup;
-			children = (
-				80BFF60F21D430B900D99771 /* report.html */,
-				80BFF61021D430B900D99771 /* report.junit */,
-			);
-			path = test_output;
 			sourceTree = "<group>";
 		};
 		8D98CBDEDF94752D402B757F /* Frameworks */ = {
@@ -348,14 +314,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				80BFF61A21D430B900D99771 /* report.xml in Resources */,
-				80BFF61721D430B900D99771 /* Appfile in Resources */,
-				80BFF61821D430B900D99771 /* Fastfile in Resources */,
 				80673C972030C3DA0091B48F /* LaunchScreen.storyboard in Resources */,
 				80673C942030C3DA0091B48F /* Assets.xcassets in Resources */,
-				80BFF61621D430B900D99771 /* report.junit in Resources */,
-				80BFF61521D430B900D99771 /* report.html in Resources */,
-				80BFF61921D430B900D99771 /* README.md in Resources */,
 				80673C922030C3DA0091B48F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
