@@ -1,5 +1,5 @@
 # ReduxMovieDB
-[![Build Status](https://travis-ci.org/cardoso/ReduxMovieDB.svg?branch=master)](https://travis-ci.org/cardoso/ReduxMovieDB)
+[![Build Status](https://travis-ci.org/cardoso/ReduxMovieDB.svg?branch=master)](https://travis-ci.org/cardoso/ReduxMovieDB) [![codecov](https://codecov.io/gh/cardoso/ReduxMovieDB/branch/master/graph/badge.svg)](https://codecov.io/gh/cardoso/ReduxMovieDB)
 
 ## Screenshots
 |iPhone (1)|iPhone (2)|iPad|
