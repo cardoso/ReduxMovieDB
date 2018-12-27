@@ -24,10 +24,12 @@ platform :ios do
       code_coverage: true
     )
 
-    xcov(
-      workspace: "ReduxMovieDB.xcworkspace",
+    slather(
+      travis: true,
       scheme: "ReduxMovieDB",
-      output_directory: "xcov_output"
+      coveralls: true,
+      proj: "ReduxMovieDB.xcodeproj",
+      workspace: "ReduxMovieDB.xcworkspace"
     )
   end
 end
