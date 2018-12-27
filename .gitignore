@@ -73,6 +73,7 @@ fastlane/report.xml
 fastlane/Preview.html
 fastlane/screenshots
 fastlane/test_output
+xcov_output
 
 # Code Injection
 #
