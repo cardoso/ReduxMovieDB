@@ -26,6 +26,11 @@ fastlane ios test
 fastlane ios cov
 ```
 
+### ios test_and_cov
+```
+fastlane ios test_and_cov
+```
+
 
 ----
 
