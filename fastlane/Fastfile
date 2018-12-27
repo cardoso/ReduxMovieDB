@@ -23,10 +23,5 @@ platform :ios do
       scheme: "ReduxMovieDB",
       code_coverage: true
     )
-
-    xcov(
-      scheme: "ReduxMovieDB",
-      output_directory: "xcov_output"
-    )
   end
 end
