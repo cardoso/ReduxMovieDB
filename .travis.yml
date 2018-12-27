@@ -4,5 +4,4 @@ osx_image: xcode10.1
 xcode_project: ReduxMovieDB.xcworkspace
 xcode_scheme: ReduxMovieDBTests
 script:
-    - fastlane test
-    - fastlane cov
+    - fastlane test_and_cov

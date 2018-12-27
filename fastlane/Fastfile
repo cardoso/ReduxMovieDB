@@ -32,4 +32,9 @@ platform :ios do
       output_directory: "xcov_output"
     )
   end
+
+  lane :test_and_cov do
+    test
+    cov
+  end
 end
