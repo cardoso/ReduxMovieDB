@@ -27,11 +27,15 @@ struct MovieDetailViewState {
         date = movie?.releaseDate ?? "No date"
         title = movie?.title ?? "No title"
         overview = movie?.overview ?? "No overview"
-
-        genres = movie?.genreIds?.reduce("") { total, id in
-            let genreName = state.genres.first { $0.id == id }?.name ?? "\(id)"
-            guard let total = total else { return genreName}
-            return total.isEmpty ? "\(genreName)" : "\(total), \(genreName)"
-        } ?? "No genres"
+        genres = localizedGenres(movie?.genreIds ?? [], state.genres)
     }
+}
+
+func localizedGenres(_ genreIds: [Int], _ genres: [Genre]) -> String {
+    let result = genreIds.reduce("") { total, id in
+        let genreName = genres.first { $0.id == id }?.name ?? "\(id)"
+        return total.isEmpty ? "\(genreName)" : "\(total), \(genreName)"
+    }
+
+    return result.isEmpty ? "No genres" : result
 }

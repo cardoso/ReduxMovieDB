@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		2BB56F98FD90D772FD4F4C63 /* Pods_ReduxMovieDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FE35D096699EA77E6EA5F571 /* Pods_ReduxMovieDB.framework */; };
 		800E401F217FA5E300C2A3BD /* Movie+Differentiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 800E401E217FA5E300C2A3BD /* Movie+Differentiable.swift */; };
+		802CD6A221D6A8D2000FF852 /* MovieDetailViewStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 802CD6A121D6A8D2000FF852 /* MovieDetailViewStateTests.swift */; };
 		805B438C2198971A004A7C28 /* UITableView+DiffUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 805B438B21989719004A7C28 /* UITableView+DiffUpdate.swift */; };
 		80673C8D2030C3DA0091B48F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673C8C2030C3DA0091B48F /* AppDelegate.swift */; };
 		80673C8F2030C3DA0091B48F /* SplitViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80673C8E2030C3DA0091B48F /* SplitViewController.swift */; };
@@ -46,6 +47,7 @@
 		13E98F29840EB3FF1CDF29CA /* Pods-ReduxMovieDB.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDB.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDB/Pods-ReduxMovieDB.release.xcconfig"; sourceTree = "<group>"; };
 		30F9E0D8CDC279D30EA5ACC7 /* Pods-ReduxMovieDBTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDBTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDBTests/Pods-ReduxMovieDBTests.debug.xcconfig"; sourceTree = "<group>"; };
 		800E401E217FA5E300C2A3BD /* Movie+Differentiable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Movie+Differentiable.swift"; sourceTree = "<group>"; };
+		802CD6A121D6A8D2000FF852 /* MovieDetailViewStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieDetailViewStateTests.swift; sourceTree = "<group>"; };
 		805B438B21989719004A7C28 /* UITableView+DiffUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITableView+DiffUpdate.swift"; sourceTree = "<group>"; };
 		80673C892030C3DA0091B48F /* ReduxMovieDB.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ReduxMovieDB.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		80673C8C2030C3DA0091B48F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -221,6 +223,7 @@
 			isa = PBXGroup;
 			children = (
 				80BFF61F21D4911A00D99771 /* MovieListViewStateTests.swift */,
+				802CD6A121D6A8D2000FF852 /* MovieDetailViewStateTests.swift */,
 			);
 			path = ViewState;
 			sourceTree = "<group>";
@@ -448,6 +451,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80673CA22030C3DA0091B48F /* MainStateTests.swift in Sources */,
+				802CD6A221D6A8D2000FF852 /* MovieDetailViewStateTests.swift in Sources */,
 				80BFF62021D4911A00D99771 /* MovieListViewStateTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
