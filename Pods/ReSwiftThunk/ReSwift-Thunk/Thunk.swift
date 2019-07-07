@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-public struct Thunk<State: StateType>: Action {
+public struct Thunk<State>: Action {
     let body: (_ dispatch: @escaping DispatchFunction, _ getState: @escaping () -> State?) -> Void
     public init(body: @escaping (
         _ dispatch: @escaping DispatchFunction,
@@ -17,3 +17,6 @@ public struct Thunk<State: StateType>: Action {
         self.body = body
     }
 }
+
+@available(*, deprecated, renamed: "Thunk")
+typealias ThunkAction = Thunk

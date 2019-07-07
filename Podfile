@@ -7,18 +7,17 @@ target 'ReduxMovieDB' do
 
   # Redux pods
   pod 'ReSwift', '~> 4.0'
-  pod 'ReSwift-Thunk', :git => 'https://github.com/ReSwift/ReSwift-Thunk'
+  pod 'ReSwiftThunk'
 
   # Reactive pods
-  pod 'RxSwift', '~> 4.0'
-  pod 'RxCocoa', '~> 4.0'
+  pod 'RxSwift', '~> 5'
+  pod 'RxCocoa', '~> 5'
   pod 'RxKeyboard'
 
   # Networking pods
   pod 'Nuke', '~> 7.4'
 
   # Diffing pods
-  pod 'DifferenceKit'
   pod 'DifferenceKit/UIKitExtension'
 
   target 'ReduxMovieDBTests' do

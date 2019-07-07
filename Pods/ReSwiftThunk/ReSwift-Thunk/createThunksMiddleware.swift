@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-public func createThunksMiddleware<State: StateType>() -> Middleware<State> {
+public func createThunksMiddleware<State>() -> Middleware<State> {
     return { dispatch, getState in
         return { next in
             return { action in
@@ -23,3 +23,10 @@ public func createThunksMiddleware<State: StateType>() -> Middleware<State> {
         }
     }
 }
+
+// swiftlint:disable identifier_name
+@available(*, deprecated, renamed: "createThunksMiddleware")
+func ThunkMiddleware<State: StateType>() -> Middleware<State> {
+    return createThunksMiddleware()
+}
+// swiftlint:enable identifier_name
