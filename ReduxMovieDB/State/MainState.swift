@@ -19,6 +19,17 @@ enum MovieDetailState: Equatable {
     case willHide(Movie)
     case hide
     case show(Movie)
+
+    var movie: Movie? {
+        switch self {
+        case .willHide(let movie):
+            return movie
+        case .hide:
+            return nil
+        case .show(let movie):
+            return movie
+        }
+    }
 }
 
 struct MainState: StateType, Equatable {

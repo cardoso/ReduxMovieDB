@@ -1,62 +1,51 @@
 PODS:
-  - DifferenceKit (0.8.0):
-    - DifferenceKit/Core (= 0.8.0)
-    - DifferenceKit/UIKitExtension (= 0.8.0)
-  - DifferenceKit/Core (0.8.0)
-  - DifferenceKit/UIKitExtension (0.8.0):
+  - DifferenceKit/Core (1.1.3)
+  - DifferenceKit/UIKitExtension (1.1.3):
     - DifferenceKit/Core
   - Nuke (7.5.1)
   - ReSwift (4.0.1)
-  - ReSwift-Thunk (1.0.0-pre):
+  - ReSwiftThunk (1.1.0):
     - ReSwift (~> 4.0)
-  - RxAtomic (4.4.0)
-  - RxCocoa (4.4.0):
-    - RxSwift (~> 4.0)
+  - RxCocoa (5.0.0):
+    - RxRelay (~> 5)
+    - RxSwift (~> 5)
   - RxKeyboard (0.9.0):
     - RxCocoa (>= 4.3.1)
     - RxSwift (>= 4.3.1)
-  - RxSwift (4.4.0):
-    - RxAtomic (~> 4.4)
+  - RxRelay (5.0.0):
+    - RxSwift (~> 5)
+  - RxSwift (5.0.0)
 
 DEPENDENCIES:
-  - DifferenceKit
   - DifferenceKit/UIKitExtension
   - Nuke (~> 7.4)
   - ReSwift (~> 4.0)
-  - ReSwift-Thunk (from `https://github.com/ReSwift/ReSwift-Thunk`)
-  - RxCocoa (~> 4.0)
+  - ReSwiftThunk
+  - RxCocoa (~> 5)
   - RxKeyboard
-  - RxSwift (~> 4.0)
+  - RxSwift (~> 5)
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
     - DifferenceKit
     - Nuke
     - ReSwift
-    - RxAtomic
+    - ReSwiftThunk
     - RxCocoa
     - RxKeyboard
+    - RxRelay
     - RxSwift
 
-EXTERNAL SOURCES:
-  ReSwift-Thunk:
-    :git: https://github.com/ReSwift/ReSwift-Thunk
-
-CHECKOUT OPTIONS:
-  ReSwift-Thunk:
-    :commit: 8ce2e2b21ae42c4f00c9d336ee9d9255d3f7c07b
-    :git: https://github.com/ReSwift/ReSwift-Thunk
-
 SPEC CHECKSUMS:
-  DifferenceKit: edcc9da33f545a49a70eefcf1a5327162cb72eb8
+  DifferenceKit: 5018791b6c1fc839921a3c171a0a539ace6ea60c
   Nuke: 3814db501e55f17951451839c726ffd91641e9a5
   ReSwift: f4012c613e13da7398827fe5aebdb938eaed40a3
-  ReSwift-Thunk: 9cb46272ee427b222110b18e1c3019ebe60dcb98
-  RxAtomic: eacf60db868c96bfd63320e28619fe29c179656f
-  RxCocoa: df63ebf7b9a70d6b4eeea407ed5dd4efc8979749
+  ReSwiftThunk: 727c1549dbd2949472e1c72bec44b1008d7c4f92
+  RxCocoa: fcf32050ac00d801f34a7f71d5e8e7f23026dcd8
   RxKeyboard: 4f782303f499f41577b41c96c6a9a5d7acd51a47
-  RxSwift: 5976ecd04fc2fefd648827c23de5e11157faa973
+  RxRelay: 4f7409406a51a55cd88483f21ed898c234d60f18
+  RxSwift: 8b0671caa829a763bbce7271095859121cbd895f
 
-PODFILE CHECKSUM: a01e748e72525c5ec615e9c00b04e7cb5bf3160f
+PODFILE CHECKSUM: 1449f192dfad3041e4248141934a81ced69d18a8
 
-COCOAPODS: 1.5.3
+COCOAPODS: 1.6.1

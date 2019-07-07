@@ -1,6 +1,6 @@
 # ReSwift-Thunk
 
-[![Build Status](https://img.shields.io/travis/ReSwift/ReSwift-Thunk/master.svg?style=flat-square)](https://travis-ci.org/ReSwift/ReSwift-Thunk) [![Code coverage status](https://img.shields.io/codecov/c/github/ReSwift/ReSwift-Thunk.svg?style=flat-square)](http://codecov.io/github/ReSwift/ReSwift-Thunk) [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ReSwift-Thunk.svg?style=flat-square)](https://cocoapods.org/pods/ReSwift-Thunk) [![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/ReSwift/ReSwift-Thunk/blob/master/LICENSE.md) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReSwift-Thunk/blob/master/LICENSE.md) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg?style=flat-square)](https://houndci.com)
+[![Build Status](https://img.shields.io/travis/ReSwift/ReSwift-Thunk/master.svg?style=flat-square)](https://travis-ci.org/ReSwift/ReSwift-Thunk) [![Code coverage status](https://img.shields.io/codecov/c/github/ReSwift/ReSwift-Thunk.svg?style=flat-square)](http://codecov.io/github/ReSwift/ReSwift-Thunk) [![CocoaPods Compatible](https://img.shields.io/cocoapods/v/ReSwiftThunk.svg?style=flat-square)](https://cocoapods.org/pods/ReSwiftThunk) [![Platform support](https://img.shields.io/badge/platform-ios%20%7C%20osx%20%7C%20tvos%20%7C%20watchos-lightgrey.svg?style=flat-square)](https://github.com/ReSwift/ReSwift-Thunk/blob/master/LICENSE.md) [![License MIT](https://img.shields.io/badge/license-MIT-blue.svg?style=flat-square)](https://github.com/ReSwift/ReSwift-Thunk/blob/master/LICENSE.md) [![Reviewed by Hound](https://img.shields.io/badge/Reviewed_by-Hound-8E64B0.svg?style=flat-square)](https://houndci.com)
 
 **Supported Swift Versions:** Swift 4.1, Swift 4.2
 
@@ -32,10 +32,32 @@ let thunk = Thunk<MyState> { dispatch, getState in
     }
 }
 
+// A thunk can also be a function if you want to pass on parameters
+func thunkWithParams(_ identifier: Int) -> Thunk<MyState> {
+    return Thunk<MyState> { dispatch, getState in
+        guard let state = getState() else { return }
+        
+        if state.loading {
+            return
+        }
+        
+        api.getSomethingWithId(identifier) { something in
+            if something != nil {
+                dispatch(RequestSuccess(something))
+            } else {
+                dispatch(RequestError())
+            }
+        }
+    }
+}
+
 // As the thunk type conforms to the `Action` protocol, you can dispatch it as usual, without having to implement an overload of the `dispatch` function inside the ReSwift library.
 store.dispatch(thunk)
 
-// Note that this action won't reach the reducers, instead, the thunks middleware will catch it and execute its body, producing the desired side effects.
+// You can do the same with the Thunk that requires parameters, like so
+store.dispatch(thunkWithParams(10))
+
+// Note that these actions won't reach the reducers, instead, the thunks middleware will catch it and execute its body, producing the desired side effects.
 ```
 
 ## Installation
@@ -52,7 +74,7 @@ source 'https://github.com/CocoaPods/Specs.git'
 platform :ios, '8.0'
 
 pod 'ReSwift'
-pod 'ReSwift-Thunk'
+pod 'ReSwiftThunk'
 ```
 
 And run `pod install`.
@@ -83,6 +105,10 @@ let package = Package(
 ## Checking out Source Code
 
 After checking out the project run `pod install` to get the latest supported version of [SwiftLint](https://github.com/realm/SwiftLint), which we use to ensure a consistent style in the codebase.
+
+## Example Projects
+
+- [ReduxMovieDB](https://github.com/cardoso/ReduxMovieDB): A simple App that queries the tmdb.org API to display the latest movies. Allows searching and viewing details. [Relevant file](https://github.com/cardoso/ReduxMovieDB/blob/master/ReduxMovieDB/Thunks.swift).
 
 ## Contributing
 
