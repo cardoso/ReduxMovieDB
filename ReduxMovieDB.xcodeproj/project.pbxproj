@@ -31,6 +31,7 @@
 		8076FB13208B6BFF00513FAC /* MainStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076FB12208B6BFF00513FAC /* MainStateAction.swift */; };
 		80BFF62021D4911A00D99771 /* MovieListViewStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFF61F21D4911A00D99771 /* MovieListViewStateTests.swift */; };
 		8F78D29FD15515E0A0DB290B /* Pods_ReduxMovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */; };
+		94CDE0A723438A6A00545FF1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94CDE0A923438A6A00545FF1 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -72,6 +73,8 @@
 		80673CC920323AA70091B48F /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		8076FB12208B6BFF00513FAC /* MainStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStateAction.swift; sourceTree = "<group>"; };
 		80BFF61F21D4911A00D99771 /* MovieListViewStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewStateTests.swift; sourceTree = "<group>"; };
+		94CDE0A823438A6A00545FF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		94CDE0AA23438AD700545FF1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E6F0F62F1051E868DD2A7A1C /* Pods-ReduxMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDBTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDBTests/Pods-ReduxMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB8B1F69E8325CD6968C206D /* Pods-ReduxMovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDB/Pods-ReduxMovieDB.debug.xcconfig"; sourceTree = "<group>"; };
@@ -134,6 +137,7 @@
 				80673C932030C3DA0091B48F /* Assets.xcassets */,
 				80673C952030C3DA0091B48F /* LaunchScreen.storyboard */,
 				80673C982030C3DA0091B48F /* Info.plist */,
+				94CDE0A923438A6A00545FF1 /* Localizable.strings */,
 			);
 			path = ReduxMovieDB;
 			sourceTree = "<group>";
@@ -319,6 +323,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 80673C802030C3DA0091B48F;
 			productRefGroup = 80673C8A2030C3DA0091B48F /* Products */;
@@ -337,6 +342,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				80673C972030C3DA0091B48F /* LaunchScreen.storyboard in Resources */,
+				94CDE0A723438A6A00545FF1 /* Localizable.strings in Resources */,
 				80673C942030C3DA0091B48F /* Assets.xcassets in Resources */,
 				80673C922030C3DA0091B48F /* Main.storyboard in Resources */,
 			);
@@ -483,6 +489,15 @@
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
+		94CDE0A923438A6A00545FF1 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				94CDE0A823438A6A00545FF1 /* en */,
+				94CDE0AA23438AD700545FF1 /* ru */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -490,6 +505,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -547,6 +563,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
