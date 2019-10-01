@@ -73,7 +73,7 @@ class MovieListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        title = NSLocalizedString("FILMS", comment: "Films view controller title")
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { height in
                 self.additionalSafeAreaInsets.bottom = height

@@ -13,10 +13,15 @@ import RxCocoa
 import RxSwift
 
 class MovieDetailViewController: UITableViewController {
+    
     @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleValue: UILabel!
     @IBOutlet weak var releaseDateLabel: UILabel!
+    @IBOutlet weak var releaseDateValue: UILabel!
     @IBOutlet weak var genreLabel: UILabel!
+    @IBOutlet weak var genreValue: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
+    @IBOutlet weak var overviewValue: UILabel!
 
     @IBOutlet weak var posterImageView: UIImageView!
 
@@ -30,6 +35,7 @@ class MovieDetailViewController: UITableViewController {
 
         setupPosterView()
         updatePosterView()
+        localize()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -94,6 +100,13 @@ class MovieDetailViewController: UITableViewController {
 
         posterView.frame = posterRect
     }
+    
+    func localize() {
+        titleLabel.text = NSLocalizedString("TITLE", comment: "Film title")
+        releaseDateLabel.text = NSLocalizedString("RELEASE_DATE", comment: "Film release date")
+        genreLabel.text = NSLocalizedString("GENRE", comment: "Film genre")
+        overviewLabel.text = NSLocalizedString("OVERVIEW", comment: "Film overview")
+    }
 }
 
 // MARK: StoreSubscriber
@@ -105,10 +118,10 @@ extension MovieDetailViewController: StoreSubscriber {
         tableView.beginUpdates()
 
         title = state.title
-        titleLabel.text = state.title
-        releaseDateLabel.text = state.date
-        genreLabel.text = state.genres
-        overviewLabel.text = state.overview
+        titleValue.text = state.title
+        releaseDateValue.text = state.date
+        genreValue.text = state.genres
+        overviewValue.text = state.overview
 
         tableView.endUpdates()
 

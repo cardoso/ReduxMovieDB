@@ -1,0 +1,19 @@
+/* 
+  Localizable.strings
+  ReduxMovieDB
+
+  Created by Aleksei Cherepanov on 01/10/2019.
+  Copyright © 2019 Matheus Cardoso. All rights reserved.
+*/
+
+"FILMS" = "Фильмы";
+
+"TITLE" = "Название";
+"RELEASE_DATE" = "Дата премьеры";
+"GENRE" = "Жанр";
+"OVERVIEW" = "Описание";
+
+"NO_TITLE" = "Без названия";
+"NO_RELEASE_DATE" = "Без даты";
+"NO_GENRE" = "Без жанра";
+"NO_OVERVIEW" = "Без описания";
