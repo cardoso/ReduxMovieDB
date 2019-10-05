@@ -19,7 +19,7 @@ platform :ios do
   lane :test do
     run_tests(
       workspace: "ReduxMovieDB.xcworkspace",
-      devices: ["iPhone 5s"],
+      devices: ["iPhone 8"],
       scheme: "ReduxMovieDB",
       code_coverage: true
     )
