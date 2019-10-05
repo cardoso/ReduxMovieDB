@@ -28,6 +28,7 @@ struct MovieListViewState: Equatable {
             searchBarText = text
             searchBarShowsCancel = true
             searchBarFirstResponder = true
+
         }
     }
 }
