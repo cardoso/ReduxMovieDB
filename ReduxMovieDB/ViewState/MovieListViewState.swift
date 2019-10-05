@@ -6,7 +6,7 @@
 //  Copyright © 2018 Matheus Cardoso. All rights reserved.
 //
 
-struct MovieListViewState {
+struct MovieListViewState: Equatable {
     let movies: [Movie]
     let searchBarText: String
     let searchBarShowsCancel: Bool
@@ -28,7 +28,6 @@ struct MovieListViewState {
             searchBarText = text
             searchBarShowsCancel = true
             searchBarFirstResponder = true
-
         }
     }
 }
