@@ -59,10 +59,10 @@ extension UIImageView {
         return "https://image.tmdb.org/t/p/w500"
     }
 
-    func setPosterForMovie(_ movie: Movie) {
+    func setPosterForMovie(_ path: String?) {
         let placeholder = UIImage(named: "poster_placeholder")
 
-        guard let posterPath = movie.posterPath,
+        guard let posterPath = path,
             let imageURL = URL(string: "\(imageBaseUrl)\(posterPath)") else {
                 image = placeholder
                 return

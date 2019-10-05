@@ -25,6 +25,7 @@ class ReduxMovieDBTests: XCTestCase {
         case .readySearch: return testReadySearch
         case .search(_): return testSearch
         case .cancelSearch: return testCancelSearch
+        case .toggleFavoriteMovie: return testToggleFavoriteMovie
         }
     }
 
@@ -152,6 +153,10 @@ class ReduxMovieDBTests: XCTestCase {
         guard case .canceled = state.search else {
             return XCTFail()
         }
+    }
+    
+    func testToggleFavoriteMovie() {
+        
     }
     
 }

@@ -22,12 +22,10 @@ enum MovieDetailState: Equatable {
 
     var movie: Movie? {
         switch self {
-        case .willHide(let movie):
+        case .willHide(let movie), .show(let movie):
             return movie
         case .hide:
             return nil
-        case .show(let movie):
-            return movie
         }
     }
 }
@@ -35,13 +33,24 @@ enum MovieDetailState: Equatable {
 struct MainState: StateType, Equatable {
     var genres: [Genre] = []
     var moviePages: Pages<Movie> = Pages<Movie>()
-
     var movieDetail: MovieDetailState = .hide
-
+    var favorites: [Movie] { return favoritesStore.favorites }
     var search: SearchState = .canceled
+    var isFavoritesList: Bool = false
 
     var movies: [Movie] {
-        return moviePages.values
+        return isFavoritesList ? favorites : moviePages.values
+    }
+    
+    func toggleFavorite() {
+        guard let movie = movieDetail.movie else { return }
+        favoritesStore.toggle(movie: movie)
+    }
+}
+
+extension MainState {
+    func isFavorite(id: Int) -> Bool {
+        return favoritesStore.isFavorite(id: id)
     }
 }
 
@@ -75,9 +84,16 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
     case .readySearch:
         state.moviePages = Pages<Movie>()
         state.search = .ready
+        state.isFavoritesList = false
     case .search(let query):
         state.moviePages = Pages<Movie>()
         state.search = .searching(query)
+        state.isFavoritesList = false
+
+    case .toggleShowFavorites:
+        state.isFavoritesList.toggle()
+    case .toggleFavoriteMovie:
+        state.toggleFavorite()
     }
 
     return state
@@ -90,3 +106,4 @@ let mainStore = Store(
     state: MainState(),
     middleware: [thunksMiddleware]
 )
+let favoritesStore: FavoritesStorage = UserDefaultsFavoritesStorage(defaults: UserDefaults.standard, key: "favorite_movies")

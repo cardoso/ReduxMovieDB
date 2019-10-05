@@ -9,19 +9,24 @@
 import Foundation
 
 struct MovieDetailViewState {
-    let movie: Movie?
-
+    let id: Int?
+    let poster: String?
     let title: String
     let date: String
     let genres: String
     let overview: String
+    let isFavorite: Bool?
 
     init(_ state: MainState) {
-        movie = state.movieDetail.movie
+        let movie = state.movieDetail.movie
+        
+        id = movie?.id
+        poster = movie?.posterPath
         date = movie?.releaseDate ?? NSLocalizedString("NO_RELEASE_DATE", comment: "Release date empty message")
         title = movie?.title ?? NSLocalizedString("NO_TITLE", comment: "Title empty message")
         overview = movie?.overview ?? NSLocalizedString("NO_OVERVIEW", comment: "Overview date empty message")
         genres = localizedGenres(movie?.genreIds ?? [], state.genres)
+        isFavorite = movie?.id.map { state.isFavorite(id: $0) } ?? nil
     }
 }
 

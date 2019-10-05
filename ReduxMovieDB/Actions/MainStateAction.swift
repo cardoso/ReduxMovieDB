@@ -20,4 +20,7 @@ enum MainStateAction: Action {
     case readySearch
     case search(String)
     case cancelSearch
+    
+    case toggleShowFavorites
+    case toggleFavoriteMovie
 }

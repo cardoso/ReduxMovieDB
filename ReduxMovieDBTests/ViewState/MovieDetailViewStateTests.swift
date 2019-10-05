@@ -27,7 +27,11 @@ class MovieDetailViewStateTests: XCTestCase {
         state.movieDetail = .willHide(movie)
         let viewState = MovieDetailViewState(state)
 
-        XCTAssertEqual(viewState.movie, movie)
+        XCTAssertEqual(viewState.id, 0)
+        XCTAssertEqual(viewState.poster, "posterPath")
+        XCTAssertEqual(viewState.title, "title")
+        XCTAssertEqual(viewState.date, "releaseDate")
+        XCTAssertEqual(viewState.overview, "overview")
     }
 
     func testInitWithMovieDetailHide() {
@@ -36,7 +40,7 @@ class MovieDetailViewStateTests: XCTestCase {
         state.movieDetail = .hide
         let viewState = MovieDetailViewState(state)
 
-        XCTAssertNil(viewState.movie)
+        XCTAssertNil(viewState.id)
     }
 
     func testInitWithMovieDetailShow() {
@@ -54,7 +58,11 @@ class MovieDetailViewStateTests: XCTestCase {
         state.movieDetail = .show(movie)
         let viewState = MovieDetailViewState(state)
 
-        XCTAssertEqual(viewState.movie, movie)
+        XCTAssertEqual(viewState.id, 0)
+        XCTAssertEqual(viewState.poster, "posterPath")
+        XCTAssertEqual(viewState.title, "title")
+        XCTAssertEqual(viewState.date, "releaseDate")
+        XCTAssertEqual(viewState.overview, "overview")
     }
 
     func testLocalizedGenres() {
