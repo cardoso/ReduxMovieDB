@@ -18,8 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mainStore.dispatch(fetchMovieGenres)
         mainStore.dispatch(fetchMoviesPage)
 
-        UIApplication.shared.statusBarStyle = .lightContent
-
         return true
     }
 }
