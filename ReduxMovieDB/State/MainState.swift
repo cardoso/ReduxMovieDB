@@ -34,7 +34,8 @@ struct MainState: StateType, Equatable {
     var genres: [Genre] = []
     var moviePages: Pages<Movie> = Pages<Movie>()
     var movieDetail: MovieDetailState = .hide
-    var favorites: [Movie] { return favoritesStore.favorites }
+    var isCurrentFavorite: Bool { movieDetail.movie?.id.map(isFavorite) ?? false }
+    var favorites: [Movie] { favoritesStore.favorites }
     var search: SearchState = .canceled
     var isFavoritesList: Bool = false
 

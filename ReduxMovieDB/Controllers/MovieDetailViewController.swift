@@ -80,9 +80,8 @@ class MovieDetailViewController: UITableViewController {
         return defaultHeight
     }
     @IBAction func toggleFavorite(_ sender: Any) {
-        guard let id = (sender as? UIButton)?.tag else { return }
-        guard id >= 0 else { return }
         mainStore.dispatch(MainStateAction.toggleFavoriteMovie)
+        favoriteButton.setTitle(mainStore.state.isCurrentFavorite ? "★" : "☆", for: .normal)
     }
     
     func setupPosterView() {
