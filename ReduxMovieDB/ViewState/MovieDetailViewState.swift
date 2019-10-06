@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct MovieDetailViewState {
+struct MovieDetailViewState: Equatable  {
     let id: Int?
     let poster: String?
     let title: String

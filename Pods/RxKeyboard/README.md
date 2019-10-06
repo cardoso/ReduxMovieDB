@@ -1,6 +1,6 @@
 # RxKeyboard
 
-![Swift](https://img.shields.io/badge/Swift-4.1-orange.svg)
+![Swift](https://img.shields.io/badge/Swift-5.0-orange.svg)
 [![CocoaPods](http://img.shields.io/cocoapods/v/RxKeyboard.svg)](https://cocoapods.org/pods/RxKeyboard)
 [![Build Status](https://travis-ci.org/RxSwiftCommunity/RxKeyboard.svg?branch=master)](https://travis-ci.org/RxSwiftCommunity/RxKeyboard)
 [![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
@@ -49,7 +49,7 @@ RxKeyboard.instance.frame
 
     ```swift
     RxKeyboard.instance.visibleHeight
-      .drive(onNext: { keyboardVisibleHeight in
+      .drive(onNext: { [scrollView] keyboardVisibleHeight in
         scrollView.contentInset.bottom = keyboardVisibleHeight
       })
       .disposed(by: disposeBag)
@@ -59,7 +59,7 @@ RxKeyboard.instance.frame
 
     ```swift
     RxKeyboard.instance.willShowVisibleHeight
-      .drive(onNext: { keyboardVisibleHeight in
+      .drive(onNext: { [scrollView] keyboardVisibleHeight in
         scrollView.contentOffset.y += keyboardVisibleHeight
       })
       .disposed(by: disposeBag)
@@ -71,8 +71,8 @@ RxKeyboard.instance.frame
 
     ```swift
     RxKeyboard.instance.visibleHeight
-      .drive(onNext: { keyboardVisibleHeight in
-        toolbar.frame.origin.y = self.view.frame.height - toolbar.frame.height - keyboardVisibleHeight
+      .drive(onNext: { [toolbar, view] keyboardVisibleHeight in
+        toolbar.frame.origin.y = view.frame.height - toolbar.frame.height - keyboardVisibleHeight
       })
       .disposed(by: disposeBag)
     ```
@@ -81,7 +81,7 @@ RxKeyboard.instance.frame
 
     ```swift
     RxKeyboard.instance.visibleHeight
-      .drive(onNext: { keyboardVisibleHeight in
+      .drive(onNext: { [toolbarBottomConstraint] keyboardVisibleHeight in
         toolbarBottomConstraint.constant = -1 * keyboardVisibleHeight
       })
       .disposed(by: disposeBag)
@@ -93,8 +93,8 @@ RxKeyboard.instance.frame
     
 ## Dependencies
 
-- [RxSwift](https://github.com/ReactiveX/RxSwift) (>= 4.1.0)
-- [RxCocoa](https://github.com/ReactiveX/RxSwift) (>= 4.1.0)
+- [RxSwift](https://github.com/ReactiveX/RxSwift) (>= 4.4.0)
+- [RxCocoa](https://github.com/ReactiveX/RxSwift) (>= 4.4.0)
 
 ## Requirements
 
@@ -124,7 +124,12 @@ $ swift package generate-xcodeproj
     ```
 
     ⚠️ With Carthage, RxKeyboard only supports binary installation:
-    
+    * 0.9.2
+        * Xcode 10.1 (10B61)
+        * Swift 4.2.1 (swiftlang-1000.11.42 clang-1000.11.45.1)
+    * 0.9.0
+        * Xcode 10 (10A255)
+        * Swift 4.2 (swiftlang-1000.11.37.1 clang-1000.11.45.1)
     * 0.8.2
         * Xcode 9.3 (9E145)
         * Swift 4.1.0 (swiftlang-902.0.48 clang-902.0.37.1)

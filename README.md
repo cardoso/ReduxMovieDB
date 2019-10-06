@@ -19,7 +19,7 @@
 ## Build instructions
 
 1. An OSX machine
-2. Xcode 10.x or higher (Swift 4.2)
+2. Xcode 11.x or higher (Swift 5.0)
 3. Install [CocoaPods](https://cocoapods.org/) (note that you will need to install at least Ruby 2.2.3 for this to work)
 ```
 sudo gem install cocoapods
