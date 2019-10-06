@@ -26,6 +26,7 @@ class ReduxMovieDBTests: XCTestCase {
         case .search(_): return testSearch
         case .cancelSearch: return testCancelSearch
         case .toggleFavoriteMovie: return testToggleFavoriteMovie
+        case .toggleShowFavorites: return toggleShowFavorites
         }
     }
 
@@ -155,8 +156,7 @@ class ReduxMovieDBTests: XCTestCase {
         }
     }
     
-    func testToggleFavoriteMovie() {
-        
-    }
+    func testToggleFavoriteMovie() {}
+    func toggleShowFavorites() {}
     
 }
