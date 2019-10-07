@@ -26,7 +26,7 @@ DEPENDENCIES:
   - RxSwift (~> 5)
 
 SPEC REPOS:
-  https://cdn.cocoapods.org/:
+  trunk:
     - DifferenceKit
     - Nuke
     - ReSwift

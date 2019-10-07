@@ -32,10 +32,18 @@
 		80BFF62021D4911A00D99771 /* MovieListViewStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFF61F21D4911A00D99771 /* MovieListViewStateTests.swift */; };
 		8F78D29FD15515E0A0DB290B /* Pods_ReduxMovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */; };
 		94CDE0A723438A6A00545FF1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94CDE0A923438A6A00545FF1 /* Localizable.strings */; };
+		DE966D35234B781A00CCB0F0 /* ReduxMovieDBUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE966D34234B781A00CCB0F0 /* ReduxMovieDBUITests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
 		80673C9E2030C3DA0091B48F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 80673C812030C3DA0091B48F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 80673C882030C3DA0091B48F;
+			remoteInfo = ReduxMovieDB;
+		};
+		DE966D37234B781A00CCB0F0 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 80673C812030C3DA0091B48F /* Project object */;
 			proxyType = 1;
@@ -76,6 +84,9 @@
 		94CDE0A823438A6A00545FF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		94CDE0AA23438AD700545FF1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE966D32234B781A00CCB0F0 /* ReduxMovieDBUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ReduxMovieDBUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DE966D34234B781A00CCB0F0 /* ReduxMovieDBUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReduxMovieDBUITests.swift; sourceTree = "<group>"; };
+		DE966D36234B781A00CCB0F0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E6F0F62F1051E868DD2A7A1C /* Pods-ReduxMovieDBTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDBTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDBTests/Pods-ReduxMovieDBTests.release.xcconfig"; sourceTree = "<group>"; };
 		EB8B1F69E8325CD6968C206D /* Pods-ReduxMovieDB.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ReduxMovieDB.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ReduxMovieDB/Pods-ReduxMovieDB.debug.xcconfig"; sourceTree = "<group>"; };
 		FE35D096699EA77E6EA5F571 /* Pods_ReduxMovieDB.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxMovieDB.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -98,6 +109,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DE966D2F234B781A00CCB0F0 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -106,6 +124,7 @@
 			children = (
 				80673C8B2030C3DA0091B48F /* ReduxMovieDB */,
 				80673CA02030C3DA0091B48F /* ReduxMovieDBTests */,
+				DE966D33234B781A00CCB0F0 /* ReduxMovieDBUITests */,
 				80673C8A2030C3DA0091B48F /* Products */,
 				D4C24798534322BDDE0E79FC /* Pods */,
 				8D98CBDEDF94752D402B757F /* Frameworks */,
@@ -117,6 +136,7 @@
 			children = (
 				80673C892030C3DA0091B48F /* ReduxMovieDB.app */,
 				80673C9D2030C3DA0091B48F /* ReduxMovieDBTests.xctest */,
+				DE966D32234B781A00CCB0F0 /* ReduxMovieDBUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -252,6 +272,15 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
+		DE966D33234B781A00CCB0F0 /* ReduxMovieDBUITests */ = {
+			isa = PBXGroup;
+			children = (
+				DE966D34234B781A00CCB0F0 /* ReduxMovieDBUITests.swift */,
+				DE966D36234B781A00CCB0F0 /* Info.plist */,
+			);
+			path = ReduxMovieDBUITests;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -293,13 +322,31 @@
 			productReference = 80673C9D2030C3DA0091B48F /* ReduxMovieDBTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		DE966D31234B781A00CCB0F0 /* ReduxMovieDBUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = DE966D39234B781A00CCB0F0 /* Build configuration list for PBXNativeTarget "ReduxMovieDBUITests" */;
+			buildPhases = (
+				DE966D2E234B781A00CCB0F0 /* Sources */,
+				DE966D2F234B781A00CCB0F0 /* Frameworks */,
+				DE966D30234B781A00CCB0F0 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				DE966D38234B781A00CCB0F0 /* PBXTargetDependency */,
+			);
+			name = ReduxMovieDBUITests;
+			productName = ReduxMovieDBUITests;
+			productReference = DE966D32234B781A00CCB0F0 /* ReduxMovieDBUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		80673C812030C3DA0091B48F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0920;
+				LastSwiftUpdateCheck = 1030;
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Matheus Cardoso";
 				TargetAttributes = {
@@ -311,6 +358,11 @@
 					80673C9C2030C3DA0091B48F = {
 						CreatedOnToolsVersion = 9.2;
 						LastSwiftMigration = 1020;
+						ProvisioningStyle = Automatic;
+						TestTargetID = 80673C882030C3DA0091B48F;
+					};
+					DE966D31234B781A00CCB0F0 = {
+						CreatedOnToolsVersion = 10.3;
 						ProvisioningStyle = Automatic;
 						TestTargetID = 80673C882030C3DA0091B48F;
 					};
@@ -332,6 +384,7 @@
 			targets = (
 				80673C882030C3DA0091B48F /* ReduxMovieDB */,
 				80673C9C2030C3DA0091B48F /* ReduxMovieDBTests */,
+				DE966D31234B781A00CCB0F0 /* ReduxMovieDBUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -349,6 +402,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		80673C9B2030C3DA0091B48F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		DE966D30234B781A00CCB0F0 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -462,6 +522,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		DE966D2E234B781A00CCB0F0 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				DE966D35234B781A00CCB0F0 /* ReduxMovieDBUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -469,6 +537,11 @@
 			isa = PBXTargetDependency;
 			target = 80673C882030C3DA0091B48F /* ReduxMovieDB */;
 			targetProxy = 80673C9E2030C3DA0091B48F /* PBXContainerItemProxy */;
+		};
+		DE966D38234B781A00CCB0F0 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 80673C882030C3DA0091B48F /* ReduxMovieDB */;
+			targetProxy = DE966D37234B781A00CCB0F0 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -552,7 +625,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -607,7 +680,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -622,7 +695,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FWD9V5VYJ2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ReduxMovieDB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cardoso.ReduxMovieDB;
@@ -638,7 +711,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = FWD9V5VYJ2;
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ReduxMovieDB/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cardoso.ReduxMovieDB;
@@ -684,6 +757,41 @@
 			};
 			name = Release;
 		};
+		DE966D3A234B781A00CCB0F0 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ReduxMovieDBUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = thaysprado.ReduxMovieDBUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ReduxMovieDB;
+			};
+			name = Debug;
+		};
+		DE966D3B234B781A00CCB0F0 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CODE_SIGN_STYLE = Automatic;
+				INFOPLIST_FILE = ReduxMovieDBUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				MTL_FAST_MATH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = thaysprado.ReduxMovieDBUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = ReduxMovieDB;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -710,6 +818,15 @@
 			buildConfigurations = (
 				80673CAA2030C3DA0091B48F /* Debug */,
 				80673CAB2030C3DA0091B48F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		DE966D39234B781A00CCB0F0 /* Build configuration list for PBXNativeTarget "ReduxMovieDBUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				DE966D3A234B781A00CCB0F0 /* Debug */,
+				DE966D3B234B781A00CCB0F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

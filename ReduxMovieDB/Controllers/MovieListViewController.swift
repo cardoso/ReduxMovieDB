@@ -21,6 +21,7 @@ class MovieListViewController: UIViewController {
         didSet {
             moviesTableView.backgroundView = UIView()
             moviesTableView.backgroundView?.backgroundColor = moviesTableView.backgroundColor
+            moviesTableView.accessibilityIdentifier = "moviesTable"
 
             moviesTableView.rx.itemSelected
                 .map { self.movies[$0.row] }
@@ -38,6 +39,9 @@ class MovieListViewController: UIViewController {
 
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
+            
+            searchBar.accessibilityIdentifier = "searchBar"
+            
             searchBar.rx.textDidBeginEditing
                 .filter { self.searchBar.text?.isEmpty ?? false }
                 .bind(onNext: {
@@ -156,6 +160,7 @@ extension MovieListViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         cell.selectionStyle = .none
+        cell.accessibilityIdentifier = "movie_\(indexPath.row)"
 
         return cell
     }
