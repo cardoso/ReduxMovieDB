@@ -1,70 +1,68 @@
-{
-    "contributors": [
-        {
-          "login": "cardoso",
-          "id": 5606812,
-          "avatar_url": "https://avatars3.githubusercontent.com/u/5606812?v=4",
-          "url": "https://api.github.com/users/cardoso",
-          "html_url": "https://github.com/cardoso",
-          "name": "Matheus Cardoso",
-          "company": "@VirgilSecurity",
-          "blog": "https://cardo.so",
-          "email": null
-        },
-        {
-          "login": "fbernutz",
-          "id": 26111180,
-          "avatar_url": "https://avatars2.githubusercontent.com/u/26111180?v=4",
-          "url": "https://api.github.com/users/fbernutz",
-          "html_url": "https://github.com/fbernutz",
-          "name": "Felizia Bernutz",
-          "company": "@adorsys ",
-          "blog": "twitter.com/felibe444",
-          "email": null
-        },
-        {
-          "login": "pchelnikov",
-          "id": 1557594,
-          "avatar_url": "https://avatars2.githubusercontent.com/u/1557594?v=4",
-          "url": "https://api.github.com/users/pchelnikov",
-          "html_url": "https://github.com/pchelnikov",
-          "name": "Michael Pchelnikov",
-          "company": "@daresaydigital",
-          "blog": "http://pchelnikov.com",
-          "email": null
-        },
-        {
-          "login": "nivanchikov",
-          "id": 1830010,
-          "avatar_url": "https://avatars3.githubusercontent.com/u/1830010?v=4",
-          "url": "https://api.github.com/users/nivanchikov",
-          "html_url": "https://github.com/nivanchikov",
-          "name": "Nikita Ivanchikov",
-          "company": null,
-          "blog": "",
-          "email": null
-        },
-        {
-          "login": "ftp27",
-          "id": 579162,
-          "avatar_url": "https://avatars0.githubusercontent.com/u/579162?v=4",
-          "url": "https://api.github.com/users/ftp27",
-          "html_url": "https://github.com/ftp27",
-          "name": "Aleksei Cherepanov",
-          "company": null,
-          "blog": "http://ftp27.ru",
-          "email": null
-        },
-        {
-          "login": "christopher-fredregill",
-          "id": 16979231,
-          "avatar_url": "https://avatars3.githubusercontent.com/u/16979231?v=4",
-          "url": "https://api.github.com/users/christopher-fredregill",
-          "html_url": "https://github.com/christopher-fredregill",
-          "name": "Christopher Fredregill",
-          "company": null,
-          "blog": "www.inamona.com",
-          "email": null
-        }
-    ]
-}
+[
+    {
+      "login": "cardoso",
+      "id": 5606812,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5606812?v=4",
+      "url": "https://api.github.com/users/cardoso",
+      "html_url": "https://github.com/cardoso",
+      "name": "Matheus Cardoso",
+      "company": "@VirgilSecurity",
+      "blog": "https://cardo.so",
+      "email": null
+    },
+    {
+      "login": "fbernutz",
+      "id": 26111180,
+      "avatar_url": "https://avatars2.githubusercontent.com/u/26111180?v=4",
+      "url": "https://api.github.com/users/fbernutz",
+      "html_url": "https://github.com/fbernutz",
+      "name": "Felizia Bernutz",
+      "company": "@adorsys ",
+      "blog": "twitter.com/felibe444",
+      "email": null
+    },
+    {
+      "login": "pchelnikov",
+      "id": 1557594,
+      "avatar_url": "https://avatars2.githubusercontent.com/u/1557594?v=4",
+      "url": "https://api.github.com/users/pchelnikov",
+      "html_url": "https://github.com/pchelnikov",
+      "name": "Michael Pchelnikov",
+      "company": "@daresaydigital",
+      "blog": "http://pchelnikov.com",
+      "email": null
+    },
+    {
+      "login": "nivanchikov",
+      "id": 1830010,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/1830010?v=4",
+      "url": "https://api.github.com/users/nivanchikov",
+      "html_url": "https://github.com/nivanchikov",
+      "name": "Nikita Ivanchikov",
+      "company": null,
+      "blog": "",
+      "email": null
+    },
+    {
+      "login": "ftp27",
+      "id": 579162,
+      "avatar_url": "https://avatars0.githubusercontent.com/u/579162?v=4",
+      "url": "https://api.github.com/users/ftp27",
+      "html_url": "https://github.com/ftp27",
+      "name": "Aleksei Cherepanov",
+      "company": null,
+      "blog": "http://ftp27.ru",
+      "email": null
+    },
+    {
+      "login": "christopher-fredregill",
+      "id": 16979231,
+      "avatar_url": "https://avatars3.githubusercontent.com/u/16979231?v=4",
+      "url": "https://api.github.com/users/christopher-fredregill",
+      "html_url": "https://github.com/christopher-fredregill",
+      "name": "Christopher Fredregill",
+      "company": null,
+      "blog": "www.inamona.com",
+      "email": null
+    }
+]

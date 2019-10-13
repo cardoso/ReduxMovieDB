@@ -43,6 +43,8 @@ struct MainState: StateType, Equatable {
     var movies: [Movie] {
         return moviePages.values
     }
+
+    var contributors: [Contributor] = []
 }
 
 func mainReducer(action: Action, state: MainState?) -> MainState {
@@ -78,6 +80,9 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
     case .search(let query):
         state.moviePages = Pages<Movie>()
         state.search = .searching(query)
+
+    case .addContributors(let contributors):
+        state.contributors.append(contentsOf: contributors)
     }
 
     return state

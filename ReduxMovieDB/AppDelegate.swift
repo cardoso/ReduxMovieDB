@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,8 +18,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         mainStore.dispatch(fetchMovieGenres)
         mainStore.dispatch(fetchMoviesPage)
+        mainStore.dispatch(fetchContributors)
+
+        window?.rootViewController = ContributorListController(rootView: ContributorList())
 
         return true
     }
 }
-
