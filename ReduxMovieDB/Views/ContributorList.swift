@@ -19,7 +19,7 @@ struct ContributorList: View {
             NavigationView() {
                 List(contributorData) { contributor in
                     ContributorRow(contributor: contributor)
-                }.navigationBarTitle("Contributors")
+                }.navigationBarTitle(NSLocalizedString("CONTRIBUTORS", comment: "Contributor list title"))
             }
         }
     }
