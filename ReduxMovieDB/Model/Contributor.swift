@@ -16,8 +16,8 @@ struct Contributor: Codable, Equatable {
     let url: String
     let html_url: String
     let name: String
-    let company: String?
-    let blog: String?
+    var company: String?
+    var blog: String?
     let email: String?
 
     private enum CodingKeys: String, CodingKey {
@@ -32,5 +32,11 @@ struct Contributor: Codable, Equatable {
         case email
     }
 
-    var avatar: UIImage?
+    var avatar: UIImage? {
+        guard
+            let avatarUrl = URL(string: avatarUrl),
+            let avatarData = try? Data(contentsOf: avatarUrl)
+            else { return UIImage(named: "avatar_placeholder") }
+        return UIImage(data: avatarData)
+    }
 }
