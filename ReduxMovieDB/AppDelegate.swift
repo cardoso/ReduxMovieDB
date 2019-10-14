@@ -20,8 +20,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         mainStore.dispatch(fetchMoviesPage)
         mainStore.dispatch(fetchContributors)
 
-        window?.rootViewController = ContributorListController(rootView: ContributorList())
-
         return true
     }
 }
