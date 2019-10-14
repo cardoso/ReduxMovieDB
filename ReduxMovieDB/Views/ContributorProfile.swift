@@ -7,6 +7,7 @@
 //
 
 import SwiftUI
+import ReSwift
 
 struct ContributorProfile: View {
 
@@ -14,9 +15,7 @@ struct ContributorProfile: View {
 
     var body: some View {
         VStack {
-            contributor.avatar.map { (image) -> Image in
-                Image.init(uiImage: image)
-            }
+            contributor.avatar.map { Image(uiImage: $0) }
             Text(contributor.login)
             Text(contributor.html_url)
             contributor.company.map(Text.init)
