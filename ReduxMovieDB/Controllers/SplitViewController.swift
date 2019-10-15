@@ -54,6 +54,12 @@ extension SplitViewController: StoreSubscriber {
 
 extension SplitViewController: UISplitViewControllerDelegate {
     func splitViewController(_ splitViewController: UISplitViewController, collapseSecondary secondaryViewController: UIViewController, onto primaryViewController: UIViewController) -> Bool {
+        mainStore.dispatch(MainStateAction.collapseSplitDetail)
         return true
+    }
+    
+    func splitViewController(_ splitViewController: UISplitViewController, separateSecondaryFrom primaryViewController: UIViewController) -> UIViewController? {
+        mainStore.dispatch(MainStateAction.separateSplitDetail)
+        return nil
     }
 }

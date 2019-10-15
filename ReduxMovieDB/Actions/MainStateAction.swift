@@ -23,4 +23,7 @@ enum MainStateAction: Action {
     
     case toggleShowFavorites
     case toggleFavoriteMovie
+
+    case collapseSplitDetail
+    case separateSplitDetail
 }
