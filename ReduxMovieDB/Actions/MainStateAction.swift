@@ -21,5 +21,8 @@ enum MainStateAction: Action {
     case search(String)
     case cancelSearch
 
+    case collapseSplitDetail
+    case separateSplitDetail
+
     case addContributors([Contributor])
 }

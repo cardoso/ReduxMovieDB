@@ -32,11 +32,17 @@ enum MovieDetailState: Equatable {
     }
 }
 
+enum SplitDetailState: Equatable {
+    case collapsed
+    case separated
+}
+
 struct MainState: StateType, Equatable {
     var genres: [Genre] = []
     var moviePages: Pages<Movie> = Pages<Movie>()
 
     var movieDetail: MovieDetailState = .hide
+    var splitDetail: SplitDetailState = .separated
 
     var search: SearchState = .canceled
 
@@ -45,6 +51,16 @@ struct MainState: StateType, Equatable {
     }
 
     var contributors: [Contributor] = []
+    
+    var canDispatchSearchActions: Bool {
+        switch (splitDetail, movieDetail) {
+        case (.separated, _),
+             (.collapsed, .hide):
+            return true
+        default:
+            return false
+        }
+    }
 }
 
 func mainReducer(action: Action, state: MainState?) -> MainState {
@@ -81,9 +97,14 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
         state.moviePages = Pages<Movie>()
         state.search = .searching(query)
 
+    case .collapseSplitDetail:
+        state.splitDetail = .collapsed
+    case .separateSplitDetail:
+        state.splitDetail = .separated
+    }
+
     case .addContributors(let contributors):
         state.contributors.append(contentsOf: contributors)
-    }
 
     return state
 }
