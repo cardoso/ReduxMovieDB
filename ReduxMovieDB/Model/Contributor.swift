@@ -18,7 +18,7 @@ struct Contributor: Codable, Equatable {
     let name: String
     var company: String?
     var blog: String?
-    let email: String?
+    var email: String?
 
     private enum CodingKeys: String, CodingKey {
         case login

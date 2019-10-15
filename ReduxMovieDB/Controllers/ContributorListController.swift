@@ -10,12 +10,10 @@ import UIKit
 import SwiftUI
 import ReSwift
 
-class ContributorListController: UIHostingController<ContributorList>, StoreSubscriber {
+class ContributorListController: UIHostingController<ContributorList> {
 
-    typealias StoreSubscriberStateType = MainState
-
-    func newState(state: MainState) {
-        self.rootView.contributorData = state.contributors
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder, rootView: ContributorList())
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -24,5 +22,13 @@ class ContributorListController: UIHostingController<ContributorList>, StoreSubs
 
     override func viewWillDisappear(_ animated: Bool) {
         mainStore.unsubscribe(self)
+    }
+}
+
+extension ContributorListController: StoreSubscriber {
+    typealias StoreSubscriberStateType = MainState
+
+    func newState(state: MainState) {
+        self.rootView.contributorData = state.contributors
     }
 }
