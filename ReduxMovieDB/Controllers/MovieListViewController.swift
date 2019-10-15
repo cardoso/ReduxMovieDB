@@ -70,6 +70,10 @@ class MovieListViewController: UIViewController {
                 .disposed(by: disposeBag)
         }
     }
+    
+    var isInSplitViewPresentation: Bool {
+        return !(splitViewController?.isCollapsed ?? true)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -90,6 +94,17 @@ class MovieListViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         mainStore.unsubscribe(self)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        coordinator.animate(alongsideTransition: nil) { _ in
+            self.moviesTableView.visibleCells.forEach {
+                if let cell = $0 as? MovieListTableViewCell {
+                    cell.setDisclosureIndicator(visible: !self.isInSplitViewPresentation)
+                }
+            }
+        }
+        super.viewWillTransition(to: size, with: coordinator)
     }
 }
 
@@ -121,12 +136,6 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
 
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        accessoryType = selected ? .none : .disclosureIndicator
-    }
-
     var movie: Movie? {
         didSet {
             guard let movie = movie else { return }
@@ -135,6 +144,12 @@ class MovieListTableViewCell: UITableViewCell {
             title.text = movie.title
             subtitle.text = movie.releaseDate?.description ?? ""
         }
+    }
+}
+
+extension MovieListTableViewCell {
+    func setDisclosureIndicator(visible: Bool) {
+        accessoryType = visible ? .disclosureIndicator : .none
     }
 }
 
@@ -153,7 +168,7 @@ extension MovieListViewController: UITableViewDataSource {
         }
 
         cell.movie = movies[indexPath.row]
-        cell.accessoryType = .disclosureIndicator
+        cell.setDisclosureIndicator(visible: !isInSplitViewPresentation)
         cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         cell.selectionStyle = .none
 
