@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "1100"
-   version = "1.7">
+   LastUpgradeVersion = "1030"
+   version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
       buildImplicitDependencies = "YES">
@@ -9,36 +9,8 @@
          <BuildActionEntry
             buildForTesting = "YES"
             buildForRunning = "YES"
-            buildForProfiling = "YES"
+            buildForProfiling = "NO"
             buildForArchiving = "YES"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80673C882030C3DA0091B48F"
-               BuildableName = "ReduxMovieDB.app"
-               BlueprintName = "ReduxMovieDB"
-               ReferencedContainer = "container:ReduxMovieDB.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
-            buildForAnalyzing = "YES">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80673C9C2030C3DA0091B48F"
-               BuildableName = "ReduxMovieDBTests.xctest"
-               BlueprintName = "ReduxMovieDBTests"
-               ReferencedContainer = "container:ReduxMovieDB.xcodeproj">
-            </BuildableReference>
-         </BuildActionEntry>
-         <BuildActionEntry
-            buildForTesting = "YES"
-            buildForRunning = "YES"
-            buildForProfiling = "NO"
-            buildForArchiving = "NO"
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
@@ -54,19 +26,8 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      codeCoverageEnabled = "YES"
       shouldUseLaunchSchemeArgsEnv = "YES">
       <Testables>
-         <TestableReference
-            skipped = "NO">
-            <BuildableReference
-               BuildableIdentifier = "primary"
-               BlueprintIdentifier = "80673C9C2030C3DA0091B48F"
-               BuildableName = "ReduxMovieDBTests.xctest"
-               BlueprintName = "ReduxMovieDBTests"
-               ReferencedContainer = "container:ReduxMovieDB.xcodeproj">
-            </BuildableReference>
-         </TestableReference>
          <TestableReference
             skipped = "NO">
             <BuildableReference
@@ -81,9 +42,9 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80673C882030C3DA0091B48F"
-            BuildableName = "ReduxMovieDB.app"
-            BlueprintName = "ReduxMovieDB"
+            BlueprintIdentifier = "DE966D31234B781A00CCB0F0"
+            BuildableName = "ReduxMovieDBUITests.xctest"
+            BlueprintName = "ReduxMovieDBUITests"
             ReferencedContainer = "container:ReduxMovieDB.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -94,30 +55,23 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      language = "ru"
       launchStyle = "0"
       useCustomWorkingDirectory = "NO"
       ignoresPersistentStateOnLaunch = "NO"
       debugDocumentVersioning = "YES"
       debugServiceExtension = "internal"
-      allowLocationSimulation = "YES"
-      showNonLocalizedStrings = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      allowLocationSimulation = "YES">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80673C882030C3DA0091B48F"
-            BuildableName = "ReduxMovieDB.app"
-            BlueprintName = "ReduxMovieDB"
+            BlueprintIdentifier = "DE966D31234B781A00CCB0F0"
+            BuildableName = "ReduxMovieDBUITests.xctest"
+            BlueprintName = "ReduxMovieDBUITests"
             ReferencedContainer = "container:ReduxMovieDB.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
       <AdditionalOptions>
       </AdditionalOptions>
-      <LocationScenarioReference
-         identifier = "com.apple.dt.IDEFoundation.CurrentLocationScenarioIdentifier"
-         referenceType = "1">
-      </LocationScenarioReference>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -125,16 +79,15 @@
       savedToolIdentifier = ""
       useCustomWorkingDirectory = "NO"
       debugDocumentVersioning = "YES">
-      <BuildableProductRunnable
-         runnableDebuggingMode = "0">
+      <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "80673C882030C3DA0091B48F"
-            BuildableName = "ReduxMovieDB.app"
-            BlueprintName = "ReduxMovieDB"
+            BlueprintIdentifier = "DE966D31234B781A00CCB0F0"
+            BuildableName = "ReduxMovieDBUITests.xctest"
+            BlueprintName = "ReduxMovieDBUITests"
             ReferencedContainer = "container:ReduxMovieDB.xcodeproj">
          </BuildableReference>
-      </BuildableProductRunnable>
+      </MacroExpansion>
    </ProfileAction>
    <AnalyzeAction
       buildConfiguration = "Debug">

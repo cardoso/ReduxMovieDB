@@ -15,7 +15,7 @@ extension UIImageView {
             return activityIndicator
         }
 
-        let activityIndicator = UIActivityIndicatorView(style: .medium)
+        let activityIndicator = UIActivityIndicatorView(style: .whiteLarge)
         addSubview(activityIndicator)
 
         activityIndicator.translatesAutoresizingMaskIntoConstraints = false
