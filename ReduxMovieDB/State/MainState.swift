@@ -101,10 +101,10 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
         state.splitDetail = .collapsed
     case .separateSplitDetail:
         state.splitDetail = .separated
-    }
 
     case .addContributors(let contributors):
         state.contributors.append(contentsOf: contributors)
+    }
 
     return state
 }
