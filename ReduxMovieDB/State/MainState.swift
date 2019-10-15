@@ -49,6 +49,8 @@ struct MainState: StateType, Equatable {
     var movies: [Movie] {
         return moviePages.values
     }
+
+    var contributors: [Contributor] = []
     
     var canDispatchSearchActions: Bool {
         switch (splitDetail, movieDetail) {
@@ -94,10 +96,14 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
     case .search(let query):
         state.moviePages = Pages<Movie>()
         state.search = .searching(query)
+
     case .collapseSplitDetail:
         state.splitDetail = .collapsed
     case .separateSplitDetail:
         state.splitDetail = .separated
+
+    case .addContributors(let contributors):
+        state.contributors.append(contentsOf: contributors)
     }
 
     return state

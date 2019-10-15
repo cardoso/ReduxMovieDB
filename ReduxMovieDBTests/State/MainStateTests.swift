@@ -25,6 +25,7 @@ class ReduxMovieDBTests: XCTestCase {
         case .readySearch: return testReadySearch
         case .search(_): return testSearch
         case .cancelSearch: return testCancelSearch
+        case .addContributors(_): return testAddContributors
         case .collapseSplitDetail: return testCollapseSplitDetail
         case .separateSplitDetail: return testSeparateSplitDetail
         }
@@ -154,6 +155,17 @@ class ReduxMovieDBTests: XCTestCase {
         guard case .canceled = state.search else {
             return XCTFail()
         }
+    }
+
+    func testAddContributors() {
+        let contributor1 = Contributor(login: "contributor1", id: 1, avatarUrl: "avatarUrl1", url: "url1", html_url: "htmlUrl1", name: "Contributor One")
+        let contributor2 = Contributor(login: "contributor2", id: 2, avatarUrl: "avatarUrl2", url: "url2", html_url: "htmlUrl1", name: "Contributor Two")
+        let action = MainStateAction.addContributors([contributor1, contributor2])
+
+        let state = mainReducer(action: action, state: nil)
+
+        XCTAssert(state.contributors.contains(contributor1))
+        XCTAssert(state.contributors.contains(contributor2))
     }
     
     func testCollapseSplitDetail() {

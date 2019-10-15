@@ -11,6 +11,7 @@ import ReSwift
 import RxCocoa
 import RxSwift
 import RxKeyboard
+import SwiftUI
 
 class MovieListViewController: UIViewController {
     var movies: [Movie] = []

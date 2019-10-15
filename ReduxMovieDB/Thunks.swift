@@ -80,3 +80,20 @@ let fetchMoviesPage = Thunk<MainState> { dispatch, getState in
         dispatch(fetchNextUpcomingMoviesPage)
     }
 }
+
+let fetchContributors = Thunk<MainState> { dispatch, getState in
+    guard let state = getState() else { return }
+
+    DispatchQueue.main.async {
+        if let path = Bundle.main.path(forResource: "contributors", ofType: "json") {
+            do {
+                let data = try Data(contentsOf: URL(fileURLWithPath: path), options: .alwaysMapped)
+                let json = try JSONSerialization.jsonObject(with: data, options: .allowFragments)
+                let contributors = try JSONDecoder().decode([Contributor].self, from: data)
+                dispatch(MainStateAction.addContributors(contributors))
+            } catch _ {
+                dispatch(MainStateAction.addContributors([]))
+            }
+        }
+    }
+}
