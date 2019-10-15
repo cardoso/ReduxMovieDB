@@ -121,6 +121,12 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
 
+    override func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
+
+        accessoryType = selected ? .none : .disclosureIndicator
+    }
+
     var movie: Movie? {
         didSet {
             guard let movie = movie else { return }
@@ -147,7 +153,7 @@ extension MovieListViewController: UITableViewDataSource {
         }
 
         cell.movie = movies[indexPath.row]
-        cell.accessoryType = .none
+        cell.accessoryType = .disclosureIndicator
         cell.separatorInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: .greatestFiniteMagnitude)
         cell.selectionStyle = .none
 
