@@ -28,6 +28,8 @@ class ReduxMovieDBTests: XCTestCase {
         case .cancelSearch: return testCancelSearch
         case .toggleFavoriteMovie: return testToggleFavoriteMovie
         case .toggleShowFavorites: return testToggleShowFavorites
+        case .collapseSplitDetail: return testCollapseSplitDetail
+        case .separateSplitDetail: return testSeparateSplitDetail
         }
     }
 
@@ -179,4 +181,57 @@ class ReduxMovieDBTests: XCTestCase {
         XCTAssertTrue(state.isFavoritesList)
     }
     
+    func testCollapseSplitDetail() {
+        let action = MainStateAction.collapseSplitDetail
+        
+        let state = mainReducer(action: action, state: nil)
+
+        guard case .collapsed = state.splitDetail else {
+            return XCTFail()
+        }
+    }
+    
+    func testSeparateSplitDetail() {
+       let action = MainStateAction.separateSplitDetail
+       
+       let state = mainReducer(action: action, state: nil)
+
+       guard case .separated = state.splitDetail else {
+           return XCTFail()
+       }
+    }
+    
+    func testSearchEventsDispatchOnSplitCollapse() {
+        let action1 = MainStateAction.collapseSplitDetail
+        let state1 = mainReducer(action: action1, state: nil)
+        
+        let action2 = MainStateAction.showMovieDetail(
+            Movie(id: 0, title: "title", releaseDate: "date", posterPath: "path", genreIds: [], overview: "")
+        )
+        let state2 = mainReducer(action: action2, state: state1)
+        
+        let action3 = MainStateAction.hideMovieDetail
+        let state3 = mainReducer(action: action3, state: state2)
+        
+        XCTAssert(state1.canDispatchSearchActions == true)
+        XCTAssert(state2.canDispatchSearchActions == false)
+        XCTAssert(state3.canDispatchSearchActions == true)
+    }
+    
+    func testSearchEventsDispatchOnSplitSeparate() {
+        let action1 = MainStateAction.separateSplitDetail
+        let state1 = mainReducer(action: action1, state: nil)
+        
+        let action2 = MainStateAction.showMovieDetail(
+            Movie(id: 0, title: "title", releaseDate: "date", posterPath: "path", genreIds: [], overview: "")
+        )
+        let state2 = mainReducer(action: action2, state: state1)
+        
+        let action3 = MainStateAction.hideMovieDetail
+        let state3 = mainReducer(action: action3, state: state2)
+        
+        XCTAssert(state1.canDispatchSearchActions == true)
+        XCTAssert(state2.canDispatchSearchActions == true)
+        XCTAssert(state3.canDispatchSearchActions == true)
+    }
 }

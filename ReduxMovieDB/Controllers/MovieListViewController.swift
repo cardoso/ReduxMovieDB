@@ -39,7 +39,7 @@ class MovieListViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
             searchBar.rx.textDidBeginEditing
-                .filter { self.searchBar.text?.isEmpty ?? false }
+                .filter { (self.searchBar.text?.isEmpty ?? false) && mainStore.state.canDispatchSearchActions }
                 .bind(onNext: {
                     mainStore.dispatch(MainStateAction.readySearch)
                     mainStore.dispatch(fetchMoviesPage)
@@ -47,7 +47,7 @@ class MovieListViewController: UIViewController {
                 .disposed(by: disposeBag)
 
             searchBar.rx.text.orEmpty
-                .filter { !$0.isEmpty }
+                .filter { !$0.isEmpty && mainStore.state.canDispatchSearchActions }
                 .bind(onNext: {
                     mainStore.dispatch(MainStateAction.search($0))
                     mainStore.dispatch(fetchMoviesPage)
@@ -55,7 +55,7 @@ class MovieListViewController: UIViewController {
                 .disposed(by: disposeBag)
 
             searchBar.rx.text.orEmpty
-                .filter { $0.isEmpty }
+                .filter { $0.isEmpty && mainStore.state.canDispatchSearchActions }
                 .bind(onNext: { _ in
                     mainStore.dispatch(MainStateAction.readySearch)
                     mainStore.dispatch(fetchMoviesPage)
