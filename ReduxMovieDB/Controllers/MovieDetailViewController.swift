@@ -22,7 +22,19 @@ class MovieDetailViewController: UITableViewController {
     @IBOutlet weak var genreValue: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var overviewValue: UILabel!
-
+    @IBOutlet weak var favoriteButton: UIButton! {
+        didSet {
+            favoriteButton
+            .rx
+            .tap
+            .subscribe { [weak self] (event) in
+                guard case .next = event else { return }
+                mainStore.dispatch(MainStateAction.toggleFavoriteMovie)
+                self?.favoriteButton.setTitle(mainStore.state.isCurrentFavorite.star, for: .normal)
+            }.disposed(by: disposeBag)
+        }
+    }
+    
     @IBOutlet weak var posterImageView: UIImageView!
 
     private let posterViewHeight: CGFloat = 300
@@ -78,7 +90,7 @@ class MovieDetailViewController: UITableViewController {
 
         return defaultHeight
     }
-
+    
     func setupPosterView() {
         posterView = tableView.tableHeaderView
         tableView.tableHeaderView = nil
@@ -122,13 +134,16 @@ extension MovieDetailViewController: StoreSubscriber {
         releaseDateValue.text = state.date
         genreValue.text = state.genres
         overviewValue.text = state.overview
+        
+        if let isFavorite = state.isFavorite {
+            favoriteButton.setTitle(isFavorite.star, for: .normal)
+            favoriteButton.isEnabled = true
+        } else {
+            favoriteButton.isEnabled = false
+        }
 
         tableView.endUpdates()
 
-        if let movie = state.movie {
-            posterImageView.setPosterForMovie(movie)
-        } else {
-            posterImageView.image = nil
-        }
+        posterImageView.setPosterForMovie(state.poster)
     }
 }

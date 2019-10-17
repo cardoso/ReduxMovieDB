@@ -70,6 +70,19 @@ class MovieListViewController: UIViewController {
                 .disposed(by: disposeBag)
         }
     }
+    
+    @IBOutlet weak var favoritesToggleItem: UIBarButtonItem! {
+        didSet {
+            favoritesToggleItem
+            .rx
+            .tap
+            .subscribe { [weak self] (event) in
+                guard case .next = event else { return }
+                mainStore.dispatch(MainStateAction.toggleShowFavorites)
+                self?.favoritesToggleItem.title = mainStore.state.isFavoritesList.star
+            }.disposed(by: disposeBag)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -120,7 +133,8 @@ class MovieListTableViewCell: UITableViewCell {
     @IBOutlet weak var icon: UIImageView!
     @IBOutlet weak var title: UILabel!
     @IBOutlet weak var subtitle: UILabel!
-
+    @IBOutlet weak var isFavorite: UILabel!
+    
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
@@ -131,9 +145,12 @@ class MovieListTableViewCell: UITableViewCell {
         didSet {
             guard let movie = movie else { return }
 
-            icon.setPosterForMovie(movie)
+            icon.setPosterForMovie(movie.posterPath)
             title.text = movie.title
             subtitle.text = movie.releaseDate?.description ?? ""
+            
+            let isFavorite = movie.id.map { favoritesStore.isFavorite(id: $0) } ?? false
+            self.isFavorite.isHidden = !isFavorite
         }
     }
 }

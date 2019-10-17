@@ -21,6 +21,9 @@ enum MainStateAction: Action {
     case search(String)
     case cancelSearch
     
+    case toggleShowFavorites
+    case toggleFavoriteMovie
+
     case collapseSplitDetail
     case separateSplitDetail
 }

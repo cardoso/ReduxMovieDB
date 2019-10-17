@@ -31,6 +31,10 @@
 		8076FB13208B6BFF00513FAC /* MainStateAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8076FB12208B6BFF00513FAC /* MainStateAction.swift */; };
 		80BFF62021D4911A00D99771 /* MovieListViewStateTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80BFF61F21D4911A00D99771 /* MovieListViewStateTests.swift */; };
 		8F78D29FD15515E0A0DB290B /* Pods_ReduxMovieDBTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */; };
+		946FA2FA23590C9D00ABB62E /* Boolean.swift in Sources */ = {isa = PBXBuildFile; fileRef = 946FA2F923590C9D00ABB62E /* Boolean.swift */; };
+		94B596762347FC5600FBECA5 /* FavoritesStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B596752347FC5600FBECA5 /* FavoritesStorage.swift */; };
+		94B596792347FD9700FBECA5 /* MemoryFavoritesStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B596782347FD9700FBECA5 /* MemoryFavoritesStorageTests.swift */; };
+		94B5967B234800BE00FBECA5 /* UserDefaultsFavoritesStorageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 94B5967A234800BE00FBECA5 /* UserDefaultsFavoritesStorageTests.swift */; };
 		94CDE0A723438A6A00545FF1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 94CDE0A923438A6A00545FF1 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
@@ -73,6 +77,10 @@
 		80673CC920323AA70091B48F /* Pages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pages.swift; sourceTree = "<group>"; };
 		8076FB12208B6BFF00513FAC /* MainStateAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainStateAction.swift; sourceTree = "<group>"; };
 		80BFF61F21D4911A00D99771 /* MovieListViewStateTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieListViewStateTests.swift; sourceTree = "<group>"; };
+		946FA2F923590C9D00ABB62E /* Boolean.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Boolean.swift; sourceTree = "<group>"; };
+		94B596752347FC5600FBECA5 /* FavoritesStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesStorage.swift; sourceTree = "<group>"; };
+		94B596782347FD9700FBECA5 /* MemoryFavoritesStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MemoryFavoritesStorageTests.swift; sourceTree = "<group>"; };
+		94B5967A234800BE00FBECA5 /* UserDefaultsFavoritesStorageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsFavoritesStorageTests.swift; sourceTree = "<group>"; };
 		94CDE0A823438A6A00545FF1 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		94CDE0AA23438AD700545FF1 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ReduxMovieDBTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -124,6 +132,7 @@
 		80673C8B2030C3DA0091B48F /* ReduxMovieDB */ = {
 			isa = PBXGroup;
 			children = (
+				94B596742347FC4000FBECA5 /* Storages */,
 				8076FB14208B6CBF00513FAC /* API */,
 				80673CBA2031253F0091B48F /* Model */,
 				8076FB11208B6BE200513FAC /* Actions */,
@@ -145,6 +154,7 @@
 		80673CA02030C3DA0091B48F /* ReduxMovieDBTests */ = {
 			isa = PBXGroup;
 			children = (
+				94B596772347FD6700FBECA5 /* Storages */,
 				80BFF61B21D490CF00D99771 /* State */,
 				80BFF61E21D490FA00D99771 /* ViewState */,
 				80673CA32030C3DA0091B48F /* Info.plist */,
@@ -178,6 +188,7 @@
 			children = (
 				80673CBD20313EA20091B48F /* UIImageView+MoviePoster.swift */,
 				805B438B21989719004A7C28 /* UITableView+DiffUpdate.swift */,
+				946FA2F923590C9D00ABB62E /* Boolean.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -239,6 +250,23 @@
 				95329AAEB8BDA5A98456AF4B /* Pods_ReduxMovieDBTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		94B596742347FC4000FBECA5 /* Storages */ = {
+			isa = PBXGroup;
+			children = (
+				94B596752347FC5600FBECA5 /* FavoritesStorage.swift */,
+			);
+			path = Storages;
+			sourceTree = "<group>";
+		};
+		94B596772347FD6700FBECA5 /* Storages */ = {
+			isa = PBXGroup;
+			children = (
+				94B596782347FD9700FBECA5 /* MemoryFavoritesStorageTests.swift */,
+				94B5967A234800BE00FBECA5 /* UserDefaultsFavoritesStorageTests.swift */,
+			);
+			path = Storages;
 			sourceTree = "<group>";
 		};
 		D4C24798534322BDDE0E79FC /* Pods */ = {
@@ -438,9 +466,11 @@
 				80673C8F2030C3DA0091B48F /* SplitViewController.swift in Sources */,
 				800E401F217FA5E300C2A3BD /* Movie+Differentiable.swift in Sources */,
 				80673C8D2030C3DA0091B48F /* AppDelegate.swift in Sources */,
+				94B596762347FC5600FBECA5 /* FavoritesStorage.swift in Sources */,
 				80673CC620322A6C0091B48F /* Genre.swift in Sources */,
 				80673CB32030E6090091B48F /* MovieListViewState.swift in Sources */,
 				80673CB9203125300091B48F /* TMDB.swift in Sources */,
+				946FA2FA23590C9D00ABB62E /* Boolean.swift in Sources */,
 				80673CB72030F5FC0091B48F /* MovieDetailViewState.swift in Sources */,
 				80673CB52030F5430091B48F /* MovieDetailViewController.swift in Sources */,
 				80673CBE20313EA20091B48F /* UIImageView+MoviePoster.swift in Sources */,
@@ -456,6 +486,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				94B5967B234800BE00FBECA5 /* UserDefaultsFavoritesStorageTests.swift in Sources */,
+				94B596792347FD9700FBECA5 /* MemoryFavoritesStorageTests.swift in Sources */,
 				80673CA22030C3DA0091B48F /* MainStateTests.swift in Sources */,
 				802CD6A221D6A8D2000FF852 /* MovieDetailViewStateTests.swift in Sources */,
 				80BFF62021D4911A00D99771 /* MovieListViewStateTests.swift in Sources */,

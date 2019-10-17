@@ -22,12 +22,10 @@ enum MovieDetailState: Equatable {
 
     var movie: Movie? {
         switch self {
-        case .willHide(let movie):
+        case .willHide(let movie), .show(let movie):
             return movie
         case .hide:
             return nil
-        case .show(let movie):
-            return movie
         }
     }
 }
@@ -40,14 +38,29 @@ enum SplitDetailState: Equatable {
 struct MainState: StateType, Equatable {
     var genres: [Genre] = []
     var moviePages: Pages<Movie> = Pages<Movie>()
-
     var movieDetail: MovieDetailState = .hide
+
+    var isCurrentFavorite: Bool { movieDetail.movie?.id.map(isFavorite) ?? false }
+    var favorites: [Movie] { favoritesStore.favorites }
+
     var splitDetail: SplitDetailState = .separated
 
     var search: SearchState = .canceled
+    var isFavoritesList: Bool = false
 
     var movies: [Movie] {
-        return moviePages.values
+        return isFavoritesList ? favorites : moviePages.values
+    }
+    
+    func toggleFavorite() {
+        guard let movie = movieDetail.movie else { return }
+        favoritesStore.toggle(movie: movie)
+    }
+}
+
+extension MainState {
+    func isFavorite(id: Int) -> Bool {
+        return favoritesStore.isFavorite(id: id)
     }
     
     var canDispatchSearchActions: Bool {
@@ -91,9 +104,17 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
     case .readySearch:
         state.moviePages = Pages<Movie>()
         state.search = .ready
+        state.isFavoritesList = false
     case .search(let query):
         state.moviePages = Pages<Movie>()
         state.search = .searching(query)
+        state.isFavoritesList = false
+
+    case .toggleShowFavorites:
+        state.isFavoritesList.toggle()
+    case .toggleFavoriteMovie:
+        state.toggleFavorite()
+
     case .collapseSplitDetail:
         state.splitDetail = .collapsed
     case .separateSplitDetail:
@@ -110,3 +131,4 @@ let mainStore = Store(
     state: MainState(),
     middleware: [thunksMiddleware]
 )
+let favoritesStore: FavoritesStorage = UserDefaultsFavoritesStorage(defaults: UserDefaults.standard, key: "favorite_movies")
