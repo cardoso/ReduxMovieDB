@@ -14,6 +14,7 @@ import XCTest
 struct EmptyAction: Action { }
 
 class ReduxMovieDBTests: XCTestCase {
+    typealias MockDefaults = UserDefaultsFavoritesStorageTests.MockDefaults
 
     func lint(_ action: MainStateAction) -> () -> Void {
         switch action {
@@ -26,7 +27,7 @@ class ReduxMovieDBTests: XCTestCase {
         case .search(_): return testSearch
         case .cancelSearch: return testCancelSearch
         case .toggleFavoriteMovie: return testToggleFavoriteMovie
-        case .toggleShowFavorites: return toggleShowFavorites
+        case .toggleShowFavorites: return testToggleShowFavorites
         }
     }
 
@@ -156,7 +157,26 @@ class ReduxMovieDBTests: XCTestCase {
         }
     }
     
-    func testToggleFavoriteMovie() {}
-    func toggleShowFavorites() {}
+    func testToggleFavoriteMovie() {
+        let movie = Movie(id: 0, title: "title", releaseDate: "date", posterPath: "path", genreIds: [], overview: "")
+        guard let store = favoritesStore as? UserDefaultsFavoritesStorage else {
+            return XCTFail("Unexpected favorite store")
+        }
+        store.defaults = MockDefaults()
+        
+        let action = MainStateAction.showMovieDetail(movie)
+        let state = mainReducer(action: action, state: nil)
+        XCTAssertFalse(state.isFavorite(id: 0))
+        
+        let toggleAction = MainStateAction.toggleFavoriteMovie
+        let resultState = mainReducer(action: toggleAction, state: state)
+        XCTAssertTrue(resultState.isFavorite(id: 0))
+    }
+    
+    func testToggleShowFavorites() {
+        let action = MainStateAction.toggleShowFavorites
+        let state = mainReducer(action: action, state: nil)
+        XCTAssertTrue(state.isFavoritesList)
+    }
     
 }

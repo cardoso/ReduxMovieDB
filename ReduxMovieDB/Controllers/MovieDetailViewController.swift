@@ -22,7 +22,18 @@ class MovieDetailViewController: UITableViewController {
     @IBOutlet weak var genreValue: UILabel!
     @IBOutlet weak var overviewLabel: UILabel!
     @IBOutlet weak var overviewValue: UILabel!
-    @IBOutlet weak var favoriteButton: UIButton!
+    @IBOutlet weak var favoriteButton: UIButton! {
+        didSet {
+            favoriteButton
+            .rx
+            .tap
+            .subscribe { [weak self] (event) in
+                guard case .next = event else { return }
+                mainStore.dispatch(MainStateAction.toggleFavoriteMovie)
+                self?.favoriteButton.setTitle(mainStore.state.isCurrentFavorite.star, for: .normal)
+            }.disposed(by: disposeBag)
+        }
+    }
     
     @IBOutlet weak var posterImageView: UIImageView!
 
@@ -79,10 +90,6 @@ class MovieDetailViewController: UITableViewController {
 
         return defaultHeight
     }
-    @IBAction func toggleFavorite(_ sender: Any) {
-        mainStore.dispatch(MainStateAction.toggleFavoriteMovie)
-        favoriteButton.setTitle(mainStore.state.isCurrentFavorite ? "★" : "☆", for: .normal)
-    }
     
     func setupPosterView() {
         posterView = tableView.tableHeaderView
@@ -112,7 +119,6 @@ class MovieDetailViewController: UITableViewController {
         genreLabel.text = NSLocalizedString("GENRE", comment: "Film genre")
         overviewLabel.text = NSLocalizedString("OVERVIEW", comment: "Film overview")
     }
-    
 }
 
 // MARK: StoreSubscriber
@@ -130,7 +136,7 @@ extension MovieDetailViewController: StoreSubscriber {
         overviewValue.text = state.overview
         
         if let isFavorite = state.isFavorite {
-            favoriteButton.setTitle(isFavorite ? "★" : "☆", for: .normal)
+            favoriteButton.setTitle(isFavorite.star, for: .normal)
             favoriteButton.isEnabled = true
         } else {
             favoriteButton.isEnabled = false

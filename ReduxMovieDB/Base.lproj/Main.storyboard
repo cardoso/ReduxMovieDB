@@ -2,7 +2,6 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="y8f-Tw-W0j">
     <device id="retina5_5" orientation="portrait" appearance="light"/>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -128,11 +127,7 @@
                         <viewLayoutGuide key="safeArea" id="Nmf-CA-XHz"/>
                     </view>
                     <navigationItem key="navigationItem" title="Movies" id="DtV-Zi-nxq">
-                        <barButtonItem key="rightBarButtonItem" title="☆" id="uy1-Pd-qiH">
-                            <connections>
-                                <action selector="onToggleFavorites:" destination="ZNc-iT-Hqz" id="2tl-gW-LTc"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="☆" id="uy1-Pd-qiH"/>
                     </navigationItem>
                     <connections>
                         <outlet property="favoritesToggleItem" destination="uy1-Pd-qiH" id="EKD-0k-tYR"/>
@@ -201,9 +196,6 @@
                                     <state key="normal" title="☆">
                                         <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     </state>
-                                    <connections>
-                                        <action selector="toggleFavorite:" destination="6nW-Q7-HjW" eventType="touchUpInside" id="348-2N-Pkr"/>
-                                    </connections>
                                 </button>
                             </subviews>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

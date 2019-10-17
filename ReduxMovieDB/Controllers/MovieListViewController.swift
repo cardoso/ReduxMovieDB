@@ -71,7 +71,18 @@ class MovieListViewController: UIViewController {
         }
     }
     
-    @IBOutlet weak var favoritesToggleItem: UIBarButtonItem!
+    @IBOutlet weak var favoritesToggleItem: UIBarButtonItem! {
+        didSet {
+            favoritesToggleItem
+            .rx
+            .tap
+            .subscribe { [weak self] (event) in
+                guard case .next = event else { return }
+                mainStore.dispatch(MainStateAction.toggleShowFavorites)
+                self?.favoritesToggleItem.title = mainStore.state.isFavoritesList.star
+            }.disposed(by: disposeBag)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,10 +103,6 @@ class MovieListViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         mainStore.unsubscribe(self)
-    }
-    
-    @IBAction func onToggleFavorites(_ sender: Any) {
-        mainStore.dispatch(MainStateAction.toggleShowFavorites)
     }
 }
 
