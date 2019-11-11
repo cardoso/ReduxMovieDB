@@ -23,6 +23,7 @@ class SplitViewController: UISplitViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         preferredDisplayMode = .allVisible
         delegate = self
     }

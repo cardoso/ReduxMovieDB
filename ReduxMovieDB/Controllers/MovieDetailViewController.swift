@@ -32,7 +32,7 @@ class MovieDetailViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        overrideUserInterfaceStyle = .dark
         setupPosterView()
         updatePosterView()
         localize()

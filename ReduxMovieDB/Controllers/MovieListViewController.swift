@@ -77,6 +77,7 @@ class MovieListViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        overrideUserInterfaceStyle = .dark
         title = NSLocalizedString("FILMS", comment: "Films view controller title")
         RxKeyboard.instance.visibleHeight
             .drive(onNext: { height in
