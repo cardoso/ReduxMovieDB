@@ -1,4 +1,4 @@
-# ReduxMovieDB
+# ReduxMovieDB <a href="https://twitter.com/intent/follow?screen_name=cardosodev"><img src="https://img.shields.io/twitter/follow/cardosodev.svg?label=Follow%20@cardosodev" alt="Follow @cardosodev"></img>
 [![Build Status](https://travis-ci.org/cardoso/ReduxMovieDB.svg?branch=master)](https://travis-ci.org/cardoso/ReduxMovieDB) [![codecov](https://codecov.io/gh/cardoso/ReduxMovieDB/branch/master/graph/badge.svg)](https://codecov.io/gh/cardoso/ReduxMovieDB)
 
 ## Screenshots
