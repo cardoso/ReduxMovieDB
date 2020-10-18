@@ -7,7 +7,7 @@ target 'ReduxMovieDB' do
   inhibit_all_warnings!
 
   # Redux pods
-  pod 'ReSwift', '~> 4.0'
+  pod 'ReSwift'
   pod 'ReSwiftThunk'
 
   # Reactive pods

@@ -17,11 +17,7 @@ open class Store<State: StateType>: StoreType {
 
     typealias SubscriptionType = SubscriptionBox<State>
 
-    // swiftlint:disable todo
-    // TODO: Setter should not be public; need way for store enhancers to modify appState anyway
-    // swiftlint:enable todo
-
-    /*private (set)*/ public var state: State! {
+    private(set) public var state: State! {
         didSet {
             subscriptions.forEach {
                 if $0.subscriber == nil {
@@ -138,9 +134,15 @@ open class Store<State: StateType>: StoreType {
     }
 
     open func unsubscribe(_ subscriber: AnyStoreSubscriber) {
+        #if swift(>=5.0)
+        if let index = subscriptions.firstIndex(where: { return $0.subscriber === subscriber }) {
+            subscriptions.remove(at: index)
+        }
+        #else
         if let index = subscriptions.index(where: { return $0.subscriber === subscriber }) {
             subscriptions.remove(at: index)
         }
+        #endif
     }
 
     // swiftlint:disable:next identifier_name

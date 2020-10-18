@@ -1,5 +1,5 @@
 //
-//  createThunksMiddleware.swift
+//  createThunkMiddleware.swift
 //  ReSwift-Thunk
 //
 //  Created by Daniel Martín Prieto on 02/11/2018.
@@ -9,7 +9,7 @@
 import Foundation
 import ReSwift
 
-public func createThunksMiddleware<State>() -> Middleware<State> {
+public func createThunkMiddleware<State>() -> Middleware<State> {
     return { dispatch, getState in
         return { next in
             return { action in
@@ -25,8 +25,13 @@ public func createThunksMiddleware<State>() -> Middleware<State> {
 }
 
 // swiftlint:disable identifier_name
-@available(*, deprecated, renamed: "createThunksMiddleware")
+@available(*, deprecated, renamed: "createThunkMiddleware")
 func ThunkMiddleware<State: StateType>() -> Middleware<State> {
-    return createThunksMiddleware()
+    return createThunkMiddleware()
 }
 // swiftlint:enable identifier_name
+
+@available(*, deprecated, renamed: "createThunkMiddleware")
+func createThunksMiddleware<State: StateType>() -> Middleware<State> {
+    return createThunkMiddleware()
+}
