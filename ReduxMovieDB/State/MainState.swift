@@ -103,7 +103,7 @@ func mainReducer(action: Action, state: MainState?) -> MainState {
     return state
 }
 
-let thunksMiddleware: Middleware<MainState> = createThunksMiddleware()
+let thunksMiddleware: Middleware<MainState> = createThunkMiddleware()
 
 let mainStore = Store(
     reducer: mainReducer,
