@@ -11,9 +11,8 @@ target 'ReduxMovieDB' do
   pod 'ReSwiftThunk'
 
   # Reactive pods
-  pod 'RxSwift', '~> 5'
-  pod 'RxCocoa', '~> 5'
-  pod 'RxKeyboard'
+  pod 'CombineCocoa'
+  pod 'CombineKeyboard'
 
   # Networking pods
   pod 'Nuke', '~> 7.4'

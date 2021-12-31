@@ -6,68 +6,59 @@
 //  Copyright © 2018 Matheus Cardoso. All rights reserved.
 //
 
+import Combine
+import CombineCocoa
+import CombineKeyboard
 import ReSwift
-
-import RxCocoa
-import RxSwift
-import RxKeyboard
 
 class MovieListViewController: UIViewController {
     var movies: [Movie] = []
 
-    let disposeBag = DisposeBag()
+    var cancellables = Cancellables()
 
     @IBOutlet weak var moviesTableView: UITableView! {
         didSet {
             moviesTableView.backgroundView = UIView()
             moviesTableView.backgroundView?.backgroundColor = moviesTableView.backgroundColor
 
-            moviesTableView.rx.itemSelected
+            moviesTableView.didSelectRowPublisher
                 .map { self.movies[$0.row] }
                 .map(MainStateAction.showMovieDetail)
-                .bind(onNext: mainStore.dispatch)
-                .disposed(by: disposeBag)
+                .sink { mainStore.dispatch($0) }
+                .store(in: &cancellables)
 
-            moviesTableView.rx.willDisplayCell
+            moviesTableView.willDisplayCellPublisher
                 .filter { $1.row == mainStore.state.movies.count - 1 }
                 .map { _ in fetchMoviesPage }
-                .bind(onNext: mainStore.dispatch)
-                .disposed(by: disposeBag)
+                .sink { mainStore.dispatch($0) }
+                .store(in: &cancellables)
         }
     }
 
     @IBOutlet weak var searchBar: UISearchBar! {
         didSet {
-            searchBar.rx.textDidBeginEditing
-                .filter { (self.searchBar.text?.isEmpty ?? false) && mainStore.state.canDispatchSearchActions }
-                .bind(onNext: {
-                    mainStore.dispatch(MainStateAction.readySearch)
-                    mainStore.dispatch(fetchMoviesPage)
-                })
-                .disposed(by: disposeBag)
-
-            searchBar.rx.text.orEmpty
+            searchBar.textDidChangePublisher
                 .filter { !$0.isEmpty && mainStore.state.canDispatchSearchActions }
-                .bind(onNext: {
+                .sink {
                     mainStore.dispatch(MainStateAction.search($0))
                     mainStore.dispatch(fetchMoviesPage)
-                })
-                .disposed(by: disposeBag)
+                }
+                .store(in: &cancellables)
 
-            searchBar.rx.text.orEmpty
+            searchBar.textDidChangePublisher
                 .filter { $0.isEmpty && mainStore.state.canDispatchSearchActions }
-                .bind(onNext: { _ in
+                .sink { _ in
                     mainStore.dispatch(MainStateAction.readySearch)
                     mainStore.dispatch(fetchMoviesPage)
-                })
-                .disposed(by: disposeBag)
+                }
+                .store(in: &cancellables)
 
-            searchBar.rx.cancelButtonClicked
-                .bind(onNext: {
+            searchBar.cancelButtonClickedPublisher
+                .sink {
                     mainStore.dispatch(MainStateAction.cancelSearch)
                     mainStore.dispatch(fetchMoviesPage)
-                })
-                .disposed(by: disposeBag)
+                }
+                .store(in: &cancellables)
         }
     }
     
@@ -79,10 +70,12 @@ class MovieListViewController: UIViewController {
         super.viewDidLoad()
         overrideUserInterfaceStyle = .dark
         title = NSLocalizedString("FILMS", comment: "Films view controller title")
-        RxKeyboard.instance.visibleHeight
-            .drive(onNext: { height in
+        
+        CombineKeyboard.shared.height
+            .sink { height in
                 self.additionalSafeAreaInsets.bottom = height
-        }).disposed(by: disposeBag)
+            }
+            .store(in: &cancellables)
     }
     
     override func viewWillAppear(_ animated: Bool) {

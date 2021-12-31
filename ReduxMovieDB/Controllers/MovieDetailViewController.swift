@@ -9,8 +9,6 @@
 import UIKit
 
 import ReSwift
-import RxCocoa
-import RxSwift
 
 class MovieDetailViewController: UITableViewController {
     
@@ -27,8 +25,6 @@ class MovieDetailViewController: UITableViewController {
 
     private let posterViewHeight: CGFloat = 300
     private var posterView: UIView!
-
-    let disposeBag = DisposeBag()
 
     override func viewDidLoad() {
         super.viewDidLoad()
